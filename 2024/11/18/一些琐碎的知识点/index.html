@@ -14,23 +14,26 @@
   
 
   
-  <title>Rcore学习大纲 | Hexo</title>
+  <title>一些琐碎的知识点 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="操作系统内核组成部分进程&#x2F;线程管理：内核负责管理系统中的进程或线程，创建、销毁、调度和切换进程或线程。 内存管理：内核负责管理系统的内存，分配和回收内存空间，并保证进程之间的内存隔离。 文件系统：内核提供文件系统接口，负责管理存储设备上的文件和目录，并允许应用访问文件系统。 网络通信：内核提供网络通信接口，负责管理网络连接并允许应用进行网络通信。 设备驱动：内核提供设备驱动接口，负责管理">
+  <meta name="description" content="API 与 ABI 的区别API应用程序编程接口 API 是不同源代码片段的连接纽带。API 定义了一个源码级（如 C 语言）函数的参数，参数的类型，函数的返回值等。因此 API 是用来约束编译器 (Compiler) 的：一个 API 是给编译器的一些指令，它规定了源代码可以做以及不可以做哪些事。API 与编程语言相关，如 libc 是基于 C 语言编写的标准库，那么基于 C 的应用程序就可以通">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rcore学习大纲">
-<meta property="og:url" content="http://example.com/2024/11/17/Rcore%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/index.html">
+<meta property="og:title" content="一些琐碎的知识点">
+<meta property="og:url" content="http://example.com/2024/11/18/%E4%B8%80%E4%BA%9B%E7%90%90%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="操作系统内核组成部分进程&#x2F;线程管理：内核负责管理系统中的进程或线程，创建、销毁、调度和切换进程或线程。 内存管理：内核负责管理系统的内存，分配和回收内存空间，并保证进程之间的内存隔离。 文件系统：内核提供文件系统接口，负责管理存储设备上的文件和目录，并允许应用访问文件系统。 网络通信：内核提供网络通信接口，负责管理网络连接并允许应用进行网络通信。 设备驱动：内核提供设备驱动接口，负责管理">
+<meta property="og:description" content="API 与 ABI 的区别API应用程序编程接口 API 是不同源代码片段的连接纽带。API 定义了一个源码级（如 C 语言）函数的参数，参数的类型，函数的返回值等。因此 API 是用来约束编译器 (Compiler) 的：一个 API 是给编译器的一些指令，它规定了源代码可以做以及不可以做哪些事。API 与编程语言相关，如 libc 是基于 C 语言编写的标准库，那么基于 C 的应用程序就可以通">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-17T13:08:03.000Z">
-<meta property="article:modified_time" content="2024-11-17T13:32:25.422Z">
+<meta property="og:image" content="http://example.com/images/11.png">
+<meta property="og:image" content="http://example.com/images/12.png">
+<meta property="article:published_time" content="2024-11-18T03:41:57.000Z">
+<meta property="article:modified_time" content="2024-11-18T05:06:11.817Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/11.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -165,7 +168,7 @@
        
 
 
-<article id="post-Rcore学习大纲" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-一些琐碎的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
    
@@ -178,7 +181,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        Rcore学习大纲
+        一些琐碎的知识点
       </h1>
     
   
@@ -186,7 +189,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-17T13:08:03.000Z" itemprop="datePublished">2024-11-17</time>
+  <time class="dt-published" datetime="2024-11-18T03:41:57.000Z" itemprop="datePublished">2024-11-18</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -197,25 +200,26 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.5k words 
+            2.3k words 
           </div>
         </div>
         
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="操作系统内核组成部分"><a href="#操作系统内核组成部分" class="headerlink" title="操作系统内核组成部分"></a>操作系统内核组成部分</h3><h4 id="进程-线程管理："><a href="#进程-线程管理：" class="headerlink" title="进程&#x2F;线程管理："></a>进程&#x2F;线程管理：</h4><p>内核负责管理系统中的进程或线程，创建、销毁、调度和切换进程或线程。</p>
-<h4 id="内存管理："><a href="#内存管理：" class="headerlink" title="内存管理："></a>内存管理：</h4><p>内核负责管理系统的内存，分配和回收内存空间，并保证进程之间的内存隔离。</p>
-<h4 id="文件系统："><a href="#文件系统：" class="headerlink" title="文件系统："></a>文件系统：</h4><p>内核提供文件系统接口，负责管理存储设备上的文件和目录，并允许应用访问文件系统。</p>
-<h4 id="网络通信："><a href="#网络通信：" class="headerlink" title="网络通信："></a>网络通信：</h4><p>内核提供网络通信接口，负责管理网络连接并允许应用进行网络通信。</p>
-<h4 id="设备驱动："><a href="#设备驱动：" class="headerlink" title="设备驱动："></a>设备驱动：</h4><p>内核提供设备驱动接口，负责管理硬件设备并允许应用和内核其他部分访问设备。</p>
-<h4 id="同步互斥："><a href="#同步互斥：" class="headerlink" title="同步互斥："></a>同步互斥：</h4><p>内核负责协调多个进程或线程之间对共享资源的访问。同步功能主要用于解决进程或线程之间的协作问题，互斥功能主要用于解决进程或线程之间的竞争问题。</p>
-<h4 id="系统调用接口："><a href="#系统调用接口：" class="headerlink" title="系统调用接口："></a>系统调用接口：</h4><p>内核提供给应用程序访问系统服务的入口，应用程序通过系统调用接口调用操作系统提供的服务，如文件系统、网络通信、进程管理等。</p>
-<h3 id="各种各样的操作系统"><a href="#各种各样的操作系统" class="headerlink" title="各种各样的操作系统"></a>各种各样的操作系统</h3><p>现在我们拥有种类繁多的计算设备，在这些设备上运行着许多不同的操作系统，操作系统设计者面临的功能权衡取决于硬件的物理能力以及应用程序和用户需求。下面是一些目前常见类型的操作系统：</p>
-<h4 id="面向服务器的操作系统："><a href="#面向服务器的操作系统：" class="headerlink" title="面向服务器的操作系统："></a>面向服务器的操作系统：</h4><p>当前大家常用的主流搜索引擎、新媒体、电子商务网站和大数据处理系统等一般都托管在数据中心的计算机上。每台计算机都是强大的服务器，运行着服务器操作系统，典型的例子是 Linux。通常每台服务器只运行一个应用服务程序，例如数据库服务器或 Web 服务器等，用于处理成千上万个用户传入的网络服务请求，所以吞吐量（每秒处理的请求数量）是一个关键的优化目标。而安全和可靠也是服务器操作性系统需要重点关注的目标。服务器操作系统的一种形态是虚拟机（Virtual Machine Monitor，VMM），它可在一台物理机上虚拟出多台虚拟计算机，可以像运行应用程序一样运行另一个操作系统。通过虚拟机可以充分利用数据中心中资源利用率不高的物理服务器，提高整个数据中心的运行效率。典型的服务器操作系统有：FreeBSD、微软的Windows Server、基于 Linux 系的 RHLS、Ubuntu、openEuler、龙蜥操作系统、麒麟服务器操作系统等。</p>
-<h4 id="面向台式机-笔记本电脑和上网本的操作系统："><a href="#面向台式机-笔记本电脑和上网本的操作系统：" class="headerlink" title="面向台式机&#x2F;笔记本电脑和上网本的操作系统："></a>面向台式机&#x2F;笔记本电脑和上网本的操作系统：</h4><p>典型的例子是：Windows、Mac OS X、Linux、Chrome OS等。这些操作系统主要面向单个用户，运行许多应用程序，并具有各种 I&#x2F;O 设备。有人可能认为只有一个用户，就没有必要将系统设计为支持多用户共享，这会使得操作系统设计更加简单，但安全性相对弱一些。</p>
-<h4 id="面向智能移动终端（手机-平板）的操作系统："><a href="#面向智能移动终端（手机-平板）的操作系统：" class="headerlink" title="面向智能移动终端（手机&#x2F;平板）的操作系统："></a>面向智能移动终端（手机&#x2F;平板）的操作系统：</h4><p>智能移动终端是一种带有强大处理器的手机或平板，能够运行第三方应用程序。智能移动终端操作系统的典型例子包括 两个霸主 iOS、Android，和曾经辉煌过的 Symbian，还有几乎快消失的 WebOS、Blackberry OS 和 Windows Phone 等。智能移动终端一般只有一个用户，对交互响应能力、长效的电池使用时间和各种应用的支持有着迫切的需求。</p>
-<h4 id="嵌入式操作系统："><a href="#嵌入式操作系统：" class="headerlink" title="嵌入式操作系统："></a>嵌入式操作系统：</h4><p>随着物联网的发展，处理器芯片可以集成到各种的消费设备中，从机顶盒、手表到机器人等，形成各种物联网中的嵌入式设备。这些嵌入式设备的功能相对单一，通常运行嵌入式操作系统。典型的嵌入式操作系统有 嵌入式 Linux、VxWorks、FreeRTOS、RT-Thread、SylixOS 等。预计在下一个十年，通过面向物联网设备的操作系统，可以把各种嵌入式设备连接在一起，实现灵活多变的功能协同与组合，形成万物互联的新应用场景和生态。</p>
+          <h3 id="API-与-ABI-的区别"><a href="#API-与-ABI-的区别" class="headerlink" title="API 与 ABI 的区别"></a><strong>API 与 ABI 的区别</strong></h3><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><p>应用程序编程接口 API 是不同源代码片段的连接纽带。API 定义了一个源码级（如 C 语言）函数的参数，参数的类型，函数的返回值等。因此 API 是用来约束编译器 (Compiler) 的：一个 API 是给编译器的一些指令，它规定了源代码可以做以及不可以做哪些事。API 与编程语言相关，如 libc 是基于 C 语言编写的标准库，那么基于 C 的应用程序就可以通过编译器建立与 libc 的联系，并能在运行中正确访问 libc 中的函数。</p>
+<h4 id="ABI"><a href="#ABI" class="headerlink" title="ABI"></a>ABI</h4><p>应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带。ABI 定义了二进制机器代码级别的规则，主要包括基本数据类型、通用寄存器的使用、参数的传递规则、以及堆栈的使用等等。ABI 与处理器和内存地址等硬件架构相关，是用来约束链接器 (Linker) 和汇编器 (Assembler) 的。在同一处理器下，基于不同高级语言编写的应用程序、库和操作系统，如果遵循同样的 ABI 定义，那么它们就能正确链接和执行。</p>
+<h3 id="执行环境的发展"><a href="#执行环境的发展" class="headerlink" title="执行环境的发展"></a>执行环境的发展</h3><p><strong>执行环境</strong> (Execution Environment) 是一个内涵很丰富且有一定变化的术语，它主要负责给在其上执行的软件提供相应的功能与资源，并可在计算机系统中形成多层次的执行环境。对于现在直接运行在裸机硬件 (Bare-Metal) 上的操作系统，其执行环境是 <em>计算机的硬件</em> 。计算机刚刚诞生时，还没有操作系统的概念，对于直接运行在裸机硬件上的应用程序而言，其执行环境也是 <em>计算机的硬件</em> 。 随着计算机技术的发展，应用程序下面形成了一层比较通用的函数库，这使得应用程序不需要直接访问硬件了，它所需要的功能（比如显示字符串）和资源（比如一块内存）都可以通过函数库的函数来帮助完成。在第二个阶段，应用程序的执行环境就变成了 <em>函数库</em> -&gt; <em>计算机硬件</em> ，而这时函数库的执行环境就是计算机的硬件。</p>
+<p><img src="/../images/11.png" alt="11"></p>
+<p>再进一步，操作系统取代了函数库来访问硬件，函数库通过访问操作系统的系统调用服务来进一步给应用程序提供丰富的功能和资源。在第三个阶段，应用程序的执行环境就变成了 <em>函数库</em> -&gt; <em>操作系统内核</em> -&gt; <em>计算机硬件</em> 。在后面又出现了基于 Java 语言的应用程序，在函数库和操作系统之间，多了一层 Java 虚拟机，此时 Java 应用程序的执行环境就变成了 <em>函数库</em> -&gt; <em>Java 虚拟机</em> -&gt; <em>操作系统内核</em> -&gt; <em>计算机硬件</em> 。在云计算时代，在传统操作系统与计算机硬件之间多了一层 Hypervisor&#x2F;VMM ，此时应用程序的执行环境变成了 <em>函数库</em> -&gt; <em>Java 虚拟机</em> -&gt; <em>操作系统内核</em> -&gt; <em>Hypervisor&#x2F;VMM</em> -&gt; <em>计算机硬件</em> 。这里可以看到，随着软件需求的多样化和复杂化， <strong>执行环境的层次</strong> 也越来越多。</p>
+<p>另外，CPU在执行过程中，可以在不同层次的执行环境之间切换，这称为 <strong>执行环境切换</strong> 。执行环境切换主要是通过特定的 API 或 ABI 来完成的，这样不同执行环境的软件就能实现数据交换与互操作，而且还保证了彼此之间有清晰的隔离。</p>
+<p><img src="/../images/12.png" alt="12"></p>
+<p>对于应用程序的执行环境而言，应用程序只能看到执行环境直接提供给它的接口（API 或 ABI），这使得应用程序所能得到的服务取决于执行环境提供给它的访问接口。</p>
+<h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><h4 id="普通控制流"><a href="#普通控制流" class="headerlink" title="普通控制流"></a>普通控制流</h4><p>各种应用程序在执行环境中执行其功能，而具体如何执行，取决于 <strong>程序的控制流</strong> 。回顾一下编译原理课上的知识，程序的控制流 (Flow of Control or Control Flow) 是指以一个程序的指令、语句或基本块为单位的执行序列。再回顾一下计算机组成原理课上的知识，处理器的控制流是指处理器中程序计数器的控制转移序列。最简单的一种控制流（没有异常或中断产生的前提下）是一个“平滑的”序列，其中每个要执行的指令地址在内存中都是相邻的。如果站在程序员的角度来看控制流，会发现控制流是程序员编写的程序的执行序列，这些序列是程序员预设好的。程序运行时能以多种简单的控制流（顺序、分支、循环结构和多层嵌套函数调用）组合的方式，来一行一行的执行源代码（以编程语言级的视角），也是一条一条的执行汇编指令（以汇编语言级的视角）。对于上述的不同描述，我们可以统称其为 <strong>普通控制流</strong> (CCF，Common Control Flow，简称 控制流) 。在应用程序视角下，它只能接触到它所在的执行环境，不会跳到其他执行环境，所以应用程序执行基本上是以普通控制流的形式完成整个运行的过程。</p>
+<h4 id="异常控制流"><a href="#异常控制流" class="headerlink" title="异常控制流"></a>异常控制流</h4><p>在操作系统中，需要处理三类异常控制流：外设中断 (Device Interrupt) 、陷入 (Trap) 和异常 (Exception，也称Fault Interrupt)。</p>
+<p>应用程序在执行过程中，如果发出系统调用请求，或出现外设中断、CPU 异常等情况，处理器执行的前一条指令和后一条指令将会位于两个完全不同的位置，即不同的执行环境 。比如，前一条指令还在应用程序的代码段中，后一条指令就跑到操作系统的代码段中去了，这就是一种控制流的“突变”，即控制流脱离了其所在的执行环境，并产生 <a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/3os-hw-abstract.html#term-ee-switch">执行环境的切换</a>。 我们把这种“突变”的控制流称为 <strong>异常控制流</strong> (ECF, Exceptional Control Flow) 。</p>
+<p>应用程序 <em>感知</em> 不到这种异常的控制流情况，这主要是由于操作系统把这种情况 <em>透明</em> 地进行了执行环境的切换和对各种异常情况的处理，让应用程序从始至终地 <em>认为</em> 没有这些异常控制流的产生。</p>
+<p>简单地说， <strong>异常控制流</strong> 是处理器在执行过程中的突变，其主要作用是通过硬件和操作系统的协同工作来响应处理器状态中的特殊变化。比如当应用程序正在执行时，产生了时钟外设中断，导致操作系统打断当前应用程序的执行，转而进入 <strong>操作系统</strong> 执行环境去处理时钟外设中断。处理完毕后，再回到应用程序中被打断的地方继续执行。</p>
 
         
       </div>
@@ -228,27 +232,22 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left "
-    
-      href="/2024/11/18/%E4%B8%80%E4%BA%9B%E7%90%90%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/"
-      title="一些琐碎的知识点"
+  <a class="article-nav-btn left  disabled "
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
-      
-        一些琐碎的知识点
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/11/17/%E5%BC%80%E5%90%AFRcore%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"
-      title="开启Rcore学习之旅"
+      href="/2024/11/17/Rcore%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"
+      title="Rcore学习大纲"
      >
 
     <p class="title-text">
       
-        开启Rcore学习之旅
+        Rcore学习大纲
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
