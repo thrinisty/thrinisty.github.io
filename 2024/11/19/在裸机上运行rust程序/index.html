@@ -28,9 +28,8 @@
 <meta property="og:description" content="曾经提到过，编程语言的标准库或三方库的某些功能会直接或间接的用到操作系统提供的系统调用。但目前我们所选的目标平台不存在任何操作系统支持，于是 Rust 并没有为这个目标平台支持完整的标准库 std。类似这样的平台通常被我们称为 裸机平台 (bare-metal)。这意味着在裸机平台上的软件没有传统操作系统支持。 Rust语言标准库std和核心库coreStd库Rust 语言标准库–std 是让 R">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/20.png">
-<meta property="og:image" content="http://example.com/2024/11/19/images/ea77fa3202520756f50e0b55ed94a419.png">
 <meta property="article:published_time" content="2024-11-19T07:20:53.000Z">
-<meta property="article:modified_time" content="2024-11-20T08:26:20.135Z">
+<meta property="article:modified_time" content="2024-11-20T08:56:18.167Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/20.png">
@@ -200,7 +199,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.1k words 
+            2.4k words 
           </div>
         </div>
         
@@ -236,11 +235,11 @@
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  os/src/main.rs</span></span><br><span class="line"><span class="meta">#![no_std]</span></span><br><span class="line"><span class="keyword">mod</span> lang_items;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>3.出现main函数报错：</p>
-<img src="../images/ea77fa3202520756f50e0b55ed94a419.png" alt="ea77fa3202520756f50e0b55ed94a419" style="zoom:150%;" />
-
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  os/src/main.rs</span></span><br><span class="line"><span class="meta">#![no_std]</span></span><br><span class="line"><span class="meta">#![no_main]</span><span class="comment">//移除main得以通过编译</span></span><br><span class="line"><span class="keyword">mod</span> lang_items;</span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Hello, world!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>脱离了标准库，通过了编译器的检验，但是伤筋动骨，将原有的很多功能弱化甚至直接删除，接下来会以自己的方式来重塑这些基本功能，并最终完成我们的目标</p>
+<h5 id="得到在-Qemu-上成功运行的内核镜像"><a href="#得到在-Qemu-上成功运行的内核镜像" class="headerlink" title="得到在 Qemu 上成功运行的内核镜像"></a>得到在 Qemu 上成功运行的内核镜像</h5><p>首先我们需要通过链接脚本调整内核可执行文件的内存布局，使得内核被执行的第一条指令位于地址 <code>0x80200000</code> 处，同时代码段所在的地址应低于其他段。这是因为 Qemu 物理内存中低于 <code>0x80200000</code> 的区域并未分配给内核，而是主要由 RustSBI 使用。</p>
+<p>其次，我们需要将内核可执行文件中的元数据丢掉得到内核镜像，此内核镜像仅包含实际会用到的代码和数据。这则是因为 Qemu 的加载功能过于简单直接，它直接将输入的文件逐字节拷贝到物理内存中，因此也可以说这一步是我们在帮助 Qemu 手动将可执行文件加载到物理内存中。</p>
 
         
       </div>

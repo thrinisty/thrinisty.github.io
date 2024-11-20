@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://example.com/images/9.png">
 <meta property="og:image" content="http://example.com/images/10.png">
 <meta property="article:published_time" content="2024-11-15T09:25:00.000Z">
-<meta property="article:modified_time" content="2024-11-15T10:17:59.218Z">
+<meta property="article:modified_time" content="2024-11-20T09:08:40.879Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/7.png">
@@ -205,7 +205,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            722 words 
+            1k words 
           </div>
         </div>
         
@@ -214,20 +214,34 @@
         
           <h3 id="第一份正式的博客内容"><a href="#第一份正式的博客内容" class="headerlink" title="第一份正式的博客内容"></a>第一份正式的博客内容</h3><p>这算是我写的第一份博客，大学时光已经过半，我也想在有限的时间里面留下点什么，希望这一篇推文可以帮助到你:happy:</p>
 <h4 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h4><p>和大多数人一样，我在linux安装各种软件包的时候，想到的第一个方法应该是换源，换一个学术的源平台去下载各种各样的包或者软件之类的，但是有的时候镜像资源难免会出现一些缺漏，导致了没有办法正确的找到依赖，而通过代理的方式可以在linux虚拟机下安装各式各样的软件一劳永逸，接下来是我从网络上找寻到的一种方式</p>
-<h4 id="解决方式（需要主机拥有代理软件）"><a href="#解决方式（需要主机拥有代理软件）" class="headerlink" title="解决方式（需要主机拥有代理软件）"></a>解决方式（需要主机拥有代理软件）</h4><h5 id="第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22-04）"><a href="#第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22-04）" class="headerlink" title="第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22.04）"></a>第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22.04）</h5><p><img src="/../images/7.png" alt="7"></p>
+<h4 id="解决方式（需要主机拥有代理软件）"><a href="#解决方式（需要主机拥有代理软件）" class="headerlink" title="解决方式（需要主机拥有代理软件）"></a>解决方式（需要主机拥有代理软件）</h4><h5 id="第一种解决方式：用图形化界面手动设置"><a href="#第一种解决方式：用图形化界面手动设置" class="headerlink" title="第一种解决方式：用图形化界面手动设置"></a>第一种解决方式：用图形化界面手动设置</h5><p>第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22.04）</p>
+<p><img src="/../images/7.png" alt="7"></p>
 <p>如图我们将其中的网络适配器网络连接方式更改成为NAT桥接模式，使虚拟机与宿主机共享同样的的IP地址</p>
-<h5 id="第二：记录主机的IP地址"><a href="#第二：记录主机的IP地址" class="headerlink" title="第二：记录主机的IP地址"></a>第二：记录主机的IP地址</h5><p>在主机上打开终端，键入  ipconfig 查看，其中会打印出很多的网络配置信息，我们重点聚焦于主机的IP地址<br><img src="/../images/4.png" alt="4"></p>
+<p>第二：记录主机的IP地址</p>
+<p>在主机上打开终端，键入  ipconfig 查看，其中会打印出很多的网络配置信息，我们重点聚焦于主机的IP地址<br><img src="/../images/4.png" alt="4"></p>
 <p>其中以太网适配器中的IPv4是我们所需的，将其记录下来：192.168.9.1</p>
 <p><img src="/../images/6.png" alt="6"></p>
-<h5 id="第三：开启代理软件获取其端口号（以clash举例，多的我也没有）"><a href="#第三：开启代理软件获取其端口号（以clash举例，多的我也没有）" class="headerlink" title="第三：开启代理软件获取其端口号（以clash举例，多的我也没有）"></a>第三：开启代理软件获取其端口号（以clash举例，多的我也没有）</h5><p><img src="/../images/5.png" alt="5"></p>
+<p>第三：开启代理软件获取其端口号（以clash举例，多的我也没有）</p>
+<p><img src="/../images/5.png" alt="5"></p>
 <p>其中7890就是我们所需要的内容，将其记录下来</p>
-<h5 id="第四：启动linux虚拟机设置并开启网络代理"><a href="#第四：启动linux虚拟机设置并开启网络代理" class="headerlink" title="第四：启动linux虚拟机设置并开启网络代理"></a>第四：启动linux虚拟机设置并开启网络代理</h5><p>在网络代理设置中点击手动（默认为已禁用），此时不更改网络代理的数据的时候是无法正常上网的</p>
+<p>第四：启动linux虚拟机设置并开启网络代理</p>
+<p>在网络代理设置中点击手动（默认为已禁用），此时不更改网络代理的数据的时候是无法正常上网的</p>
 <p><img src="/../images/8.png" alt="8"></p>
 <p>下一步为设置两个代理，以及Socks主机</p>
 <p><img src="/../images/9.png" alt="9"></p>
 <p>其中前一个为IP地址：填入主机IP，后一个端口号填入代理端口，保存即可完成虚拟机共享主机代理的设置</p>
-<h5 id="第五：验证代理是否成功"><a href="#第五：验证代理是否成功" class="headerlink" title="第五：验证代理是否成功"></a>第五：验证代理是否成功</h5><p>发现可以正常访问学术网站，linux虚拟机代理成功，同时也可以解决rustc软件包安装失效的问题</p>
+<p>第五：验证代理是否成功</p>
+<p>发现可以正常访问学术网站，linux虚拟机代理成功，同时也可以解决rustc软件包安装失效的问题</p>
 <p><img src="/../images/10.png" alt="10"></p>
+<h5 id="第二种解决方式：通过命令行配置代理"><a href="#第二种解决方式：通过命令行配置代理" class="headerlink" title="第二种解决方式：通过命令行配置代理"></a>第二种解决方式：通过命令行配置代理</h5><p>第一：配置代理</p>
+<p>在终端中输入以下指令（ip地址为你自己的，端口号为代理软件的，同第一种解决方式中的一样）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://192.168.9.1:7890</span><br><span class="line">export http_proxy=http://192.168.9.1:7890</span><br><span class="line">export ftp_proxy=http://192.168.9.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>第二：配置生效</p>
+<p>安装完成后，我们可以重新打开一个终端来让之前设置的环境变量生效。</p>
+<p>我们也可以手动将环境变量设置应用到当前终端（非永久生效，仅限于当前终端），输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $HOME/.cargo/env</span><br></pre></td></tr></table></figure>
+
 <h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>真诚地希望你的问题在这里得到解决，以上是我写的有关linux虚拟机代理的解决方法</p>
 
         
