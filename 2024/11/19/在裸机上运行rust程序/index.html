@@ -28,8 +28,14 @@
 <meta property="og:description" content="曾经提到过，编程语言的标准库或三方库的某些功能会直接或间接的用到操作系统提供的系统调用。但目前我们所选的目标平台不存在任何操作系统支持，于是 Rust 并没有为这个目标平台支持完整的标准库 std。类似这样的平台通常被我们称为 裸机平台 (bare-metal)。这意味着在裸机平台上的软件没有传统操作系统支持。 Rust语言标准库std和核心库coreStd库Rust 语言标准库–std 是让 R">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/20.png">
+<meta property="og:image" content="http://example.com/images/24.png">
+<meta property="og:image" content="http://example.com/images/25.png">
+<meta property="og:image" content="http://example.com/images/26.png">
+<meta property="og:image" content="http://example.com/images/27.png">
+<meta property="og:image" content="http://example.com/images/28.png">
+<meta property="og:image" content="http://example.com/images/29.png">
 <meta property="article:published_time" content="2024-11-19T07:20:53.000Z">
-<meta property="article:modified_time" content="2024-11-20T08:56:18.167Z">
+<meta property="article:modified_time" content="2024-11-24T03:57:37.510Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/20.png">
@@ -199,7 +205,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.4k words 
+            4.8k words 
           </div>
         </div>
         
@@ -240,6 +246,54 @@
 <p>脱离了标准库，通过了编译器的检验，但是伤筋动骨，将原有的很多功能弱化甚至直接删除，接下来会以自己的方式来重塑这些基本功能，并最终完成我们的目标</p>
 <h5 id="得到在-Qemu-上成功运行的内核镜像"><a href="#得到在-Qemu-上成功运行的内核镜像" class="headerlink" title="得到在 Qemu 上成功运行的内核镜像"></a>得到在 Qemu 上成功运行的内核镜像</h5><p>首先我们需要通过链接脚本调整内核可执行文件的内存布局，使得内核被执行的第一条指令位于地址 <code>0x80200000</code> 处，同时代码段所在的地址应低于其他段。这是因为 Qemu 物理内存中低于 <code>0x80200000</code> 的区域并未分配给内核，而是主要由 RustSBI 使用。</p>
 <p>其次，我们需要将内核可执行文件中的元数据丢掉得到内核镜像，此内核镜像仅包含实际会用到的代码和数据。这则是因为 Qemu 的加载功能过于简单直接，它直接将输入的文件逐字节拷贝到物理内存中，因此也可以说这一步是我们在帮助 Qemu 手动将可执行文件加载到物理内存中。</p>
+<p>编写内核的第一条指令（用于验证内核镜像是否对接到了Qemu中）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># os/src/entry.asm</span><br><span class="line">    .section .text.entry //.text.entry 的段</span><br><span class="line">    .globl _start //全局符号</span><br><span class="line">_start:</span><br><span class="line">    li x1, 100</span><br></pre></td></tr></table></figure>
+
+<p>第 3 行我们告知编译器 <code>_start</code> 是一个全局符号，因此可以被其他目标文件使用。</p>
+<p>第 2 行表明我们希望将第 2 行后面的内容全部放到一个名为 <code>.text.entry</code> 的段中。一般情况下，所有的代码都被放到一个名为 <code>.text</code> 的代码段中</p>
+<p>改写main.rs 添加</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> core::arch::global_asm;</span><br><span class="line">global_asm!(<span class="built_in">include_str!</span>(<span class="string">&quot;entry.asm&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>main.rs</code> 中嵌入这段汇编代码</p>
+<p>调整内核布局</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// os/.cargo/config</span><br><span class="line"><span class="section">[build]</span></span><br><span class="line"><span class="attr">target</span> = <span class="string">&quot;riscv64gc-unknown-none-elf&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[target.riscv64gc-unknown-none-elf]</span></span><br><span class="line"><span class="attr">rustflags</span> = [</span><br><span class="line">    <span class="string">&quot;-Clink-arg=-Tsrc/linker.ld&quot;</span>, <span class="string">&quot;-Cforce-frame-pointers=yes&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>由于链接器默认的内存布局并不能符合我们的要求，为了实现与 Qemu 正确对接，我们可以通过 <strong>链接脚本</strong> (Linker Script) 调整链接器的行为，使得最终生成的可执行文件的内存布局符合Qemu的预期，即内核第一条指令的地址应该位于 0x80200000 。</p>
+<p>连接脚本</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#os/src/linker.ld</span></span><br><span class="line"></span><br><span class="line">OUTPUT_ARCH(riscv)</span><br><span class="line">ENTRY(_start)</span><br><span class="line"><span class="attr">BASE_ADDRESS</span> = <span class="number">0</span>x80200000<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">SECTIONS</span><br><span class="line">&#123;</span><br><span class="line">    . = BASE_ADDRESS<span class="comment">;</span></span><br><span class="line">    <span class="attr">skernel</span> = .<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">stext</span> = .<span class="comment">;</span></span><br><span class="line">    .text : &#123;</span><br><span class="line">        *(.text.entry)</span><br><span class="line">        *(.text .text.*)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    . = ALIGN(4K)<span class="comment">;</span></span><br><span class="line">    <span class="attr">etext</span> = .<span class="comment">;</span></span><br><span class="line">    <span class="attr">srodata</span> = .<span class="comment">;</span></span><br><span class="line">    .rodata : &#123;</span><br><span class="line">        *(.rodata .rodata.*)</span><br><span class="line">        *(.srodata .srodata.*)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    . = ALIGN(4K)<span class="comment">;</span></span><br><span class="line">    <span class="attr">erodata</span> = .<span class="comment">;</span></span><br><span class="line">    <span class="attr">sdata</span> = .<span class="comment">;</span></span><br><span class="line">    .data : &#123;</span><br><span class="line">        *(.data .data.*)</span><br><span class="line">        *(.sdata .sdata.*)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    . = ALIGN(4K)<span class="comment">;</span></span><br><span class="line">    <span class="attr">edata</span> = .<span class="comment">;</span></span><br><span class="line">    .bss : &#123;</span><br><span class="line">        *(.bss.stack)</span><br><span class="line">        <span class="attr">sbss</span> = .<span class="comment">;</span></span><br><span class="line">        *(.bss .bss.*)</span><br><span class="line">        *(.sbss .sbss.*)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    . = ALIGN(4K)<span class="comment">;</span></span><br><span class="line">    <span class="attr">ebss</span> = .<span class="comment">;</span></span><br><span class="line">    <span class="attr">ekernel</span> = .<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">    /DISCARD/ : &#123;</span><br><span class="line">        *(.eh_frame)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在os目录下运用cargo build生成内核的可执行文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release</span><br></pre></td></tr></table></figure>
+
+<p>将ELF 可执行文件加载到Qemu的内存之中</p>
+<p><img src="/../images/24.png" alt="24"></p>
+<p>由于生成的可执行文件中存在一些元数据，而这一些的数据没有办法被qemu给正确利用，为了使得section字段起始位于BASE_ADDR：0x80200000上，我们需运用如下的代码去除元数据字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rust-objcopy --strip-all target/riscv64gc-unknown-none-elf/release/os -O binary target/riscv64gc-unknown-none-elf/release/os.bin</span><br></pre></td></tr></table></figure>
+
+<h5 id="GDB验证启动"><a href="#GDB验证启动" class="headerlink" title="GDB验证启动"></a>GDB验证启动</h5><p>在 <code>os</code> 目录下通过以下命令启动 Qemu 并加载 RustSBI 和内核镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-riscv64 \</span><br><span class="line">    -machine virt \</span><br><span class="line">    -nographic \</span><br><span class="line">    -bios ../bootloader/rustsbi-qemu.bin \</span><br><span class="line">    -device loader,file=target/riscv64gc-unknown-none-elf/release/os.bin,addr=0x80200000 \</span><br><span class="line">    -s -S</span><br></pre></td></tr></table></figure>
+
+<p>打开另一个终端，启动一个 GDB 客户端连接到 Qemu ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gdb-multiarch \</span><br><span class="line">  -ex &#x27;file target/riscv64gc-unknown-none-elf/release/os&#x27; \</span><br><span class="line">  -ex &#x27;set arch riscv:rv64&#x27; \</span><br><span class="line">  -ex &#x27;target remote localhost:1234&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在这里我运用的Debug工具是gdb-multiarch而非教程中的riscv64-unknown-elf-gdb</p>
+<p>成功启动了程序调试</p>
+<p><img src="/../images/25.png" alt="25"></p>
+<p>其中初始化的地址是0x00001000，对应这qemu初始化的地址</p>
+<p>运用x&#x2F;10i $pc,从当前 PC 值的位置开始，在内存中反汇编 10 条指令</p>
+<p><img src="/../images/26.png" alt="26"></p>
+<p><code>0x101a</code> 处的数据 <code>0x8000</code> 是能够跳转到 <code>0x80000000</code> 进入启动下一阶段的关键</p>
+<p>在执行位于 <code>0x1010</code> 的指令之前，寄存器 <code>t0</code> 的值恰好为 <code>0x80000000</code> ，随后通过 <code>jr t0</code> 便可以跳转到该地址。我们可以通过单步调试来复盘这个过程</p>
+<p><img src="/../images/27.png" alt="27"></p>
+<p>在1014后执行下一步跳转到了<code>0x80000000</code> ，这意味着我们即将把控制权转交给 RustSBI </p>
+<p>在这里不深入Rustsbi到镜像内核的过程，通过设置断点&amp;&amp;c的方式跳转到0x8020000地址的指令验证</p>
+<p><img src="/../images/28.png" alt="28"></p>
+<p>回到之前编写的asm汇编代码，其内容实现的是将100的立即数赋值给x1寄存器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> .section .text.entry</span><br><span class="line">    .globl _start</span><br><span class="line">_start:</span><br><span class="line">    li x1, 100</span><br></pre></td></tr></table></figure>
+
+<p>在0x8020000地址反转译查看后续的十条汇编指令，si单步执行</p>
+<p><img src="/../images/29.png" alt="29"></p>
+<p>查看到了x1的十进制数为100，验证完成</p>
 
         
       </div>
