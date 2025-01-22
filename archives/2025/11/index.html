@@ -14,21 +14,17 @@
   
 
   
-  <title>开启Rcore学习之旅 | Hexo</title>
+  <title>Archives: 2025/11 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="为什么用Rcore来学习操作系统？​	在我们学校老师的推荐下，我们的操作系统实验采用了头歌平台下的NPUcore，把这个作为上课讲解的原型。但是NPUcore相关的配套的相关资料却是少之又少，所有的实验设置的没有头尾，实验的完成也是雨里雾里。就这么过去了很多日子，题做了不少，但是我对于代码的编写，在对操作系统的理解上还只是停留在理论课上的内容 ​	幸运的是，我的同学向我推荐了Rcore的教程，在这">
-<meta property="og:type" content="article">
-<meta property="og:title" content="开启Rcore学习之旅">
-<meta property="og:url" content="http://example.com/2024/11/17/%E5%BC%80%E5%90%AFRcore%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2025/11/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="为什么用Rcore来学习操作系统？​	在我们学校老师的推荐下，我们的操作系统实验采用了头歌平台下的NPUcore，把这个作为上课讲解的原型。但是NPUcore相关的配套的相关资料却是少之又少，所有的实验设置的没有头尾，实验的完成也是雨里雾里。就这么过去了很多日子，题做了不少，但是我对于代码的编写，在对操作系统的理解上还只是停留在理论课上的内容 ​	幸运的是，我的同学向我推荐了Rcore的教程，在这">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-17T12:27:50.000Z">
-<meta property="article:modified_time" content="2024-11-17T14:06:04.423Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -164,105 +160,44 @@
     <div id="content-body">
        
 
-
-<article id="post-开启Rcore学习之旅" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  
-    
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 class="p-name article-title" itemprop="headline name">
-        开启Rcore学习之旅
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-17T12:27:50.000Z" itemprop="datePublished">2024-11-17</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.4k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <h3 id="为什么用Rcore来学习操作系统？"><a href="#为什么用Rcore来学习操作系统？" class="headerlink" title="为什么用Rcore来学习操作系统？"></a>为什么用Rcore来学习操作系统？</h3><p>​	在我们学校老师的推荐下，我们的操作系统实验采用了头歌平台下的NPUcore，把这个作为上课讲解的原型。但是NPUcore相关的配套的相关资料却是少之又少，所有的实验设置的没有头尾，实验的完成也是雨里雾里。就这么过去了很多日子，题做了不少，但是我对于代码的编写，在对操作系统的理解上还只是停留在理论课上的内容</p>
-<p>​	幸运的是，我的同学向我推荐了Rcore的教程，在这里有着丰富的资源海量的题目，更加平滑的学习路线（偶然发现虽说NPUcore相比于Rcore做了部分的改进，但是对于学习的路线来说基本上就是Rcore的阉割版，对于基础本就不是很牢固的我而言更是雪上加霜:cry:，众所周知信息随着流动是会变的越来越沟槽的，如果说Rcore使一整只螃蟹的话，Npucore的配套差劲的简直是连一只蟹腿都没了），好在二者的环境都大差不差，省去了配置环境的时间，也算是对我的一种慰藉了。</p>
-<p>​	考虑到即将到来的操作系统内核设计区域赛，我决定还是再重头学起Rcore，踏踏实实的去理解操作系统的构成以及运转。如果有什么值得记录的东西我会记录下来推送给大家，如果有意向自学的话还是推荐去Rcore的官方教程。</p>
-<h3 id="一些想法："><a href="#一些想法：" class="headerlink" title="一些想法："></a>一些想法：</h3><p>​	我觉得现在有很多的同班学生资质不差，但受制于教育质量以及配套资源，我们往往不知道也不明白该学什么，怎么么去学。</p>
-<p>​	我想引用来自于Rcore教程中所说几段话，这么做也是为了鼓励自己：</p>
-<p>从我们自 2000 年以来的教学实践来看，某些经典教材对操作系统的概念和原理很重视，但还有如下一些问题有待进一步思考：</p>
-<ul>
-<li>原理与实践脱节：与操作系统的具体实现而言，操作系统的原理与概念相对过于抽象。目前的一些教材缺乏在“<strong>操作系统的原理与概念</strong>”和“<strong>操作系统的设计与实现</strong>”之间建立关联关系的桥梁，使得二者之间存在较大的鸿沟。这导致学生即使知道了操作系统的概念，还只能停留在“纸上谈兵”的阶段，依然不知如何实现一个操作系统。另外，学生在完成设计与实现操作系统的实验过程中，容易“一叶障目，不见泰山”，陷入到硬件规范、汇编代码、数据结构、编程优化等细节中，不知这些细节与操作系统概念的关系，缺少全局观和系统思维，难以与课堂上老师讲解的操作系统基本概念对应起来。</li>
-<li>缺少历史发展的脉络：以史为鉴，可以知兴替。操作系统的概念和原理是从实际操作系统设计与实现的历史发展过程中，随着计算机硬件和应用需求的变化，从无到有逐步演进而产生的，有其发展的历史渊源和规律。但目前的大部分教材只提及当前主流操作系统的概念和原理，有“凭空出现”的感觉，学生并不知道这些内容出现的前因后果，只知道 <strong>“How”</strong> ，而不知道 <strong>“Why”</strong> 。而且操作系统发展史上的很多设计思路和实践方法起起伏伏，不断演进，它们并没有过时，而是以新的形态出现。如操作系统远古阶段的 <strong>LibOS</strong> 设计思路在当前云计算时代重新焕发青春，成为学术机构和各大互联网企业探索的新热点。</li>
-<li>忽视硬件细节或用复杂硬件：很多教材忽视或抽象硬件细节，使得操作系统概念难以落地，学生了解不到软硬件是如何具体协同运行的。部分教材把复杂的 x86 处理器作为操作系统实验的硬件参考平台，缺乏对当前快速发展的 RISC-V 等精简体系结构的实验支持，使得学生在操作系统实验中可能需要花较大代价了解相对繁杂的 x86 硬件细节，编程容易产生缺陷（bug），影响操作系统实验的效果，以及对操作系统核心概念的掌握。</li>
-</ul>
-<p>​	希望这段话能够激励你，使你能够拥有在有着良好资源的情况下，坚持下去！</p>
-
-        
-      </div>
-
-         
+<div class="archive-main-card">
+    <div class="archive-top">
+      <div class="main-title-bar">
+        <div class="main-title-dot"></div>
+        <h1 class="article-title">Archives</h1>
+      </div>    
     </div>
     
-     
+    
+      
+      
+        
+        <div class="year-line">
+            <div class="year-num">2025</div>
+            <div class="dot-wrapper">
+                <div class="dot"></div>
+            </div>
+            <div class="article-count">1 article</div>
+        </div>
+      
+      <a class="archive-article-link" href="/2025/11/15/%E5%85%B3%E4%BA%8Egit/" title="GIT">
+        <div class="date">11-15</div>
+        <div class="line">
+            <div class="dot"></div>
+        </div>
+        <div class="title">
+            <div class="title-inner">
+                
+                    GIT
+                
+            </div>
+        </div>
+        <div class="tags">
+            
+        </div>
+      </a>
+    
   </div>
-  
-    
-<nav id="article-nav">
-  <a class="article-nav-btn left "
-    
-      href="/2024/11/17/Rcore%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"
-      title="Rcore学习大纲"
-     >
-    <i class="fa-solid fa-angle-left"></i>
-    <p class="title-text">
-      
-        Rcore学习大纲
-        
-    </p>
-  </a>
-  <a class="article-nav-btn right "
-    
-      href="/2024/11/15/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85rustc%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/"
-      title="VMware虚拟机的Ubuntu环境通过代理解决无法安装rustc软件包的问题"
-     >
-
-    <p class="title-text">
-      
-        VMware虚拟机的Ubuntu环境通过代理解决无法安装rustc软件包的问题
-        
-    </p>
-    <i class="fa-solid fa-angle-right"></i>
-  </a>
-</nav>
-
-
-  
-</article>
-
-
-
-
-
     </div>
     <div id="footer-wrapper">
       <footer id="footer">
