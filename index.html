@@ -651,85 +651,6 @@ Core库Rust 有一个对 Rust 语言标准库–std 裁剪过后的 Rust 语言�
    
 
 
-<article id="post-第零章课后习题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/18/%E7%AC%AC%E9%9B%B6%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/">第零章课后习题</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-18T05:36:47.000Z" itemprop="datePublished">2024-11-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              学习Rcore第一次练手编程题在你日常使用的操作系统环境中安装并配置好实验环境。简要说明你碰到的问题&#x2F;困难和解决方法。
-​	下载软件包时，下载速度过慢甚至会出现了卡死的现象，通过设置代理解决。
-在Linux环境下编写一个会产生异常的应用程序，并简要解释操作系统的处理结果。
-C语言代码如下：
-1234567#include &lt;stdio.h&gt;int main()&#123;    int a = 100;    a = 100/0;    printf(&quot;Hello world!!\n&quot;);    return 0;&#125;
-
-运用gcc编译运行，结果如下：
-
-在Linux环境下编写一个可以睡眠5秒后打印出一个字符串，并把字符串内容存入一个文件中的应用程序A。(基于C或Rust语言)
-12345678910111213141516#include &lt;stdio.h&gt;#include &lt;unistd.h&gt;int main() &#123;    sleep(5);    const char* hello_stri...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/11/18/%E7%AC%AC%E9%9B%B6%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
 <article id="post-一些琐碎的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -802,7 +723,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
    
 
 
-<article id="post-Rcore学习大纲" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-通过代理解决无法安装rustc软件包的问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -813,7 +734,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/17/Rcore%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">Rcore学习大纲</a>
+        <a class="p-name article-title" href="/2024/11/15/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85rustc%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/">VMware虚拟机的Ubuntu环境通过代理解决无法安装rustc软件包的问题</a>
       </h1>
     
   
@@ -821,7 +742,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-17T13:08:03.000Z" itemprop="datePublished">2024-11-17</time>
+  <time class="dt-published" datetime="2024-11-15T09:25:00.000Z" itemprop="datePublished">2024-11-15</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -832,7 +753,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.5k words 
+            1k words 
           </div>
         </div>
         
@@ -841,15 +762,18 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
         
           <div class="truncate-text">
             
-              操作系统内核组成部分进程&#x2F;线程管理：内核负责管理系统中的进程或线程，创建、销毁、调度和切换进程或线程。
-内存管理：内核负责管理系统的内存，分配和回收内存空间，并保证进程之间的内存隔离。
-文件系统：内核提供文件系统接口，负责管理存储设备上的文件和目录，并允许应用访问文件系统。
-网络通信：内核提供网络通信接口，负责管理网络连接并允许应用进行网络通信。
-设备驱动：内核提供设备驱动接口，负责管理硬件设备并允许应用和内核其他部分访问设备。
-同步互斥：内核负责协调多个进程或线程之间对共享资源的访问。同步功能主要用于解决进程或线程之间的协作问题，互斥功能主要用于解决进程或线程之间的竞争问题。
-系统调用接口：内核提供给应用程序访问系统服务的入口，应用程序通过系统调用接口调用操作系统提供的服务，如文件系统、网络通信、进程管理等。
-各种各样的操作系统现在我们拥有种类繁多的计算设备，在这些设备上运行着许多不同的操作系统，操作系统设计者面临的功能权衡取决于硬件的物理能力以及应用程序和用户需求。下面是一些目前常见类型的操作系统：
-面向服务器的操作系统：当前大家常用的主流搜索引擎、新媒体、电子商务...
+              第一份正式的博客内容这算是我写的第一份博客，大学时光已经过半，我也想在有限的时间里面留下点什么，希望这一篇推文可以帮助到你:happy:
+序言和大多数人一样，我在linux安装各种软件包的时候，想到的第一个方法应该是换源，换一个学术的源平台去下载各种各样的包或者软件之类的，但是有的时候镜像资源难免会出现一些缺漏，导致了没有办法正确的找到依赖，而通过代理的方式可以在linux虚拟机下安装各式各样的软件一劳永逸，接下来是我从网络上找寻到的一种方式
+解决方式（需要主机拥有代理软件）第一种解决方式：用图形化界面手动设置第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22.04）
+
+如图我们将其中的网络适配器网络连接方式更改成为NAT桥接模式，使虚拟机与宿主机共享同样的的IP地址
+第二：记录主机的IP地址
+在主机上打开终端，键入  ipconfig 查看，其中会打印出很多的网络配置信息，我们重点聚焦于主机的IP地址
+其中以太网适配器中的IPv4是我们所需的，将其记录下来：192.168.9.1
+
+第三：开启代理软件获取其端口号（以clash举例，多的我也没有）
+
+其中...
             
           </div>
         
@@ -861,7 +785,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
      
     <a class="right-panel  non-pic  "
       
-      href="/2024/11/17/Rcore%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/" 
+      href="/2024/11/15/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85rustc%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -880,7 +804,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
    
 
 
-<article id="post-开启Rcore学习之旅" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-thrinisty" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -891,7 +815,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/17/%E5%BC%80%E5%90%AFRcore%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/">开启Rcore学习之旅</a>
+        <a class="p-name article-title" href="/2024/11/15/thrinisty/">My First Post</a>
       </h1>
     
   
@@ -899,7 +823,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-17T12:27:50.000Z" itemprop="datePublished">2024-11-17</time>
+  <time class="dt-published" datetime="2024-11-15T04:00:00.000Z" itemprop="datePublished">2024-11-15</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -910,7 +834,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.4k words 
+            188 words 
           </div>
         </div>
         
@@ -919,9 +843,10 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
         
           <div class="truncate-text">
             
-              为什么用Rcore来学习操作系统？​	在我们学校老师的推荐下，我们的操作系统实验采用了头歌平台下的NPUcore，把这个作为上课讲解的原型。但是NPUcore相关的配套的相关资料却是少之又少，所有的实验设置的没有头尾，实验的完成也是雨里雾里。就这么过去了很多日子，题做了不少，但是我对于代码的编写，在对操作系统的理解上还只是停留在理论课上的内容
-​	幸运的是，我的同学向我推荐了Rcore的教程，在这里有着丰富的资源海量的题目，更加平滑的学习路线（偶然发现虽说NPUcore相比于Rcore做了部分的改进，但是对于学习的路线来说基本上就是Rcore的阉割版，对于基础本就不是很牢固的我而言更是雪上加霜:cry:，众所周知信息随着流动是会变的越来越沟槽的，如果说Rcore使一整只螃蟹的话，Npucore的配套差劲的简直是连一只蟹腿都没了），好在二者的环境都大差不差，省去了配置环境的时间，也算是对我的一种慰藉了。
-​	考虑到即将到来的操作系统内核设计区域赛，我决定还是再重头学起Rcore，踏踏实实的去理解操作系统的构成以及运转。如果有什么值得记录的东西我会记录下来推送给大家，如果有意向自学的...
+              关于Thrinisty欢迎:happy:欢迎来到我的博客网页，在这里我会不定期的更新一些实验中的思路，遇到的问题以及解决方案
+关于名字为什么要取thrinisty这样的名字，其实这个名字源自于我母亲大人的LOL账号名，又受制于自己起名水平:cry:，故直接将这个称号照搬作为了我的博客名称。
+尾声总而言之，还是欢迎你来到我的博客，希望你在这里可以找到你想要的东西！！:happy:
+
             
           </div>
         
@@ -933,7 +858,7 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
      
     <a class="right-panel  non-pic  "
       
-      href="/2024/11/17/%E5%BC%80%E5%90%AFRcore%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/" 
+      href="/2024/11/15/thrinisty/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -949,19 +874,6 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
 
 
 
-
-  <nav id="page-nav">
-    <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
-    <a id="prev-btn" class="page-nav-btn disabled" href=" /  ">
-      <i class="fa-solid fa-angle-left"></i>
-    </a>
-    <div id="num-bar">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a>  
-    </div>
-    <a id="next-btn" class="page-nav-btn " href="/page/2/">
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-  </nav>
 
 
     </div>
