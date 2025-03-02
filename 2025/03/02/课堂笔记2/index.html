@@ -30,9 +30,10 @@
 <meta property="og:image" content="http://example.com/images/40.png">
 <meta property="og:image" content="http://example.com/images/41.png">
 <meta property="og:image" content="http://example.com/images/43.png">
+<meta property="og:image" content="http://example.com/images/44.png">
 <meta property="og:image" content="http://example.com/images/42.png">
 <meta property="article:published_time" content="2025-03-02T00:08:00.000Z">
-<meta property="article:modified_time" content="2025-03-02T08:12:12.666Z">
+<meta property="article:modified_time" content="2025-03-02T13:02:53.096Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/40.png">
@@ -202,7 +203,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            4.3k words 
+            6.3k words 
           </div>
         </div>
         
@@ -284,10 +285,13 @@
 
 <p>将String 类型转化为 基本数据类型</p>
 <p>通过 parse 方法实现转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;100&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;23.2&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;23.1&quot;</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> Integer.parseInt(s1);</span><br><span class="line">			<span class="type">double</span> <span class="variable">n2</span> <span class="operator">=</span> Double.parseDouble(s2);</span><br><span class="line">			<span class="type">float</span> <span class="variable">n3</span> <span class="operator">=</span> Float.parseFloat(s3);</span><br><span class="line">			</span><br><span class="line">			System.out.println(n1);</span><br><span class="line">			System.out.println(n2);</span><br><span class="line">			System.out.println(n3);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;100&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;23.2&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="string">&quot;23.1&quot;</span>;</span><br><span class="line">			<span class="type">String</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="string">&quot;true&quot;</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> Integer.parseInt(s1);</span><br><span class="line">			<span class="type">double</span> <span class="variable">n2</span> <span class="operator">=</span> Double.parseDouble(s2);</span><br><span class="line">			<span class="type">float</span> <span class="variable">n3</span> <span class="operator">=</span> Float.parseFloat(s3);</span><br><span class="line">			<span class="type">boolean</span> <span class="variable">n4</span> <span class="operator">=</span> Boolean.parseBoolean(s4);</span><br><span class="line">			<span class="type">char</span> <span class="variable">n5</span> <span class="operator">=</span> s4.charAt(<span class="number">0</span>);	<span class="comment">//得到字符串的第一个字符</span></span><br><span class="line">			</span><br><span class="line">			System.out.println(n1);</span><br><span class="line">			System.out.println(n2);</span><br><span class="line">			System.out.println(n3);</span><br><span class="line">			System.out.println(n4);</span><br><span class="line">			System.out.println(n5);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>把字符串转为字符指的是将字符串中第一个字符取出转化为 char 类型</p>
+<p>假设将 hello 字符串转化为 int 类型则会发生解析错误，在这里编译的时候不会发生错误，但是运行的时候会报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;	</span><br><span class="line">			<span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;true&quot;</span>;</span><br><span class="line">			<span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> Integer.parseInt(s1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<p><img src="/../images/44.png" alt="44"></p>
 <h2 id="Java-API-文档"><a href="#Java-API-文档" class="headerlink" title="Java API 文档"></a>Java API 文档</h2><p>Application Programming Interface </p>
 <p>提供了大量的基础类，官方给了相应的API文档，用于告诉开发者如何使用相关类以及方法</p>
 <p>在这里提供一个java8 中文文档</p>
@@ -296,6 +300,48 @@
 <p>类下面有字段，（构造器）构造方法，（成员方法）方法</p>
 <p><img src="/../images/42.png" alt="42"></p>
 <p>通过文档可以方便的查找需要的 API</p>
+<h2 id="Java-中的算数运算符"><a href="#Java-中的算数运算符" class="headerlink" title="Java 中的算数运算符"></a>Java 中的算数运算符</h2><p>&#x2F; 号在处理 int 数据时会发生截断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">			<span class="type">double</span> <span class="variable">n1</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">4</span>;    </span><br><span class="line">			System.out.println(n1);<span class="comment">//结果是2.0 将int 2 转为 2.0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取模公式 a % b &#x3D; a - a &#x2F; b * b </p>
+<p>java中面试题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">i = i++; <span class="comment">// 1.temp = i;  2. i = i + 1;  3.i = temp;</span></span><br><span class="line">System.out.println(i) <span class="comment">//i = 1;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">i = ++i; <span class="comment">// 1.i = i + 1;  2. temp = i;  3.i = temp;</span></span><br><span class="line">System.out.println(i) <span class="comment">//i = 2;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Java中的逻辑运算符"><a href="#Java中的逻辑运算符" class="headerlink" title="Java中的逻辑运算符"></a>Java中的逻辑运算符</h2><p>&amp;&amp; 短路与 &amp; 与</p>
+<p>|| 短路或 | 或</p>
+<p>! 取反</p>
+<p>a ^ b 逻辑异或 a与b不同时为 true ，相同时为 true</p>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>注意在使用赋值运算符计算byte char short 类型的时候会发生类型的转换，计算得到的 int 类型 会转化为 byte类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">			<span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line">			b += <span class="number">2</span>;	<span class="comment">//等价于 b = (byte)(b + 2);</span></span><br><span class="line">			b++;	<span class="comment">//等价于 b = (byte)(b + 1);</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符优先级大致分类"><a href="#运算符优先级大致分类" class="headerlink" title="运算符优先级大致分类"></a>运算符优先级大致分类</h2><p>1.（）{}</p>
+<p>2.单目运算符++ –</p>
+<p>3.算术运算符 + - % &#x2F;</p>
+<p>4.位移运算符 &gt;&gt;&gt;</p>
+<p>5.比较运算符 &gt; &#x3D;&#x3D; </p>
+<p>6.逻辑运算符 || &amp;&amp; ^</p>
+<p>7.三元运算符 ？ ：</p>
+<p>8.赋值运算符 &#x3D;</p>
+<h2 id="Java中的标识符"><a href="#Java中的标识符" class="headerlink" title="Java中的标识符"></a>Java中的标识符</h2><h3 id="标识符的命名规则"><a href="#标识符的命名规则" class="headerlink" title="标识符的命名规则"></a>标识符的命名规则</h3><p>1.由26个英文字母大小写，0—9，_ ，$ 组成</p>
+<p>2.不可以以数字开头如 int 2ab &#x3D; 1;</p>
+<p>3.不可以使用关键字或者保留字，但是可以包含关键字和保留字</p>
+<p>4.java 中严格区分大小写，在长度上无限制</p>
+<p>5.标识符不含空格 如 int a b &#x3D; 1;</p>
+<h3 id="标识符的命名规范"><a href="#标识符的命名规范" class="headerlink" title="标识符的命名规范"></a>标识符的命名规范</h3><p>可以使得代码的编写更加专业</p>
+<p>1.包名：多单词组成时，所有字母小写</p>
+<p>2.类名与接口名：多单词组成时，所有首字母大写，如StudentClass（大驼峰法）</p>
+<p>3.变量名与方法名：多单词组成时，第一个单词首字母小写，其余的单词首字母大写，如studentName（小驼峰法）</p>
+<p>4.常量命名：所有字母大写，再多单词组成时之间用 _ 链接，STUDENT_NAME_CLASS</p>
+<h2 id="Java中的键盘输入"><a href="#Java中的键盘输入" class="headerlink" title="Java中的键盘输入"></a>Java中的键盘输入</h2><p>再 java 编程中需要接收用户输入数据时需要键盘输入语句类获取内容时</p>
+<p>我们需要使用到 java.util.*包中的扫描器 Scanner</p>
+<p>使用步骤：</p>
+<p>1.导入类所在包</p>
+<p>2.创建类的对象</p>
+<p>3.调用类方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner; 							<span class="comment">//1.导入类所在包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Input</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">myScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);	 <span class="comment">//2.创建类的对象</span></span><br><span class="line">		System.out.println(<span class="string">&quot;请输入名字：&quot;</span>);</span><br><span class="line">		<span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> myScanner.next();				<span class="comment">//3.调用类方法</span></span><br><span class="line">		System.out.println(<span class="string">&quot;请输入年龄：&quot;</span>);</span><br><span class="line">		<span class="type">int</span> <span class="variable">ages</span> <span class="operator">=</span> myScanner.nextInt();				<span class="comment">//3.调用类方法</span></span><br><span class="line">		System.out.println(<span class="string">&quot;请输入成绩：&quot;</span>);</span><br><span class="line">		<span class="type">double</span> <span class="variable">grades</span> <span class="operator">=</span> myScanner.nextDouble();		 <span class="comment">//3.调用类方法</span></span><br><span class="line">		System.out.println(<span class="string">&quot;信息如下：&quot;</span> + name + ages + grades);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
         
       </div>
@@ -308,10 +354,15 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2025/03/03/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B03/"
+      title="课堂笔记3"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        课堂笔记3
         
     </p>
   </a>
