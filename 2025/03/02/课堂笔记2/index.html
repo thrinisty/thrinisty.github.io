@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/images/44.png">
 <meta property="og:image" content="http://example.com/images/42.png">
 <meta property="article:published_time" content="2025-03-02T00:08:00.000Z">
-<meta property="article:modified_time" content="2025-03-02T13:02:53.096Z">
+<meta property="article:modified_time" content="2025-03-03T02:49:10.243Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/40.png">
@@ -266,9 +266,8 @@
 <p>byte  short  int  long  float  double</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;	<span class="comment">//char 转 int</span></span><br><span class="line">			<span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> a;		<span class="comment">//int 转 char 不可实现</span></span><br><span class="line">			<span class="type">double</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">12</span>;	<span class="comment">//int 转 double</span></span><br><span class="line">			<span class="type">float</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">10</span>; 	<span class="comment">//int 转 float </span></span><br><span class="line">			<span class="type">float</span> <span class="variable">e</span> <span class="operator">=</span> <span class="number">10.0</span>; <span class="comment">//double 转 float 不可实现</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>数据类型转换重点</p>
-<p>1.有多种类型的混合运算时，将所有的类型转化为数据类型精度最大的后在进行运算</p>
-<p>2.byte short 与 char 类型间不会发生自动的精度转换</p>
+<h3 id="数据类型转换重点"><a href="#数据类型转换重点" class="headerlink" title="数据类型转换重点"></a>数据类型转换重点</h3><p>1.有多种类型的混合运算时，将所有的类型转化为数据类型精度最大的后在进行运算</p>
+<p>2.byte short 与 char 类型间不可以发生自动的精度转换</p>
 <p>3.boolean 类型不参与类型自动转换</p>
 <p>4.byte short char 三者可以计算，先将三者转化为 int 类型 再参与运算</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">	</span><br><span class="line">			<span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">			<span class="type">short</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">			<span class="type">byte</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">			<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> a + b + c; <span class="comment">//三者参与运算时转为 int 类型</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -331,8 +330,8 @@
 <p>5.标识符不含空格 如 int a b &#x3D; 1;</p>
 <h3 id="标识符的命名规范"><a href="#标识符的命名规范" class="headerlink" title="标识符的命名规范"></a>标识符的命名规范</h3><p>可以使得代码的编写更加专业</p>
 <p>1.包名：多单词组成时，所有字母小写</p>
-<p>2.类名与接口名：多单词组成时，所有首字母大写，如StudentClass（大驼峰法）</p>
-<p>3.变量名与方法名：多单词组成时，第一个单词首字母小写，其余的单词首字母大写，如studentName（小驼峰法）</p>
+<p>2.类名与接口名：多单词组成时，所有首字母大写，如 StudentClass（大驼峰法）</p>
+<p>3.变量名与方法名：多单词组成时，第一个单词首字母小写，其余的单词首字母大写，如 studentName（小驼峰法）</p>
 <p>4.常量命名：所有字母大写，再多单词组成时之间用 _ 链接，STUDENT_NAME_CLASS</p>
 <h2 id="Java中的键盘输入"><a href="#Java中的键盘输入" class="headerlink" title="Java中的键盘输入"></a>Java中的键盘输入</h2><p>再 java 编程中需要接收用户输入数据时需要键盘输入语句类获取内容时</p>
 <p>我们需要使用到 java.util.*包中的扫描器 Scanner</p>

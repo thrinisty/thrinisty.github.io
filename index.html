@@ -162,6 +162,91 @@
    
 
 
+<article id="post-编译原理课堂笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">编译原理课堂笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-03T04:09:00.000Z" itemprop="datePublished">2025-03-03</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记短路与短路与求值在较低一层的逻辑
+1(a &lt; b) &amp;&amp; (c &gt; d) //在这里是一个短路的与操作
+
+在实现方面下是通过以下的流程执行
+1234567891011t1 = a &lt; b;if(t1) goto T2;goto T1;	//当跳转至T1时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T2;goto T1;T0://真出口T1://假出口
+
+短路或短路或求值在较低一层的逻辑
+1(a &lt; b) || (c &gt; d) //在这里是一个短路的或操作
+
+在实现方面下是通过以下的流程执行
+1234567891011t1 = a &lt; b;if(t1) goto T0;goto T2;	//当跳转至T0时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T0;goto T1;T0://真出口T1://假出口
+
+布尔类型的中间隐式转换1x = a &lt; b;
+
+在实现方面下是通过以下的流程执行
+12345...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-课堂笔记3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +277,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            135 words 
+            4.2k words 
           </div>
         </div>
         
@@ -209,7 +294,11 @@ Java中的位运算~2 按位取反
 2&amp;3 按位与
 2|3  按位或
 3^6 按位异或
-
+Java 中的位运算符算术左移，&lt;&lt;，符号位不变低位补 0
+算数右移，&gt;&gt;，符号位不变用符号位补高位
+逻辑右移，&gt;&gt;&gt;，低位溢出，高位补 0
+Java中的分支控制if &amp;&amp; else随便写了一个，较为简陋
+123456789101112131415161718import java.util.Scanner;public class Test&#123;		public static void main(String[] args) &#123;		Scanner myscanner = new Scanner(System.in);		System.out.prin...
             
           </div>
         
@@ -859,87 +948,6 @@ ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带
     <a class="right-panel  non-pic  "
       
       href="/2024/11/18/%E4%B8%80%E4%BA%9B%E7%90%90%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-通过代理解决无法安装rustc软件包的问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/15/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85rustc%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/">VMware虚拟机的Ubuntu环境通过代理解决无法安装rustc软件包的问题</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-15T09:25:00.000Z" itemprop="datePublished">2024-11-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              第一份正式的博客内容这算是我写的第一份博客，大学时光已经过半，我也想在有限的时间里面留下点什么，希望这一篇推文可以帮助到你:happy:
-序言和大多数人一样，我在linux安装各种软件包的时候，想到的第一个方法应该是换源，换一个学术的源平台去下载各种各样的包或者软件之类的，但是有的时候镜像资源难免会出现一些缺漏，导致了没有办法正确的找到依赖，而通过代理的方式可以在linux虚拟机下安装各式各样的软件一劳永逸，接下来是我从网络上找寻到的一种方式
-解决方式（需要主机拥有代理软件）第一种解决方式：用图形化界面手动设置第一：设置虚拟机（我这里运用的是VMware虚拟机，Ubuntu版本为22.04）
-
-如图我们将其中的网络适配器网络连接方式更改成为NAT桥接模式，使虚拟机与宿主机共享同样的的IP地址
-第二：记录主机的IP地址
-在主机上打开终端，键入  ipconfig 查看，其中会打印出很多的网络配置信息，我们重点聚焦于主机的IP地址
-其中以太网适配器中的IPv4是我们所需的，将其记录下来：192.168.9.1
-
-第三：开启代理软件获取其端口号（以clash举例，多的我也没有）
-
-其中...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/11/15/%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85rustc%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E9%97%AE%E9%A2%98/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
