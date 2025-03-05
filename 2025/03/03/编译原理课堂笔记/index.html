@@ -28,7 +28,7 @@
 <meta property="og:description" content="听课笔记短路与短路与求值在较低一层的逻辑 1(a &lt; b) &amp;&amp; (c &gt; d) &#x2F;&#x2F;在这里是一个短路的与操作  在实现方面下是通过以下的流程执行 1234567891011t1 &#x3D; a &lt; b;if(t1) goto T2;goto T1;	&#x2F;&#x2F;当跳转至T1时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 &#x3D; c &gt; d;if(t2) goto">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-03T04:09:00.000Z">
-<meta property="article:modified_time" content="2025-03-04T12:39:46.491Z">
+<meta property="article:modified_time" content="2025-03-05T04:06:32.426Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -197,7 +197,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.2k words 
+            2.7k words 
           </div>
         </div>
         
@@ -241,6 +241,34 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t1 = a + c;</span><br><span class="line">t2 = b + d;</span><br><span class="line">arg t2;<span class="comment">//也可以在后端在进行考量压栈，这里不做处理</span></span><br><span class="line">arg t1;</span><br><span class="line">c = call add(t1, t2); </span><br></pre></td></tr></table></figure>
 
 <p>实参结果压栈，C语言中默认从右往左依次压栈</p>
+<h2 id="寄存器分配"><a href="#寄存器分配" class="headerlink" title="寄存器分配"></a>寄存器分配</h2><p>寄存器分配</p>
+<p>寄存器分配的目标是尽可能多地将变量分配到寄存器中，而不是内存（如栈），从而提高程序的运行效率。</p>
+<p>寄存器指派</p>
+<p>寄存器指派是在寄存器分配之后的一个步骤，它的任务是为已经分配到寄存器的变量分配具体的物理寄存器编号。寄存器指派的目标是避免寄存器冲突</p>
+<p>在调用函数的时候，前几个参数</p>
+<p>（数量取决于目标框架的约定调用）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- **Windows x64 ABI**：</span><br><span class="line">  - 前 4 个整数参数通过 `rcx`, `rdx`, `r8`, `r9` 传递。</span><br><span class="line">  - 前 4 个浮点参数通过 `xmm0` 到 `xmm3` 传递。</span><br><span class="line">  - 剩余参数通过栈传递。</span><br><span class="line">- **ARM AAPCS**：</span><br><span class="line">  - 前 4 个整数参数通过 `r0` 到 `r3` 传递。</span><br><span class="line">  - 前 16 个浮点参数通过 `s0` 到 `s15` 或 `d0` 到 `d7` 传递。</span><br><span class="line">  - 剩余参数通过栈传递。</span><br></pre></td></tr></table></figure>
+
+<p>用寄存器来进行传递参数，后续的参数通过栈来进行传递，以下是一个实例的汇编代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">section .data</span><br><span class="line">    ; 数据段（可选）</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    ; 调用 func(1, 2, 3, 4, 5, 6, 7, 8)</span><br><span class="line">    mov rdi, 1      ; 第 1 个参数 -&gt; rdi</span><br><span class="line">    mov rsi, 2      ; 第 2 个参数 -&gt; rsi</span><br><span class="line">    mov rdx, 3      ; 第 3 个参数 -&gt; rdx</span><br><span class="line">    mov rcx, 4      ; 第 4 个参数 -&gt; rcx</span><br><span class="line">    mov r8, 5       ; 第 5 个参数 -&gt; r8</span><br><span class="line">    mov r9, 6       ; 第 6 个参数 -&gt; r9</span><br><span class="line"></span><br><span class="line">    ; 剩余参数通过栈传递</span><br><span class="line">    push 8          ; 第 8 个参数 -&gt; 栈</span><br><span class="line">    push 7          ; 第 7 个参数 -&gt; 栈</span><br><span class="line"></span><br><span class="line">    ; 调用函数</span><br><span class="line">    call func</span><br><span class="line"></span><br><span class="line">    ; 清理栈（调用者负责清理）</span><br><span class="line">    add rsp, 16     ; 清理栈上的 2 个参数（每个参数 8 字节）</span><br><span class="line"></span><br><span class="line">    ; 退出程序</span><br><span class="line">    mov rax, 60     ; syscall: exit</span><br><span class="line">    xor rdi, rdi    ; 返回值 0</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">func:</span><br><span class="line">    ; 函数体</span><br><span class="line">    ; 在这里可以使用 rdi, rsi, rdx, rcx, r8, r9 访问前 6 个参数</span><br><span class="line">    ; 通过栈访问第 7 和第 8 个参数</span><br><span class="line">    ; 例如：</span><br><span class="line">    mov rax, [rsp + 8]  ; 访问第 7 个参数 (g = 7)</span><br><span class="line">    mov rbx, [rsp + 16] ; 访问第 8 个参数 (h = 8)</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+
+<h2 id="C-中的屏蔽机制在编译时候的流程"><a href="#C-中的屏蔽机制在编译时候的流程" class="headerlink" title="C 中的屏蔽机制在编译时候的流程"></a>C 中的屏蔽机制在编译时候的流程</h2><p>在C语言中，当同名变量出现在不同作用域时，内层作用域的变量会屏蔽外层作用域的变量。在函数调用或块作用域中，如果遇到赋值语句，编译器会优先使用当前作用域中定义的变量（即最近压栈的变量），而不会访问外层的同名变量。这种屏蔽机制确保了内层变量对外层同名变量的覆盖，从而避免了命名冲突。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x = <span class="number">10</span>; <span class="comment">// 全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">20</span>; <span class="comment">// 局部变量</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x = <span class="number">30</span>; <span class="comment">// 内层局部变量</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, x); <span class="comment">// 输出 30</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, x); <span class="comment">// 输出 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（1）变量压栈"><a href="#（1）变量压栈" class="headerlink" title="（1）变量压栈"></a>（1）变量压栈</h4><ul>
+<li>当进入一个函数或块作用域时，局部变量会被压入栈中。</li>
+<li>如果内层作用域定义了与外层同名的变量，新的变量会被压入栈中，覆盖外层的同名变量。</li>
+</ul>
+<h4 id="（2）变量访问"><a href="#（2）变量访问" class="headerlink" title="（2）变量访问"></a>（2）变量访问</h4><ul>
+<li>当访问变量时，编译器会从当前作用域开始查找，逐层向外查找。</li>
+<li>如果在内层作用域中找到同名变量，则<strong>直接使用该变量</strong>，而不会继续查找外层的同名变量。</li>
+</ul>
+<h4 id="（3）变量弹栈"><a href="#（3）变量弹栈" class="headerlink" title="（3）变量弹栈"></a>（3）变量弹栈</h4><ul>
+<li>当函数或块作用域结束时，栈中对应的变量会被弹出，恢复到外层作用域的状态。</li>
+<li>外层作用域的同名变量重新变为可见。</li>
+</ul>
+<h2 id="编译的三大部分"><a href="#编译的三大部分" class="headerlink" title="编译的三大部分"></a>编译的三大部分</h2><p>源代码 -&gt; 词法分析器 -&gt; 词法单元流 -&gt; 语法分析器 -&gt; 抽象语法树 -&gt; 语义分析器 -&gt; 中间代码</p>
+<p>注意在优化器上优化的内容有很多，包括了时间，运行速度，内存，能耗等方面的优化</p>
 
         
       </div>
