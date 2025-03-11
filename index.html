@@ -162,6 +162,76 @@
    
 
 
+<article id="post-课堂笔记12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/12/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B012/">课堂笔记12</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-12T01:08:00.000Z" itemprop="datePublished">2025-03-12</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            11 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Object类
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/12/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B012/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-课堂笔记11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +262,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6 words 
+            7.9k words 
           </div>
         </div>
         
@@ -201,7 +271,12 @@
         
           <div class="truncate-text">
             
-              听课笔记多态
+              听课笔记多态定义：方法或者对象具有多种形态
+1.重写或者重载体现出了方法的多态
+2.对象体现多态（是多态的核心）
+当一个类对于某一个类做一些操作的时候，我们可以对于每一个后向类编写方法，但是如果这些类都继承于同一个类，我们可以通过对于着一些类的父类编写方法来统一操作这一类的各个子类。通过这样做我们可以极大的提高代码的复用性
+例如我们有猫类，狗类继承于动物类，我们要通过一个人类来模拟喂食的时候需要在人类的方法中定义两个feed重载方法，这样子有大量的冗余
+1234567891011121314package com.npu.poly;public class Poly01 &#123;    public static void main(String[] args) &#123;        Master Tom = new Master(&quot;汤姆&quot;);        Dog dog =  new Dog(&quot;大黄&quot;);        Bone bone = new Bone(&quot;棒骨&quot;);        Tom.feed(...
             
           </div>
         
@@ -840,88 +915,6 @@ com.thrinisty 表示包名
 
 
 
-   
-
-
-<article id="post-课堂笔记3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/03/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B03/">课堂笔记3</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-03T00:08:00.000Z" itemprop="datePublished">2025-03-03</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的进制二进制  	0b 开头		 如 0b101， 0B1111
-十进制  						 如 10， 100
-八进制  	0 开头表示	如 077，0734
-十六进制  0x开头表示	如 0xFFFF， 0Xab03， 0xaaaa， 0XEEFE
-Java中的位运算~2 按位取反
-2&amp;3 按位与
-2|3  按位或
-3^6 按位异或
-Java 中的位运算符算术左移，&lt;&lt;，符号位不变低位补 0
-算数右移，&gt;&gt;，符号位不变用符号位补高位
-逻辑右移，&gt;&gt;&gt;，低位溢出，高位补 0
-Java中的分支控制if &amp;&amp; else随便写了一个，较为简陋
-123456789101112131415161718import java.util.Scanner;public class Test&#123;		public static void main(String[] args) &#123;		Scanner myscanner = new Scanner(System.in);		System.out.prin...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/03/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B03/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -929,7 +922,7 @@ Java中的分支控制if &amp;&amp; else随便写了一个，较为简陋
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a>  
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/2/">
       <i class="fa-solid fa-angle-right"></i>
