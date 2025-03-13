@@ -162,6 +162,91 @@
    
 
 
+<article id="post-编译原理课堂笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">编译原理课堂笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-03T04:09:00.000Z" itemprop="datePublished">2025-03-03</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.7k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记短路与短路与求值在较低一层的逻辑
+1(a &lt; b) &amp;&amp; (c &gt; d) //在这里是一个短路的与操作
+
+在实现方面下是通过以下的流程执行
+1234567891011t1 = a &lt; b;if(t1) goto T2;goto T1;	//当跳转至T1时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T2;goto T1;T0://真出口T1://假出口
+
+短路或短路或求值在较低一层的逻辑
+1(a &lt; b) || (c &gt; d) //在这里是一个短路的或操作
+
+在实现方面下是通过以下的流程执行
+1234567891011t1 = a &lt; b;if(t1) goto T0;goto T2;	//当跳转至T0时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T0;goto T1;T0://真出口T1://假出口
+
+布尔类型的中间隐式转换1x = a &lt; b;
+
+在实现方面下是通过以下的流程执行
+12345...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-课堂笔记3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -433,7 +518,7 @@ Test.java -编译javac（需要...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            11 words 
+            13k words 
           </div>
         </div>
         
@@ -442,8 +527,8 @@ Test.java -编译javac（需要...
         
           <div class="truncate-text">
             
-              听课笔记零钱通综合案例
-
+              听课笔记零钱通综合案例目的是使用Java开发零钱通项目，可以完成收益入账，消费，查看明细，退出等功能
+1.显示菜单，可以显示菜单，给出对应提示12345678910111213141516171819202122232425262728293031323334package com.smallchange;import java.util.Scanner;public class SmallChangeSys &#123;    public static void main(String[] args) &#123;        boolean loop = true;        do &#123;            System.out.println(&quot;==========零钱通==========&quot;);            System.out.println(&quot;\t\t1 零钱通明细&quot;);            System.out.println(&quot;\t\t2 收益入账&quot;);           ...
             
           </div>
         
@@ -862,78 +947,6 @@ Core库Rust 有一个对 Rust 语言标准库–std 裁剪过后的 Rust 语言�
     <a class="right-panel  non-pic  "
       
       href="/2024/11/19/%E5%9C%A8%E8%A3%B8%E6%9C%BA%E4%B8%8A%E8%BF%90%E8%A1%8Crust%E7%A8%8B%E5%BA%8F/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-一些琐碎的知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/11/18/%E4%B8%80%E4%BA%9B%E7%90%90%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/">一些琐碎的知识点</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-11-18T03:41:57.000Z" itemprop="datePublished">2024-11-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.8k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              API 与 ABI 的区别API应用程序编程接口 API 是不同源代码片段的连接纽带。API 定义了一个源码级（如 C 语言）函数的参数，参数的类型，函数的返回值等。因此 API 是用来约束编译器 (Compiler) 的：一个 API 是给编译器的一些指令，它规定了源代码可以做以及不可以做哪些事。API 与编程语言相关，如 libc 是基于 C 语言编写的标准库，那么基于 C 的应用程序就可以通过编译器建立与 libc 的联系，并能在运行中正确访问 libc 中的函数。
-ABI应用程序二进制接口 ABI 是不同二进制代码片段的连接纽带。ABI 定义了二进制机器代码级别的规则，主要包括基本数据类型、通用寄存器的使用、参数的传递规则、以及堆栈的使用等等。ABI 与处理器和内存地址等硬件架构相关，是用来约束链接器 (Linker) 和汇编器 (Assembler) 的。在同一处理器下，基于不同高级语言编写的应用程序、库和操作系统，如果遵循同样的 ABI 定义，那么它们就能正确链接和执行。
-执行环境执行环境 (Execution Environment) 主要负责给在其上执行的软件提供...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/11/18/%E4%B8%80%E4%BA%9B%E7%90%90%E7%A2%8E%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
