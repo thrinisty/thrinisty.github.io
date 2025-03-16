@@ -162,6 +162,327 @@
    
 
 
+<article id="post-课堂笔记17" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/17/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B017/">课堂笔记17</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-17T07:08:00.000Z" itemprop="datePublished">2025-03-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.3k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件6.服务器推送新闻思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
+服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻
+每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）
+
+服务端1.当客户端连接到服务器时得到了socket
+2.启动了一个线程，该线程持有socket，socket是线程的属性
+3.为了管理线程，用集合hashmap管理线程，将线程放入集合
+客户端1.和服务端通信的时候使用对象的方式，可以使用对象流来进行读写
+2.当客户端连接到服务器端时，会得到socket
+3.启动一个线程，该线程持有socket
+4.为了管理线程，用集合hashmap管理线程，将线程放入集合
+代码实现1.用户登录人为规定 id &#x3D; 100，密码为123456
+创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）
+1234567891011121314151...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/17/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B017/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-项目标准开发流程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/17/%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">项目标准开发流程</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-17T01:08:00.000Z" itemprop="datePublished">2025-03-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            272 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              项目开发流程需求分析—设计阶段—编码实现—测试阶段—实施阶段
+1.需求分析（需求分析师）目的是产出一个需求分析报告，包含客户具体要求，项目功能
+2.设计阶段（架构师&#x2F;项目经理）设计工作UML类图，流程图，模块设计，数据库，架构，原型开发 组建团队
+3.实现阶段（程序员&#x2F;码农）完成架构师的模块功能，测试自己的模块
+4.测试阶段（测试工程师）单元测试，测试用例，白盒测试，黑盒测试，集成测试
+5.实施阶段（实施工程师）将项目部署到客户的平台，保证运行正常，要求对环境的部署能力要高
+6.维护阶段（不固定人员）Debug，项目升级，发现bug
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/17/%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-课堂笔记16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/16/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B016/">课堂笔记16</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-16T07:08:00.000Z" itemprop="datePublished">2025-03-16</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记UDP网络通信编程不同于TCP通信，UDP不需要建立连接，UDP数据包中含有发送的目标地址
+1.类 DatagramSocket 和 DatagramPacket【数据包&#x2F;数据报】实现了基于UDP协议网络程序
+2.UDP数据报通过数据报套接字 DatagramSocket 发送和接收，系统不保证UDP数据报有一定可以能够到达目的地，也不确定在什么时候可以到达
+3.DatagramPacket 对象封装了UDP数据报，在数据包中包含了发送端和接收端的IP地址以及端口号
+4.UDP协议中的每一个数据报都给出了完整的信息地址，因此无需建立发送方和接收方的链接吧
+UDP特殊说明1.UDP中没有明确的服务端和客户端，演变为数据的发送端和接收端
+2.接收数据和发送数据通过DatagramSocket对象完成
+3.发送数据时会将数据封装在DatagramPacket对象中，称之为装包
+4.当接收到数据包后，需要进行拆包取出数据
+5.DatagramSocket可以指定在哪个端口接收数据
+
+UDP通信流程1.建立发送端和接收端
+2.发送数据前建立数据包和数据报
+3.调用数据包的...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/16/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B016/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-课堂笔记15" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/15/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B015/">课堂笔记15</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-15T03:08:00.000Z" itemprop="datePublished">2025-03-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.6k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记文件传输Java中利用套接字在服务器与客户端间进行文件传输
+在这里需要使用到文件的输入输出流
+客户端上：
+客户端接收文件的输入流，用工具类转化为字节流进行传输
+服务器上
+在服务器端上我们要将收到的输入流使用功能类转化为字节流
+再将转化后的字节数组用文件输出流送到一个特定的位置
+客户端代码
+1234567891011121314151617181920212223242526272829package com.file;import java.io.*;import java.net.InetAddress;import java.net.ServerSocket;import java.net.Socket;public class Client &#123;    public static void main(String[] args) throws Exception &#123;        Socket socket = new Socket(InetAddress.getLocalHost(),8899);        String filePath =...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/15/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B015/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-课堂笔记14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +513,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            12 words 
+            7.7k words 
           </div>
         </div>
         
@@ -201,7 +522,19 @@
         
           <div class="truncate-text">
             
-              听课笔记房屋出租系统设计
+              听课笔记房屋出租系统设计分层设计
+
+123456package house;//创建并调用主菜单类显示主菜单public class HouseRentApp &#123;    public static void main(String[] args) &#123;    &#125;&#125;
+
+1234package house;//显示界面，接受用户输入，调用服务类操作public class HouseView &#123;&#125;
+
+1234package house;//响应菜单类的调用，对房屋信息增删改查public class HouseService &#123;&#125;
+
+1234package house;//房屋类，一个House对象代表了一间房子public class House &#123;&#125;
+
+再Java工具编写工程代码的时候一般会有一个工具类，通过静态方法直接用类名调用已经编写好的工具包可以极大的增加开发的效率，大体与零钱通项目类似，这里不再过多解释
+Java网络多线程IP地址定义：用于唯一标识网络中的每一台计算机
+查看I...
             
           </div>
         
@@ -596,301 +929,6 @@ com.thrinisty 表示包名
     <a class="right-panel  non-pic  "
       
       href="/2025/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B09/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-课堂笔记8" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/08/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B08/">课堂笔记8</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-08T13:38:00.000Z" itemprop="datePublished">2025-03-08</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的重载Java中允许同名方法的存在，这种情况下要求同名方法的参数不同
-以下是一个具体的案例
-1234567891011121314151617181920public class Object &#123;    public static void main(String[] args) &#123;        Tool myTool = new Tool();		myTool.Print(1);		myTool.Print(&#x27;1&#x27;);		myTool.Print(&quot;This is overload&quot;);    &#125;&#125;class Tool &#123;	public void Print(int n) &#123;		System.out.println(n);	&#125;	public void Print(char n) &#123;		System.out.println(n);	&#125;	public void Print(String n) &#123;		System.out.pr...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/08/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B08/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-课堂笔记7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/07/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B07/">课堂笔记7</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-07T03:08:00.000Z" itemprop="datePublished">2025-03-07</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.6k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的递归递归在算法中属于比较复杂的一类了，在这里也希望在 java 的学习中复习算法
-一个简单的入门案例
-1234567891011121314151617public class Object&#123;	public static void main(String[] args) &#123;		Tool Mytool = new Tool();		Mytool.test(4);	&#125;&#125;class Tool&#123;	public void test(int n) &#123;		if(n &gt; 2) &#123;			test(n - 1);		&#125;		System.out.println(n);	&#125;&#125;
-
-
-运行结果
-123234
-
-要等递归的方法结束后才执行递归调用主体函数中的输出，所以结果是从2到4
-计算阶乘
-12345678910111213141516public class Object&#123;	public static void main(String[] args) &#123;		To...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/07/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B07/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-课堂笔记6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B06/">课堂笔记6</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-05T22:18:00.000Z" itemprop="datePublished">2025-03-06</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            12k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记杨辉三角例题123456789101112131415161718192021222324public class Test&#123;		public static void main(String[] args)&#123;		int arr[][] = new int[10][];		for(int i = 0; i &lt; 10; i++) &#123;			arr[i] =new int[i + 1];			arr[i][0] = 1;			arr[i][i] = 1;			if(i &gt; 1) &#123;				for(int j = 1;j &lt;= i - 1; j++) &#123;					arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];				&#125;			&#125;					&#125;		for(int i = 0; i &lt; arr.length; i++) &#123;			for(int j = 0; j &lt; arr[i].length; j++) &#123;				S...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B06/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-课堂笔记5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/05/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B05/">课堂笔记5</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-05T01:01:00.000Z" itemprop="datePublished">2025-03-05</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.7k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的数组array 数组，在要处理大量数据的时候，引用数组的意义就非常重要了
-数组的定义：数组可以存放多个同一类型的数据，数组也是一种数据类型，是引用类型
-使用场景：例如有很多的 hens 的时候 可以使用数组大量存储hens的数据，还可以通过for 循环来进行进行数据的批量处理
-数组的静态初始化123456789101112131415161718import java.util.Scanner;public class Move&#123;	public static void main(String[] args) &#123;		double hens[] = &#123;3, 5, 1, 3.4, 2, 50&#125;;        /*        等价于 double hens[] = new double[6];        hens[0] = 3;        ......        hens[5] = 50;        */		double sum = 0;		for(int i = 0; i &lt; 6; i++) &#1...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/05/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B05/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
