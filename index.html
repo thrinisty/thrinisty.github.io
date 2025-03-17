@@ -162,7 +162,7 @@
    
 
 
-<article id="post-课堂笔记17" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-多线程通讯系统设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/17/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B017/">课堂笔记17</a>
+        <a class="p-name article-title" href="/2025/03/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">多用户通讯系统的实现</a>
       </h1>
     
   
@@ -192,7 +192,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.3k words 
+            9.1k words 
           </div>
         </div>
         
@@ -226,7 +226,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/17/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B017/" 
+      href="/2025/03/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -452,7 +452,7 @@ UDP通信流程1.建立发送端和接收端
 在服务器端上我们要将收到的输入流使用功能类转化为字节流
 再将转化后的字节数组用文件输出流送到一个特定的位置
 客户端代码
-1234567891011121314151617181920212223242526272829package com.file;import java.io.*;import java.net.InetAddress;import java.net.ServerSocket;import java.net.Socket;public class Client &#123;    public static void main(String[] args) throws Exception &#123;        Socket socket = new Socket(InetAddress.getLocalHost(),8899);        String filePath =...
+123456789101112131415161718192021222324252627282930package com.file;import java.io.*;import java.net.InetAddress;import java.net.ServerSocket;import java.net.Socket;public class Client &#123;    public static void main(String[] args) throws Exception &#123;        Socket socket = new Socket(InetAddress.getLocalHost(),8899);        String filePath...
             
           </div>
         
