@@ -162,7 +162,7 @@
    
 
 
-<article id="post-多线程通讯系统设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（类方法，类变量，代码块，设计模式，final关键字）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,78 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">多用户通讯系统的实现</a>
+        <a class="p-name article-title" href="/2025/03/20/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E7%B1%BB%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%8Cfinal%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%89/">Java课堂笔记（类方法，类变量，代码块，设计模式，final关键字）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-20T12:13:00.000Z" itemprop="datePublished">2025-03-20</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            180 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记初级部分学习完成终于完成了Java网络通讯的大作业，将整个项目的大致流程掌握，可以熟练的使用socket套接字进行TCP，UDP的网络编程，但是由于在进行项目的时候没有进行前置知识的学习，导致在多线程，异常处理，IO流的部分仍然无法自己独立完成，从这一课我将开始进入Java编程高级部分。
+类变量和类方法main方法代码块设计模式（单独）final关键字
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/20/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E7%B1%BB%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%EF%BC%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%8Cfinal%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Java多用户通讯系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/17/Java%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F/">Java多用户通讯系统</a>
       </h1>
     
   
@@ -192,7 +263,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            9.1k words 
+            21k words 
           </div>
         </div>
         
@@ -201,7 +272,7 @@
         
           <div class="truncate-text">
             
-              多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件6.服务器推送新闻思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
+              多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻
 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）
 
@@ -214,7 +285,7 @@
 4.为了管理线程，用集合hashmap管理线程，将线程放入集合
 代码实现1.用户登录人为规定 id &#x3D; 100，密码为123456
 创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）
-1234567891011121314151...
+1234567891011121314151617181920...
             
           </div>
         
@@ -226,7 +297,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" 
+      href="/2025/03/17/Java%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -322,7 +393,7 @@
    
 
 
-<article id="post-课堂笔记16" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（UDP网络编程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -333,7 +404,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/16/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B016/">课堂笔记16</a>
+        <a class="p-name article-title" href="/2025/03/16/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88UDP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%EF%BC%89/">Java课堂笔记（UDP网络编程）</a>
       </h1>
     
   
@@ -386,7 +457,7 @@ UDP通信流程1.建立发送端和接收端
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/16/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B016/" 
+      href="/2025/03/16/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88UDP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -405,7 +476,7 @@ UDP通信流程1.建立发送端和接收端
    
 
 
-<article id="post-课堂笔记15" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（字符流传输，netstat指令）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -416,7 +487,7 @@ UDP通信流程1.建立发送端和接收端
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/15/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B015/">课堂笔记15</a>
+        <a class="p-name article-title" href="/2025/03/15/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%8Cnetstat%E6%8C%87%E4%BB%A4%EF%BC%89/">Java课堂笔记（字符流传输，netstat指令）</a>
       </h1>
     
   
@@ -464,7 +535,7 @@ UDP通信流程1.建立发送端和接收端
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/15/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B015/" 
+      href="/2025/03/15/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%8Cnetstat%E6%8C%87%E4%BB%A4%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -483,7 +554,7 @@ UDP通信流程1.建立发送端和接收端
    
 
 
-<article id="post-课堂笔记14" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（网络基础知识，TCP，UDP，字节流传输）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -494,7 +565,7 @@ UDP通信流程1.建立发送端和接收端
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/14/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B014/">课堂笔记14</a>
+        <a class="p-name article-title" href="/2025/03/14/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%8CTCP%EF%BC%8CUDP%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%89/">Java课堂笔记（网络基础知识，TCP，UDP，字节流传输）</a>
       </h1>
     
   
@@ -513,7 +584,7 @@ UDP通信流程1.建立发送端和接收端
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            7.7k words 
+            7.2k words 
           </div>
         </div>
         
@@ -522,19 +593,29 @@ UDP通信流程1.建立发送端和接收端
         
           <div class="truncate-text">
             
-              听课笔记房屋出租系统设计分层设计
+              Java网络多线程IP地址定义：用于唯一标识网络中的每一台计算机
+查看IP地址的指令：ipconfig
+IP地址组成：网络地址 + 主机地址
+A类地址 0 + 7位网络号 + 24位主机号
+B类地址 b10 + 14位网络号 + 16位主机号
+C类地址 b110 + 21位网络号 +8位主机号
+D类 b1110 + 28位多播组号
+E类 b11110 + 27位保留位
+域名www.baidu.com
+将ip地址映射为域名，方便记忆
+端口号概念：用于标识计算机上某个特定的网络程序
+通过IP + 端口即可访问一个特定网络上的特定程序
+表示形式：以整数形式表示：0—65535 （两个字节）
+0-1024被占用（在实际开发中不使用这一些端口）
+网络通讯协议在网络编程中数据的组织形式就是协议
+TCP&#x2F;IP传输控制协议&#x2F;因特网互联协议，又称网络通讯协议
 
-123456package house;//创建并调用主菜单类显示主菜单public class HouseRentApp &#123;    public static void main(String[] args) &#123;    &#125;&#125;
+网络层级以及对应协议
 
-1234package house;//显示界面，接受用户输入，调用服务类操作public class HouseView &#123;&#125;
-
-1234package house;//响应菜单类的调用，对房屋信息增删改查public class HouseService &#123;&#125;
-
-1234package house;//房屋类，一个House对象代表了一间房子public class House &#123;&#125;
-
-再Java工具编写工程代码的时候一般会有一个工具类，通过静态方法直接用类名调用已经编写好的工具包可以极大的增加开发的效率，大体与零钱通项目类似，这里不再过多解释
-Java网络多线程IP地址定义：用于唯一标识网络中的每一台计算机
-查看I...
+TCP与UDPTCP通过三次握手建立连接，四次握手释放连接
+TCP协议进行通信的两个应用进程：客户端、服务端
+UDP将数据，源，目的封装为数据包，不需要建立连接
+每一个数据包的大小限制为64K以内...
             
           </div>
         
@@ -546,7 +627,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/14/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B014/" 
+      href="/2025/03/14/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%8CTCP%EF%BC%8CUDP%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -565,7 +646,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
    
 
 
-<article id="post-课堂笔记13" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（面向对象改造，零钱通综合实验，章节练习）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -576,7 +657,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/13/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B013/">课堂笔记13</a>
+        <a class="p-name article-title" href="/2025/03/13/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%94%B9%E9%80%A0%EF%BC%8C%E9%9B%B6%E9%92%B1%E9%80%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C%EF%BC%8C%E7%AB%A0%E8%8A%82%E7%BB%83%E4%B9%A0%EF%BC%89/">Java课堂笔记（面向对象改造，零钱通综合实验，章节练习）</a>
       </h1>
     
   
@@ -617,7 +698,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/13/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B013/" 
+      href="/2025/03/13/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%94%B9%E9%80%A0%EF%BC%8C%E9%9B%B6%E9%92%B1%E9%80%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C%EF%BC%8C%E7%AB%A0%E8%8A%82%E7%BB%83%E4%B9%A0%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -636,7 +717,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
    
 
 
-<article id="post-课堂笔记12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（Object类{重写方法}，断点调试）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -647,7 +728,7 @@ Java网络多线程IP地址定义：用于唯一标识网络中的每一台计�
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/12/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B012/">课堂笔记12</a>
+        <a class="p-name article-title" href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/">Java课堂笔记（Object类{重写方法}，断点调试）</a>
       </h1>
     
   
@@ -697,7 +778,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/12/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B012/" 
+      href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -716,7 +797,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
    
 
 
-<article id="post-课堂笔记11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（多态，动态绑定机制，多态的应用）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -727,7 +808,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B011/">课堂笔记11</a>
+        <a class="p-name article-title" href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/">Java课堂笔记（多态，动态绑定机制，多态的应用）</a>
       </h1>
     
   
@@ -772,7 +853,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B011/" 
+      href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -791,7 +872,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
    
 
 
-<article id="post-课堂笔记10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（继承，重写）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -802,7 +883,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/10/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B010/">课堂笔记10</a>
+        <a class="p-name article-title" href="/2025/03/10/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%87%8D%E5%86%99%EF%BC%89/">Java课堂笔记（继承，重写）</a>
       </h1>
     
   
@@ -844,91 +925,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/10/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B010/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-课堂笔记9" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B09/">课堂笔记9</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-09T07:08:00.000Z" itemprop="datePublished">2025-03-09</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            5.4k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记IDEA的使用IDEA支持30天试用，如果是学生或者教师可以在官网使用学校邮箱或者学信网获取授权使用
-IDEA之中各种快捷键，定义模板，变量名，自动补全，自动添加导入可以极大地增加开发的效率
-Java中的包包的本质是创建不同的文件夹来保存类文件
-包有三个重大的作用
-1.可以区分相同名字的类
-2.当类很多的时候可以高效的管理类
-3.控制访问范围
-包的基本语法package com.thrinisty
-package 关键字 表示打包
-com.thrinisty 表示包名
-以下是一个包的入门案例
-建立了两个包 小强的包 小明的包 在各自的包中定义了Dog方法
-在use包中定义了主方法，主方法中可以导入小明的Dog类，但是再导入小强的Dog类因为方法同名，可以通过com.xiaoqiang.Dog()使用小强的Dog类
-
-12345678910111213package use;import com.xiaoming.Dog;public class Test &#123;    public static void main(String[] args) &#123;    ...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B09/" 
+      href="/2025/03/10/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%87%8D%E5%86%99%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
