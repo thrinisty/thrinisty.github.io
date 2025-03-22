@@ -162,6 +162,161 @@
    
 
 
+<article id="post-Java课堂笔记（Object类{重写方法}，断点调试）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/">Java课堂笔记（Object类{重写方法}，断点调试）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-12T01:08:00.000Z" itemprop="datePublished">2025-03-12</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Object类这一章会介绍object类的方法
+通过自动配置或者手动配置后可以运用IDEA查看Object的源代码以及其对应的方法，点击右键跳转，或者ctrl + 左键 跳转
+
+Object的子类String方法进行重写更改为，此时判断的是内容
+
+整形的包装类equals判断方法
+
+
+查看源码查看方法重写是程序员重要的技能
+equals方法在不重写equals方法的时候，Person类使用的是父类object的方法，这个时候判断的是两个引用是否指向同一个对象，如果需要用equals判断内容是否一致的时候需要重写方法
+123456789101112131415161718192021222324252627282930313233package com.npu.object;public class Equals01 &#123;    public static void main(String[] args) &#123;        Person person1 = new Person(&quot;l&quot;, 1, &#x27;女&#x27;);      ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Java课堂笔记（多态，动态绑定机制，多态的应用）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/">Java课堂笔记（多态，动态绑定机制，多态的应用）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-11T07:08:00.000Z" itemprop="datePublished">2025-03-11</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记多态定义：方法或者对象具有多种形态
+1.重写或者重载体现出了方法的多态
+2.对象体现多态（是多态的核心）
+当一个类对于某一个类做一些操作的时候，我们可以对于每一个后向类编写方法，但是如果这些类都继承于同一个类，我们可以通过对于着一些类的父类编写方法来统一操作这一类的各个子类。通过这样做我们可以极大的提高代码的复用性
+例如我们有猫类，狗类继承于动物类，我们要通过一个人类来模拟喂食的时候需要在人类的方法中定义两个feed重载方法，这样子有大量的冗余
+1234567891011121314package com.npu.poly;public class Poly01 &#123;    public static void main(String[] args) &#123;        Master Tom = new Master(&quot;汤姆&quot;);        Dog dog =  new Dog(&quot;大黄&quot;);        Bone bone = new Bone(&quot;棒骨&quot;);        Tom.feed(...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（继承，重写）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -770,164 +925,6 @@ com.thrinisty 表示包名
 
 
 
-   
-
-
-<article id="post-Java课堂笔记（进制，位运算，流程控制）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%BF%9B%E5%88%B6%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97%EF%BC%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%89/">Java课堂笔记（进制，位运算，流程控制）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-03T00:08:00.000Z" itemprop="datePublished">2025-03-03</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的进制二进制  	0b 开头		 如 0b101， 0B1111
-十进制  						 如 10， 100
-八进制  	0 开头表示	如 077，0734
-十六进制  0x开头表示	如 0xFFFF， 0Xab03， 0xaaaa， 0XEEFE
-Java中的位运算~2 按位取反
-2&amp;3 按位与
-2|3  按位或
-3^6 按位异或
-Java 中的位运算符算术左移，&lt;&lt;，符号位不变低位补 0
-算数右移，&gt;&gt;，符号位不变用符号位补高位
-逻辑右移，&gt;&gt;&gt;，低位溢出，高位补 0
-Java中的分支控制if &amp;&amp; else随便写了一个，较为简陋
-123456789101112131415161718import java.util.Scanner;public class Test&#123;		public static void main(String[] args) &#123;		Scanner myscanner = new Scanner(System.in);		System.out.prin...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%BF%9B%E5%88%B6%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97%EF%BC%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（变量，数据类型，类型转换，编码类型）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%98%E9%87%8F%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%8C%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%EF%BC%89/">Java课堂笔记（变量，数据类型，类型转换，编码类型）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-02T00:08:00.000Z" itemprop="datePublished">2025-03-02</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            6.3k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的变量在这一个部分因为本人有C语言的相关基础，只记录Java 中与C 不同的部分，以及重点部分
-Java中的“+”的使用方式，1.当左右两边都是数值的时候，做加法运算，当有一方是字符串时，做拼接运算
-123456789public class Test&#123;		public static void main(String[] args)&#123;		System.out.println(100 + 11);			//111		System.out.println(1 + &quot;100&quot;);			//1100		System.out.println(100 + 11 + &quot;100&quot;);	//111100		System.out.println(&quot;100&quot; + 100 + 11);	//10010011	&#125;&#125;
-
-Java中的数据类型分为基本数值类型和引用数据类型
-基本数值类型数值型 byte short int long float double
-字符型 char 占两个字节（因为有...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%98%E9%87%8F%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%8C%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -935,7 +932,7 @@ Java中的数据类型分为基本数值类型和引用数据类型
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a>  
+      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/3/">
       <i class="fa-solid fa-angle-right"></i>

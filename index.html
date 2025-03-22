@@ -162,6 +162,179 @@
    
 
 
+<article id="post-正规式调查作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/22/%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%B0%83%E6%9F%A5%E4%BD%9C%E4%B8%9A/">正规式调查</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-22T07:28:20.000Z" itemprop="datePublished">2025-03-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.3k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              词法分析正规式2.1编写有关正规式的调查报告(1) grep&#x2F;sed 命令对正规式的支持调查，调查与通配符的区别；grep：
+
+支持基本正则表达式（BRE）和扩展正则表达式（ERE）。
+BRE 默认支持，ERE 需要通过 -E 选项启用。
+
+12grep &#x27;^[0-9]\+&#x27; file.txt  # 查找以数字开头的行（BRE）grep -E &#x27;^[0-9]+&#x27; file.txt  # 查找以数字开头的行（ERE）
+
+区别：
+通配符运用的场景是匹配文件名称，而正规式往往匹配文本内容
+(2) 各种高级程序设计语言对正规式的支持，含 C&#x2F;C++，Java、Python、Rust 与 go 等语言；Java
+在Java的 jdk 中拥有java.util.regex 包 ，可以通过实例化Pattern类调用正规式方法，以下是代码示例
+1234import java.util.regex.*;Pattern pattern = Pattern.compile(&quot;[+-]?[0-9]+(\\.[0-9]*)?([eE][...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/22/%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%B0%83%E6%9F%A5%E4%BD%9C%E4%B8%9A/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-文法的推导和规约" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/22/%E6%96%87%E6%B3%95%E7%9A%84%E6%8E%A8%E5%AF%BC%E5%92%8C%E8%A7%84%E7%BA%A6/">Untitled</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-22T07:28:13.493Z" itemprop="datePublished">2025-03-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            801 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              3文法的推导与归约3.1 对于下列的文法和相应的句子，请给出句子的最左归约过程。(1) G[S] : S →AB  S → c  A → bA  A →a  B → aSb  B →c
+bbaacb
+1.bbAacb A →a
+2.bAacb A →a
+3.Aacb A →a
+4.AAcb A →a
+5.AASb S → c
+6.AaSb  A →a
+7.AB B → aSbs
+8.S S →AB
+(2) G[S] : S → (AS) S → (b) A → (SaA) A → (a)
+(((b)a(a))(b))
+1.((Sa(a))(b)) S → (b)
+2.((SaA(b)) A → (a)
+3.((SaAS)) S → (b)
+4.((AS)) A → (SaA)
+5.S S → (AS)
+3.2 设已给文法 G[S]:S → aAcB S → BdS B → aScA B → cAB
+A → BaB A → aBc A → a B → b
+试检验下列符号串中哪些是 G[S] 产生语言的句子，给出这些句子
+的最左推导、最右推导和相应的具体语法树。
+(1) aacb
+最...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/22/%E6%96%87%E6%B3%95%E7%9A%84%E6%8E%A8%E5%AF%BC%E5%92%8C%E8%A7%84%E7%BA%A6/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（抽象类，接口，内部类）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -785,161 +958,6 @@ UDP将数据，源，目的封装为数据包，不需要建立连接
 
 
 
-   
-
-
-<article id="post-Java课堂笔记（Object类{重写方法}，断点调试）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/">Java课堂笔记（Object类{重写方法}，断点调试）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-12T01:08:00.000Z" itemprop="datePublished">2025-03-12</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Object类这一章会介绍object类的方法
-通过自动配置或者手动配置后可以运用IDEA查看Object的源代码以及其对应的方法，点击右键跳转，或者ctrl + 左键 跳转
-
-Object的子类String方法进行重写更改为，此时判断的是内容
-
-整形的包装类equals判断方法
-
-
-查看源码查看方法重写是程序员重要的技能
-equals方法在不重写equals方法的时候，Person类使用的是父类object的方法，这个时候判断的是两个引用是否指向同一个对象，如果需要用equals判断内容是否一致的时候需要重写方法
-123456789101112131415161718192021222324252627282930313233package com.npu.object;public class Equals01 &#123;    public static void main(String[] args) &#123;        Person person1 = new Person(&quot;l&quot;, 1, &#x27;女&#x27;);      ...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（多态，动态绑定机制，多态的应用）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/">Java课堂笔记（多态，动态绑定机制，多态的应用）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-11T07:08:00.000Z" itemprop="datePublished">2025-03-11</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.9k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记多态定义：方法或者对象具有多种形态
-1.重写或者重载体现出了方法的多态
-2.对象体现多态（是多态的核心）
-当一个类对于某一个类做一些操作的时候，我们可以对于每一个后向类编写方法，但是如果这些类都继承于同一个类，我们可以通过对于着一些类的父类编写方法来统一操作这一类的各个子类。通过这样做我们可以极大的提高代码的复用性
-例如我们有猫类，狗类继承于动物类，我们要通过一个人类来模拟喂食的时候需要在人类的方法中定义两个feed重载方法，这样子有大量的冗余
-1234567891011121314package com.npu.poly;public class Poly01 &#123;    public static void main(String[] args) &#123;        Master Tom = new Master(&quot;汤姆&quot;);        Dog dog =  new Dog(&quot;大黄&quot;);        Bone bone = new Bone(&quot;棒骨&quot;);        Tom.feed(...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -947,7 +965,7 @@ equals方法在不重写equals方法的时候，Person类使用的是父类objec
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a>  
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/2/">
       <i class="fa-solid fa-angle-right"></i>
