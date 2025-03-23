@@ -162,6 +162,80 @@
    
 
 
+<article id="post-Java课堂笔记（抽象类，接口，内部类）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/23/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/">Java课堂笔记（抽象类，接口，内部类，模板设计模式）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-23T07:18:30.000Z" itemprop="datePublished">2025-03-23</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            8.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记抽象类使用场景当父类方法不确定的时候，需要声明但是不知道该如何实现的时候，可以将其声明为抽象方法，这个类就是抽象类
+1234567891011class Animal &#123;    private String name;        public Animal(String name) &#123;        this.name = name;    &#125;        public void eat() &#123;        System.out.println(&quot;吃一个...&quot;);    &#125;&#125;
+
+这个时候可以将该方法设计为抽象方法，所谓抽象方法就是没有实现的方法（没有方法体）
+123456789abstract class Animal &#123;    private String name;    public Animal(String name) &#123;        this.name = name;    &#125;    public abstract void eat()...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/23/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-正规式调查作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -225,168 +299,6 @@ BRE 默认支持，ERE 需要通过 -E 选项启用。
     <a class="right-panel  non-pic  "
       
       href="/2025/03/22/%E6%AD%A3%E8%A7%84%E5%BC%8F%E8%B0%83%E6%9F%A5%E4%BD%9C%E4%B8%9A/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-文法的推导和规约" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/22/%E6%96%87%E6%B3%95%E7%9A%84%E6%8E%A8%E5%AF%BC%E5%92%8C%E8%A7%84%E7%BA%A6/">Untitled</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-22T07:28:13.493Z" itemprop="datePublished">2025-03-22</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            801 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              3文法的推导与归约3.1 对于下列的文法和相应的句子，请给出句子的最左归约过程。(1) G[S] : S →AB  S → c  A → bA  A →a  B → aSb  B →c
-bbaacb
-1.bbAacb A →a
-2.bAacb A →a
-3.Aacb A →a
-4.AAcb A →a
-5.AASb S → c
-6.AaSb  A →a
-7.AB B → aSbs
-8.S S →AB
-(2) G[S] : S → (AS) S → (b) A → (SaA) A → (a)
-(((b)a(a))(b))
-1.((Sa(a))(b)) S → (b)
-2.((SaA(b)) A → (a)
-3.((SaAS)) S → (b)
-4.((AS)) A → (SaA)
-5.S S → (AS)
-3.2 设已给文法 G[S]:S → aAcB S → BdS B → aScA B → cAB
-A → BaB A → aBc A → a B → b
-试检验下列符号串中哪些是 G[S] 产生语言的句子，给出这些句子
-的最左推导、最右推导和相应的具体语法树。
-(1) aacb
-最...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/22/%E6%96%87%E6%B3%95%E7%9A%84%E6%8E%A8%E5%AF%BC%E5%92%8C%E8%A7%84%E7%BA%A6/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（抽象类，接口，内部类）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/21/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/">Java课堂笔记（抽象类，接口，内部类）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-21T07:18:30.000Z" itemprop="datePublished">2025-03-21</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记抽象类接口内部类
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/21/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -943,6 +855,86 @@ UDP将数据，源，目的封装为数据包，不需要建立连接
     <a class="right-panel  non-pic  "
       
       href="/2025/03/13/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%94%B9%E9%80%A0%EF%BC%8C%E9%9B%B6%E9%92%B1%E9%80%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C%EF%BC%8C%E7%AB%A0%E8%8A%82%E7%BB%83%E4%B9%A0%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Java课堂笔记（Object类{重写方法}，断点调试）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/">Java课堂笔记（Object类{重写方法}，断点调试）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-12T01:08:00.000Z" itemprop="datePublished">2025-03-12</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Object类这一章会介绍object类的方法
+通过自动配置或者手动配置后可以运用IDEA查看Object的源代码以及其对应的方法，点击右键跳转，或者ctrl + 左键 跳转
+
+Object的子类String方法进行重写更改为，此时判断的是内容
+
+整形的包装类equals判断方法
+
+
+查看源码查看方法重写是程序员重要的技能
+equals方法在不重写equals方法的时候，Person类使用的是父类object的方法，这个时候判断的是两个引用是否指向同一个对象，如果需要用equals判断内容是否一致的时候需要重写方法
+123456789101112131415161718192021222324252627282930313233package com.npu.object;public class Equals01 &#123;    public static void main(String[] args) &#123;        Person person1 = new Person(&quot;l&quot;, 1, &#x27;女&#x27;);      ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/12/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Object%E7%B1%BB%7B%E9%87%8D%E5%86%99%E6%96%B9%E6%B3%95%7D%EF%BC%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
