@@ -162,6 +162,76 @@
    
 
 
+<article id="post-Java课堂笔记（集合）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%88%EF%BC%89/">Java课堂笔记（集合）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-01T02:00:00.000Z" itemprop="datePublished">2025-04-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            8 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记集合
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%88%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（Math，日期，System）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -173,7 +243,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/31/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Math%EF%BC%8C%E6%97%A5%E6%9C%9F%EF%BC%8CSystem%EF%BC%89/">Java课堂笔记（Math，日期，System）</a>
+        <a class="p-name article-title" href="/2025/03/31/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Math%EF%BC%8C%E6%97%A5%E6%9C%9F%EF%BC%8CSystem%EF%BC%89/">Java课堂笔记（Math，Arrays，System，大数处理）</a>
       </h1>
     
   
@@ -192,7 +262,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            65 words 
+            13k words 
           </div>
         </div>
         
@@ -201,7 +271,13 @@
         
           <div class="truncate-text">
             
-              Java笔记MathDate、Calendar、LocalDateSystemArraysBigInteger BigDecimal
+              Java笔记MathMath类包含了执行基本数学运算的方法，如初等函数，对数，平方根，三角函数
+常用的方法abs求绝对值12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.abs(-123));//123    &#125;&#125;
+
+pow求幂12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.pow(2, 4));//16.0    &#125;&#125;
+
+ceil向上取整返回大于等于这个数的最小整数
+12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.ceil...
             
           </div>
         
@@ -262,7 +338,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            11k words 
+            12k words 
           </div>
         </div>
         
@@ -732,7 +808,12 @@ BRE 默认支持，ERE 需要通过 -E 选项启用。
         
           <div class="truncate-text">
             
-              多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
+              多用户通信系统功能实现1.用户登录
+2.拉取用户列表
+3.私聊
+4.群聊
+5.发文件
+思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻
 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）
 
@@ -743,9 +824,8 @@ BRE 默认支持，ERE 需要通过 -E 选项启用。
 2.当客户端连接到服务器端时，会得到socket
 3.启动一个线程，该线程持有socket
 4.为了管理线程，用集合hashmap管理线程，将线程放入集合
-代码实现1.用户登录人为规定 id &#x3D; 100，密码为123456
-创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）
-1234567891011121314151617181920...
+代码实现1.用户登录创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）
+12345678910111213141516171819202122232425262728293031pa...
             
           </div>
         
@@ -835,89 +915,6 @@ BRE 默认支持，ERE 需要通过 -E 选项启用。
     <a class="right-panel  non-pic  "
       
       href="/2025/03/17/%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（UDP网络编程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/16/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88UDP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%EF%BC%89/">Java课堂笔记（UDP网络编程）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-16T07:08:00.000Z" itemprop="datePublished">2025-03-16</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.9k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记UDP网络通信编程不同于TCP通信，UDP不需要建立连接，UDP数据包中含有发送的目标地址
-1.类 DatagramSocket 和 DatagramPacket【数据包&#x2F;数据报】实现了基于UDP协议网络程序
-2.UDP数据报通过数据报套接字 DatagramSocket 发送和接收，系统不保证UDP数据报有一定可以能够到达目的地，也不确定在什么时候可以到达
-3.DatagramPacket 对象封装了UDP数据报，在数据包中包含了发送端和接收端的IP地址以及端口号
-4.UDP协议中的每一个数据报都给出了完整的信息地址，因此无需建立发送方和接收方的链接吧
-UDP特殊说明1.UDP中没有明确的服务端和客户端，演变为数据的发送端和接收端
-2.接收数据和发送数据通过DatagramSocket对象完成
-3.发送数据时会将数据封装在DatagramPacket对象中，称之为装包
-4.当接收到数据包后，需要进行拆包取出数据
-5.DatagramSocket可以指定在哪个端口接收数据
-
-UDP通信流程1.建立发送端和接收端
-2.发送数据前建立数据包和数据报
-3.调用数据包的...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/16/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88UDP%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

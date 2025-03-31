@@ -20,12 +20,12 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）  服务端1.当客户端连接到服务器时得到了s">
+  <meta name="description" content="多用户通信系统功能实现1.用户登录 2.拉取用户列表 3.私聊 4.群聊 5.发文件 思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）  服务端1.当客户端连接到服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多用户通讯系统">
 <meta property="og:url" content="http://example.com/2025/03/17/Java%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="多用户通信系统需求分析1.用户登录2.拉取用户列表3.私聊4.群聊5.发文件思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）  服务端1.当客户端连接到服务器时得到了s">
+<meta property="og:description" content="多用户通信系统功能实现1.用户登录 2.拉取用户列表 3.私聊 4.群聊 5.发文件 思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket 服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻 每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）  服务端1.当客户端连接到服务器">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/66.png">
 <meta property="og:image" content="http://example.com/images/67.png">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://example.com/images/71.png">
 <meta property="og:image" content="http://example.com/images/72.png">
 <meta property="article:published_time" content="2025-03-17T07:08:00.000Z">
-<meta property="article:modified_time" content="2025-03-20T12:10:14.732Z">
+<meta property="article:modified_time" content="2025-03-31T08:00:50.573Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/66.png">
@@ -212,7 +212,12 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h1 id="多用户通信系统"><a href="#多用户通信系统" class="headerlink" title="多用户通信系统"></a>多用户通信系统</h1><h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><h3 id="1-用户登录"><a href="#1-用户登录" class="headerlink" title="1.用户登录"></a>1.用户登录</h3><h3 id="2-拉取用户列表"><a href="#2-拉取用户列表" class="headerlink" title="2.拉取用户列表"></a>2.拉取用户列表</h3><h3 id="3-私聊"><a href="#3-私聊" class="headerlink" title="3.私聊"></a>3.私聊</h3><h3 id="4-群聊"><a href="#4-群聊" class="headerlink" title="4.群聊"></a>4.群聊</h3><h3 id="5-发文件"><a href="#5-发文件" class="headerlink" title="5.发文件"></a>5.发文件</h3><h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket</p>
+          <h1 id="多用户通信系统"><a href="#多用户通信系统" class="headerlink" title="多用户通信系统"></a>多用户通信系统</h1><h2 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h2><p>1.用户登录</p>
+<p>2.拉取用户列表</p>
+<p>3.私聊</p>
+<p>4.群聊</p>
+<p>5.发文件</p>
+<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket</p>
 <p>服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻</p>
 <p>每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）</p>
 <p><img src="/../images/66.png" alt="66"></p>
@@ -223,8 +228,7 @@
 <p>2.当客户端连接到服务器端时，会得到socket</p>
 <p>3.启动一个线程，该线程持有socket</p>
 <p>4.为了管理线程，用集合hashmap管理线程，将线程放入集合</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="1-用户登录-1"><a href="#1-用户登录-1" class="headerlink" title="1.用户登录"></a>1.用户登录</h3><p>人为规定 id &#x3D; 100，密码为123456</p>
-<p>创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="1-用户登录"><a href="#1-用户登录" class="headerlink" title="1.用户登录"></a>1.用户登录</h3><p>创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.npu.qqcommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">//表示一个用户信息</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;<span class="comment">//增强兼容性</span></span><br><span class="line">    <span class="keyword">private</span> String userId;<span class="comment">//用户名</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    User(String userId, String password) &#123;</span><br><span class="line">        <span class="built_in">this</span>.userId = userId;</span><br><span class="line">        <span class="built_in">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUserId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserId</span><span class="params">(String userId)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPassword</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPassword</span><span class="params">(String password)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>创建Message对象，表示客户端和服务端通信时的消息对象</p>
@@ -264,7 +268,7 @@
 
 <p>至此多用户登录功能已经完成，下面进入拉取用户列表的实现</p>
 <p><img src="/../images/67.png" alt="67"></p>
-<h3 id="2-拉取用户列表-1"><a href="#2-拉取用户列表-1" class="headerlink" title="2.拉取用户列表"></a>2.拉取用户列表</h3><h4 id="接口扩展"><a href="#接口扩展" class="headerlink" title="接口扩展"></a>接口扩展</h4><p>扩展MessageType接口</p>
+<h3 id="2-拉取用户列表"><a href="#2-拉取用户列表" class="headerlink" title="2.拉取用户列表"></a>2.拉取用户列表</h3><h4 id="接口扩展"><a href="#接口扩展" class="headerlink" title="接口扩展"></a>接口扩展</h4><p>扩展MessageType接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MessageType</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_LOGIN_SUCCEED</span> <span class="operator">=</span> <span class="string">&quot;1&quot;</span>;<span class="comment">//登录成功</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_LOGIN_FAIL</span> <span class="operator">=</span> <span class="string">&quot;2&quot;</span>;<span class="comment">//登录失败</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_COMM_MES</span> <span class="operator">=</span> <span class="string">&quot;3&quot;</span>;<span class="comment">//普通信息包</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_GET_ONLINE_FRIEND</span> <span class="operator">=</span> <span class="string">&quot;4&quot;</span>;<span class="comment">//要求返回在线用户列表</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_RET_ONLINE_FRIEND</span> <span class="operator">=</span> <span class="string">&quot;5&quot;</span>;<span class="comment">//返回在线用户列表</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_CLIENT_EXIT</span> <span class="operator">=</span> <span class="string">&quot;6&quot;</span>;<span class="comment">//客户端请求退出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="客户端-2"><a href="#客户端-2" class="headerlink" title="客户端"></a>客户端</h4><p>在客户端菜单栏中调用特定方法发送给服务器用户列表请求</p>
@@ -298,7 +302,7 @@
 
 <p><img src="/../images/68.png" alt="68"></p>
 <p><img src="/../images/69.png" alt="69"></p>
-<h3 id="3-私聊-1"><a href="#3-私聊-1" class="headerlink" title="3.私聊"></a>3.私聊</h3><h4 id="客户端-4"><a href="#客户端-4" class="headerlink" title="客户端"></a>客户端</h4><p>1.接收用户希望给某个其他的在线用户聊天内容</p>
+<h3 id="3-私聊"><a href="#3-私聊" class="headerlink" title="3.私聊"></a>3.私聊</h3><h4 id="客户端-4"><a href="#客户端-4" class="headerlink" title="客户端"></a>客户端</h4><p>1.接收用户希望给某个其他的在线用户聊天内容</p>
 <p>2.将消息构建成Message对象，通过对应的socket发送给服务器</p>
 <p>3.在通讯线程中收到其他的客户端发送的消息并显示</p>
 <p>在菜单中调用方法发送私聊</p>
@@ -316,7 +320,7 @@
 <p>服务器只完成转发的工作，当收到转发消息时转发</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(message.getMesType().equals(MessageType.MESSAGE_COMM_MES)) &#123;</span><br><span class="line">    <span class="comment">//根据收到的消息中获取发送的对象进行转发</span></span><br><span class="line">    <span class="type">ServerConnectClientThread</span> <span class="variable">serverConnectClientThread</span> <span class="operator">=</span></span><br><span class="line">            ManageClientThreads.getClientThread(message.getGetter());</span><br><span class="line">    <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(serverConnectClientThread</span><br><span class="line">            .getSocket().getOutputStream());</span><br><span class="line">    oos.writeObject(message);<span class="comment">//发送，如果客户不在线可以保存到数据库中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-群聊-1"><a href="#4-群聊-1" class="headerlink" title="4.群聊"></a>4.群聊</h3><p>大体和私聊类似</p>
+<h3 id="4-群聊"><a href="#4-群聊" class="headerlink" title="4.群聊"></a>4.群聊</h3><p>大体和私聊类似</p>
 <p>在Message消息类型补充</p>
 <p>String MESSAGE_TO_ALL_MES &#x3D; “7”;&#x2F;&#x2F;群发消息</p>
 <h4 id="客户端-5"><a href="#客户端-5" class="headerlink" title="客户端"></a>客户端</h4><p>菜单调用功能方法</p>
@@ -333,7 +337,7 @@
 
 <p>至此群发消息功能完成</p>
 <p><img src="/../images/70.png" alt="70"></p>
-<h3 id="5-发文件-1"><a href="#5-发文件-1" class="headerlink" title="5.发文件"></a>5.发文件</h3><p>首先我们要扩展Message类的定义，在类中添加bytes数组，以及一些必要的成员变量，拓展MessageType，定义新的消息类型</p>
+<h3 id="5-发文件"><a href="#5-发文件" class="headerlink" title="5.发文件"></a>5.发文件</h3><p>首先我们要扩展Message类的定义，在类中添加bytes数组，以及一些必要的成员变量，拓展MessageType，定义新的消息类型</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">byte</span>[] fileBytes;<span class="comment">//用于发送文件</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="variable">fileSize</span> <span class="operator">=</span> <span class="number">0</span>;<span class="comment">//文件大小</span></span><br><span class="line"><span class="keyword">private</span> String dest;<span class="comment">//将文件传输到的位置</span></span><br><span class="line"><span class="keyword">private</span> String src;<span class="comment">//发送的文件路径</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="客户端-6"><a href="#客户端-6" class="headerlink" title="客户端"></a>客户端</h4><p>1.将指定路径下的文件输出流转换为字节数组</p>

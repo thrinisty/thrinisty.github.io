@@ -162,6 +162,76 @@
    
 
 
+<article id="post-Java课堂笔记（类与对象，方法，属性，对象的克隆）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/06/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B1%9E%E6%80%A7%EF%BC%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%8B%E9%9A%86%EF%BC%89/">Java课堂笔记（类与对象，方法，属性，对象的克隆）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-05T22:18:00.000Z" itemprop="datePublished">2025-03-06</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记杨辉三角例题123456789101112131415161718192021222324public class Test&#123;		public static void main(String[] args)&#123;		int arr[][] = new int[10][];		for(int i = 0; i &lt; 10; i++) &#123;			arr[i] =new int[i + 1];			arr[i][0] = 1;			arr[i][i] = 1;			if(i &gt; 1) &#123;				for(int j = 1;j &lt;= i - 1; j++) &#123;					arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];				&#125;			&#125;					&#125;		for(int i = 0; i &lt; arr.length; i++) &#123;			for(int j = 0; j &lt; arr[i].length; j++) &#123;				S...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/06/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B1%9E%E6%80%A7%EF%BC%8C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%8B%E9%9A%86%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（数组，二维数组，数组赋值机制）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -856,95 +926,6 @@ tar -zcf...
     <a class="right-panel  non-pic  "
       
       href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-vim入门" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/18/vim%E5%85%A5%E9%97%A8/">Vim入门</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-18T13:08:03.000Z" itemprop="datePublished">2025-02-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            267 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              VIMvim stdio.h 如果有则进入如果没有则创建文件
-三种模式命令模式（默认进入）yy复制一行  10yy复制十行
-p粘贴
-dd剪切
-u撤销
-x删除一个字符
-shift g跳到最后一行
-gg回到第一行
-*用于查找
-shift z
-插入模式（Insert编辑）通过i或者a按键进入，esc退出并进入命令模式
-底行模式（通过命令模式下进入）：:w保存 q退出 wq保存退出 wq! 强制保存退出
-:10跳到10行
-：nohl消除高亮
-:set nonu 去除行号
-:set nu 加上行号
-:%s&#x2F;old&#x2F;new替换
-&#x2F;进入底行模式用于查找
-如&#x2F;main
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/18/vim%E5%85%A5%E9%97%A8/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
