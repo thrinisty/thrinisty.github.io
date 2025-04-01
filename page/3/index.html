@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（递归专题）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/">Java课堂笔记（递归专题）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-07T03:08:00.000Z" itemprop="datePublished">2025-03-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.6k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Java中的递归递归在算法中属于比较复杂的一类了，在这里也希望在 java 的学习中复习算法
+一个简单的入门案例
+1234567891011121314151617public class Object&#123;	public static void main(String[] args) &#123;		Tool Mytool = new Tool();		Mytool.test(4);	&#125;&#125;class Tool&#123;	public void test(int n) &#123;		if(n &gt; 2) &#123;			test(n - 1);		&#125;		System.out.println(n);	&#125;&#125;
+
+
+运行结果
+123234
+
+要等递归的方法结束后才执行递归调用主体函数中的输出，所以结果是从2到4
+计算阶乘
+12345678910111213141516public class Object&#123;	public static void main(String[] args) &#123;		To...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（类与对象，方法，属性，对象的克隆）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -836,96 +916,6 @@ Test.java -编译javac（需要...
     <a class="right-panel  non-pic  "
       
       href="/2025/02/20/C%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-linux中重要的指令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/">Linux</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-19T07:08:03.000Z" itemprop="datePublished">2025-02-19</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            486 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              linux中的一些常用指令cd（change directory）更改目录其中 &#x2F; 是linux中的根目录， . 代表的是当前的目录， .. 表示上一层目录大部分的情况下 .&#x2F; 可以省略 直接cd + 目录下的文件路径
-cd ||  cd ~进入家目录
-cd - 进入上一次的目录
-ls（list）显示当前目录的文件-l参数会显示各个类型属性
--a还会显示额外的文件
--al综合前两个
-cp（copy）拷贝文件cp + 拷贝源路径 + 目标路径
--r 参数 递归地拷贝
-mv（move to）剪切用法与复制类似
-特殊用法（更改名字）
-mv + 目标原来的文件名 + 现在的文件名
-chmod （change mode）修改文件权限可以通过chmod 744 文件名 修改
-chmod u+x 文件
-chmod g-r  文件
-chmod o+r 文件
-
-rm（remove）删除文件-rf 强制删除参数
-touch 创建文件touch a b c
-mkdir 创建文件夹tar 压缩tar -zcf 压缩名字 需要压缩的文件文件
-tar -xzf 解压文件
-tar -zcf...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
