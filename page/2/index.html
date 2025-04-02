@@ -162,6 +162,93 @@
    
 
 
+<article id="post-Java多用户通讯系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/17/Java%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F/">Java多用户通讯系统</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-17T07:08:00.000Z" itemprop="datePublished">2025-03-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            21k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              多用户通信系统功能实现1.用户登录
+2.拉取用户列表
+3.私聊
+4.群聊
+5.发文件
+思路分析当客户端与服务端产生链接的时候，服务端会产生一个socket，必须要创建一个线程来持有并管理产生的socket
+服务器端的多个线程需要一个管理线程的集合，用以后续的服务器推送新闻
+每一个客户端也可能会创建多个线程，和服务器端通信，需要客户端线程的管理集合（hashmap）
+
+服务端1.当客户端连接到服务器时得到了socket
+2.启动了一个线程，该线程持有socket，socket是线程的属性
+3.为了管理线程，用集合hashmap管理线程，将线程放入集合
+客户端1.和服务端通信的时候使用对象的方式，可以使用对象流来进行读写
+2.当客户端连接到服务器端时，会得到socket
+3.启动一个线程，该线程持有socket
+4.为了管理线程，用集合hashmap管理线程，将线程放入集合
+代码实现1.用户登录创建User对象，表示一个用户信息（如果对象要在IO中传输，对象需要进行序列化）
+12345678910111213141516171819202122232425262728293031pa...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/17/Java%E5%A4%9A%E7%94%A8%E6%88%B7%E9%80%9A%E8%AE%AF%E7%B3%BB%E7%BB%9F/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-项目标准开发流程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -856,78 +943,6 @@ com.thrinisty 表示包名
     <a class="right-panel  non-pic  "
       
       href="/2025/03/09/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88IDEA%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%8CJava%E5%8C%85%EF%BC%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（重载，多参方法，构造器，作用域，this）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%A4%9A%E5%8F%82%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8Cthis%EF%BC%89/">Java课堂笔记（重载，多参方法，构造器，作用域，this）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-08T13:38:00.000Z" itemprop="datePublished">2025-03-08</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的重载Java中允许同名方法的存在，这种情况下要求同名方法的参数不同
-以下是一个具体的案例
-1234567891011121314151617181920public class Object &#123;    public static void main(String[] args) &#123;        Tool myTool = new Tool();		myTool.Print(1);		myTool.Print(&#x27;1&#x27;);		myTool.Print(&quot;This is overload&quot;);    &#125;&#125;class Tool &#123;	public void Print(int n) &#123;		System.out.println(n);	&#125;	public void Print(char n) &#123;		System.out.println(n);	&#125;	public void Print(String n) &#123;		System.out.pr...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%A4%9A%E5%8F%82%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8Cthis%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
