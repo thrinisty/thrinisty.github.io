@@ -162,6 +162,78 @@
    
 
 
+<article id="post-Java课堂笔记（继承，重写）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/10/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%87%8D%E5%86%99%EF%BC%89/">Java课堂笔记（继承，重写）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-10T07:08:00.000Z" itemprop="datePublished">2025-03-10</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记面向对象的三大特征继承为了解决代码复用性的情况，引出了继承的概念
+例如以下的代码有小学生类以及大学生类，除了各自特有的方法，他们的属性，方法大致相同
+1234567891011121314151617package com.npu.extend;public class Pupil &#123;    public String name;    public int age;    private double score;    Pupil(String name, int age, double score) &#123;        this.name = name;        this.age = age;        this.score = score;    &#125;    public void infoPrint() &#123;        System.out.println(&quot;Name: &quot; + name + &quot;, Age: &quot; + age + &quot;, Score: &quot; + ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/10/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%87%8D%E5%86%99%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（IDEA集成开发环境，Java包，访问修饰符，封装）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -598,78 +670,6 @@ com.thrinisty 表示包名
     <a class="right-panel  non-pic  "
       
       href="/2025/03/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%BE%AA%E7%8E%AF%E7%BB%83%E4%B9%A0%EF%BC%8C%E8%B7%B3%E8%BD%AC%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（泛型，JUnit）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/">Java课堂笔记（泛型，JUnit）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-03T07:36:00.000Z" itemprop="datePublished">2025-03-03</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            15k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记泛型使用案例我们先来看一个例子
-运用集合来存储狗
-1234567891011121314151617181920212223public class Generic_ &#123;    public static void main(String[] args) &#123;        ArrayList list = new ArrayList();        list.add(new Dog(&quot;旺财&quot;, 19));        list.add(new Dog(&quot;来福&quot;, 33));        list.add(new Dog(&quot;小黑&quot;, 12));        Iterator iterator = list.iterator();        while (iterator.hasNext()) &#123;            Dog d = (Dog) iterator.next();            System.out.println(d);        &#12...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
