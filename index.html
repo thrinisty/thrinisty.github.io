@@ -162,7 +162,7 @@
    
 
 
-<article id="post-Java课堂笔记（绘图入门）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（多线程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%98%E5%9B%BE%E5%85%A5%E9%97%A8%EF%BC%89/">Java课堂笔记（绘图入门）</a>
+        <a class="p-name article-title" href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/">Java课堂笔记（多线程）</a>
       </h1>
     
   
@@ -192,7 +192,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6 words 
+            11k words 
           </div>
         </div>
         
@@ -201,7 +201,20 @@
         
           <div class="truncate-text">
             
-              Java笔记
+              Java笔记在韩顺平老师的Java课程中会结合一个坦克大战的实战项目，我急功近利，就不写坦克大战的编写了，只学Java中最核心的几个知识点
+java绘图坐标体系
+基本概念
+在Java中坐标原点位于左上角，以像素为单位，x坐标代表距离竖坐标向右x个像素，而y代表位于横坐标的下y个像素
+Java事件处理机制
+java事件处理采取的是”委派事件模型”，当事件发生的时候，产生事件的对象，会把此信息传递给事件的监听者进行处理，事件在代码中体现为一个事件对象。
+事件源：是一个产生事件的对象，比如按钮，窗口等
+事件：事件就是承载事件源状态改变时的对象，比如说键盘事件，鼠标事件，窗口事件等等，会生成一个事件对象，保存当前事件的很多信息。
+多线程基础单线程：同一个时刻只允许执行一个线程
+多线程：同一个时刻可以执行多个线程，例如QQ打开多个聊天窗口
+并发：同一个时刻，多个任务交替执行，给人以同时进行的错觉（单线程多任务）
+并行：同一个时刻，多个任务同时进行（多核CPU可以支持并行）
+可通过Java写一个返回可用CPU数量的代码
+1234567public class CupNum &#123;   ...
             
           </div>
         
@@ -213,7 +226,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BB%98%E5%9B%BE%E5%85%A5%E9%97%A8%EF%BC%89/" 
+      href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
