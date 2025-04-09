@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（反射）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/">Java课堂笔记（反射）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-08T07:29:00.000Z" itemprop="datePublished">2025-04-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            15k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记反射reflection
+引出反射我们需要怎样才可以读出配置文件的内容，并调用配置文件的方法
+配置文件
+12classPath = com.reflection.Catmethod = hi
+
+目标类文件
+12345678package com.reflection;public class Cat &#123;    public void hi() &#123;        System.out.println(&quot;hi&quot;);    &#125;&#125;
+
+问题实现
+第一点很容易，我们通过创建properties在进行加载，就可以很容易的得到配置中的内容
+12345678910public class ReflectionQuestion &#123;    public static void main(String[] args) throws IOException &#123;        String filePath = &quot;src\\re.properties&quot;;        Properties pro...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（IO流）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +272,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            24k words 
+            25k words 
           </div>
         </div>
         
@@ -847,83 +927,6 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
     <a class="right-panel  non-pic  "
       
       href="/2025/03/27/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（枚举类，注解，异常处理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/24/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3%EF%BC%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%89/">Java课堂笔记（枚举类，注解，异常处理）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-24T13:15:00.000Z" itemprop="datePublished">2025-03-24</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            12k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记枚举类在设计一个季节对象的时候，我们可以用传统的方式实现
-123456789101112public class Enumeration &#123;    Season season = new Season(&quot;春天&quot;, &quot;温暖&quot;);&#125;class Season &#123;    private String season;    private String description;    Season(String season, String description) &#123;        this.season = season;        this.description = description;    &#125;&#125;
-
-但是众所周知，季节只有四季，不能体现只有四个这个特征，为了解决这个问题，我们可以使用枚举类来定义季节，设计几个有限的值
-枚举定义是一组常量的集合：枚举是一种特殊的类，里面只包含一组有限的特定对象
-自定义枚举
-1.不需要提供set方法，因为枚举对象通常是只读的
-2.写...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/24/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3%EF%BC%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
