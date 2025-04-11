@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>MySQL课堂笔记（修改表，CRUD，常用函数） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="MySQL笔记修改表我们修改表可以通过图形化界面进行修改，这一般比较方便，但是有一些限制，例如需要批量修改，条件限制的情况，我们也需要学会通过指令来对于表进行操作 添加列12ALTER TABLE table_name ADD(column datatype [DEFAULT expr], column datatype [DEFAULT expr]...);  修改列12ALTER TABLE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL课堂笔记（修改表，CRUD，常用函数）">
+<meta property="og:url" content="http://example.com/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89%20-%20%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MySQL笔记修改表我们修改表可以通过图形化界面进行修改，这一般比较方便，但是有一些限制，例如需要批量修改，条件限制的情况，我们也需要学会通过指令来对于表进行操作 添加列12ALTER TABLE table_name ADD(column datatype [DEFAULT expr], column datatype [DEFAULT expr]...);  修改列12ALTER TABLE">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-11T06:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-11T13:39:16.204Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/1.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Thrinisty </div>
+      <div class="dot"></div>
+      <div class="subtitle">苦逼大学生来的 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-MySQL课堂笔记（） - 副本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        MySQL课堂笔记（修改表，CRUD，常用函数）
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-11T06:00:00.000Z" itemprop="datePublished">2025-04-11</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="MySQL笔记"><a href="#MySQL笔记" class="headerlink" title="MySQL笔记"></a>MySQL笔记</h1><h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><p>我们修改表可以通过图形化界面进行修改，这一般比较方便，但是有一些限制，例如需要批量修改，条件限制的情况，我们也需要学会通过指令来对于表进行操作</p>
+<h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span>(<span class="keyword">column</span> datatype [<span class="keyword">DEFAULT</span> expr]</span><br><span class="line">, <span class="keyword">column</span> datatype [<span class="keyword">DEFAULT</span> expr]...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name MODIFY(<span class="keyword">column</span> datatype [<span class="keyword">DEFAULT</span> expr]</span><br><span class="line">, <span class="keyword">column</span> datatype [<span class="keyword">DEFAULT</span> expr]...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">DROP</span>(<span class="keyword">column</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RENAME <span class="keyword">TABLE</span> `oldTable` <span class="keyword">TO</span> `newTable`;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">desc</span> newtable;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+------------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field      | <span class="built_in">Type</span>        | Null | Key | Default | Extra |</span><br><span class="line">+------------+-------------+------+-----+---------+-------+</span><br><span class="line">| id         | int         | YES  |     | NULL    |       |</span><br><span class="line">| name       | varchar(<span class="number">20</span>) | YES  |     | NULL    |       |</span><br><span class="line">| sex        | char(<span class="number">1</span>)     | YES  |     | NULL    |       |</span><br><span class="line">| birthday   | <span class="built_in">date</span>        | YES  |     | NULL    |       |</span><br><span class="line">| entry_date | datetime    | YES  |     | NULL    |       |</span><br><span class="line">| job        | varchar(<span class="number">20</span>) | YES  |     | NULL    |       |</span><br><span class="line">| Salary     | double      | YES  |     | NULL    |       |</span><br><span class="line">| resume     | text        | YES  |     | NULL    |       |</span><br><span class="line">+------------+-------------+------+-----+---------+-------+</span><br><span class="line"><span class="number">8</span> rows <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0</span>.<span class="number">09</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改表字符集"><a href="#修改表字符集" class="headerlink" title="修改表字符集"></a>修改表字符集</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="type">character</span> <span class="keyword">set</span> utf8;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>1.在创建的员工表上增加一个image列，varchar类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employ <span class="keyword">ADD</span> `image` <span class="type">VARCHAR</span> ( <span class="number">30</span> );</span><br></pre></td></tr></table></figure>
+
+<p>2.修改job列，使其长度为60</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employ MODIFY `job` <span class="type">VARCHAR</span> ( <span class="number">60</span> );</span><br></pre></td></tr></table></figure>
+
+<p>3.删除sex列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employ <span class="keyword">DROP</span> `sex`;</span><br></pre></td></tr></table></figure>
+
+<p>4.将表名更改为employee</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="keyword">table</span> employ <span class="keyword">to</span> employee;</span><br></pre></td></tr></table></figure>
+
+<p>5.修改表的字符集为utf8</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employee <span class="type">CHARACTER</span> <span class="keyword">SET</span> utf8;</span><br></pre></td></tr></table></figure>
+
+<p>6.将列名name修改为user_name</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employee CHANGE `name` user_name <span class="type">VARCHAR</span>(<span class="number">32</span>); </span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们在修改列属性的时候可以加一些规则，例如不为空，默认为’null’</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employee MODIFY `user_name` <span class="type">VARCHAR</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;null&#x27;</span>; </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><p>create read update delete 增删改查</p>
+<p>我们在之前也曾用到过这一些语句，现在我们系统的来进行学习CRUD</p>
+<h3 id="Insert（增）"><a href="#Insert（增）" class="headerlink" title="Insert（增）"></a>Insert（增）</h3><h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name [(<span class="keyword">column</span>, <span class="keyword">column</span>, ...)] <span class="keyword">VALUES</span> (<span class="keyword">value</span>, <span class="keyword">value</span>, ...)</span><br></pre></td></tr></table></figure>
+
+<p>例如</p>
+<p>创建一张商品表(id int , goods_name varchar(10), price double)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> goods(</span><br><span class="line">`id` <span class="type">int</span>,</span><br><span class="line">`goods_name` <span class="type">varchar</span>(<span class="number">10</span>),</span><br><span class="line">`price` <span class="keyword">double</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其中添加两条数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> goods <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;牙刷&#x27;</span>, <span class="number">10.0</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> goods (id, goods_name) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;牙膏&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from goods;</span><br><span class="line"></span><br><span class="line">+----+------------+-------+</span><br><span class="line">| id | goods_name | price |</span><br><span class="line">+----+------------+-------+</span><br><span class="line">|  <span class="number">1</span> | 牙刷       |    <span class="number">10</span> |</span><br><span class="line">|  <span class="number">2</span> | 牙膏       | NULL  |</span><br><span class="line">+----+------------+-------+</span><br><span class="line"><span class="number">2</span> rows <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0</span>.<span class="number">08</span> sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意细节"><a href="#注意细节" class="headerlink" title="注意细节"></a>注意细节</h4><p>1.插入的数据应该与字段的数据类型相同</p>
+<p>2.数据的长度因该在列的规定范围内</p>
+<p>3.value中列出的数据位置必须于被加入的列的排列位置对应</p>
+<p>4.字符和日期类型数据需要包含在单引号中</p>
+<p>5.列允许插入空值（前期是字段不是NOT NULL）</p>
+<p>6.插入的记录可以有多条，在后续加（），（）即可</p>
+<p>7.如果是表中的所有字段添加数据的时候，可以不写字段名称</p>
+<p>8.默认值的使用，当不给某个字段值的时候，如果有默认值就会添加，否则填入null，如果NOT NULL则报错</p>
+<h3 id="Update（改）"><a href="#Update（改）" class="headerlink" title="Update（改）"></a>Update（改）</h3><h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATA table_name <span class="keyword">SET</span> col_name1 <span class="operator">=</span> expr1 [col_name2 <span class="operator">=</span> expr2] [<span class="keyword">WHERE</span> where_definition]</span><br></pre></td></tr></table></figure>
+
+<p>以下是一个使用案例</p>
+<p>1.将所有的员工薪水修改为5000元</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employee <span class="keyword">SET</span> Salary <span class="operator">=</span> <span class="number">5000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.将力宏的薪水修改为3000元</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employee <span class="keyword">SET</span> Salary <span class="operator">=</span> <span class="number">3000</span> <span class="keyword">WHERE</span> `user_name`<span class="operator">=</span><span class="string">&#x27;力宏&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.将lory的薪水上调1000元</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employee <span class="keyword">SET</span> Salary <span class="operator">=</span> Salary <span class="operator">+</span> <span class="number">1000</span> <span class="keyword">WHERE</span> `user_name`<span class="operator">=</span><span class="string">&#x27;lory&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h4><p>1.UPDATE语法可以指定用新值更新原有表行中的各列</p>
+<p>2.SET子句指定要修改那些列和赋予的哪些值</p>
+<p>3.WHERE子句指定应该更新哪些行，如果没有，则更新所有的行</p>
+<p>4.如果需要修改多个字段，可以通过set 字段1&#x3D; value，set 字段2&#x3D; value…完成，例如如下代码，就顺便进行了id++</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employee <span class="keyword">SET</span> Salary <span class="operator">=</span> Salary <span class="operator">+</span> <span class="number">1000</span>, id <span class="operator">=</span> id <span class="operator">+</span> <span class="number">1</span> <span class="keyword">WHERE</span> `user_name`<span class="operator">=</span><span class="string">&#x27;lory&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Delete（删）"><a href="#Delete（删）" class="headerlink" title="Delete（删）"></a>Delete（删）</h3><h4 id="基本使用-2"><a href="#基本使用-2" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<p>案例</p>
+<p>1.删除用户名为力宏的记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> `user_name`<span class="operator">=</span><span class="string">&#x27;力宏&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.删除表中的所有记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> employee;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用细节-1"><a href="#使用细节-1" class="headerlink" title="使用细节"></a>使用细节</h4><p>1.如果不加WHERE子句，就会删除表中所有的记录</p>
+<p>2.DELETE语句不可以删除某一列的值（可以使用update更新字段为null）</p>
+<p>3.使用DELETE语句尽可以删除表的记录，不可以删除表本身，需要使用DROP删除表</p>
+<h3 id="Select（查）"><a href="#Select（查）" class="headerlink" title="Select（查）"></a>Select（查）</h3><p>算是数据库的一个重点</p>
+<h4 id="基本使用-3"><a href="#基本使用-3" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">DISTINCT</span>] <span class="operator">*</span> <span class="operator">|</span> [column1, colum2, ...] <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<p>其中DISTANCT可选，表示是否去除重复数据</p>
+<p>1.查询所有的员工</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+-----------+------+--------+</span><br><span class="line">| id | user_name | job  | Salary |</span><br><span class="line">+----+-----------+------+--------+</span><br><span class="line">|  <span class="number">1</span> | 李明      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">1</span> | 李明      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">2</span> | 王丽      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">3</span> | 丽华      | NULL |  <span class="number">20003</span> |</span><br><span class="line">|  <span class="number">4</span> | 李儒      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">5</span> | 小明      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">6</span> | lory      | NULL |  <span class="number">20003</span> |</span><br><span class="line">+----+-----------+------+--------+</span><br></pre></td></tr></table></figure>
+
+<p>2.查询非重复的员工（每个字段都相同）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> <span class="operator">*</span> <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+-----------+------+--------+</span><br><span class="line">| id | user_name | job  | Salary |</span><br><span class="line">+----+-----------+------+--------+</span><br><span class="line">|  <span class="number">1</span> | 李明      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">2</span> | 王丽      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">3</span> | 丽华      | NULL |  <span class="number">20003</span> |</span><br><span class="line">|  <span class="number">4</span> | 李儒      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">5</span> | 小明      | NULL |   <span class="number">2000</span> |</span><br><span class="line">|  <span class="number">6</span> | lory      | NULL |  <span class="number">20003</span> |</span><br><span class="line">+----+-----------+------+--------+</span><br><span class="line"><span class="number">6</span> rows <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0</span>.<span class="number">07</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3.SELECT语句可以进行一些运算</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="operator">|</span> (column1 <span class="operator">|</span> expression, column2 <span class="operator">|</span> expression, ...)FROME table_name;</span><br></pre></td></tr></table></figure>
+
+<p>例如在查询科目成绩时可以指定查询的一列为其他的几列相加</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> (english <span class="operator">+</span> math <span class="operator">+</span> chinese) <span class="keyword">as</span> `grades` <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4.SELECT可以使用as语句取别名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name <span class="keyword">as</span> other_name <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `user_name` <span class="keyword">as</span> `name`, `Salary` <span class="keyword">as</span> `money` <span class="keyword">FROM</span> `employee`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+------+-------+</span><br><span class="line">| name | money |</span><br><span class="line">+------+-------+</span><br><span class="line">| 李明 |  <span class="number">2000</span> |</span><br><span class="line">| 李明 |  <span class="number">2000</span> |</span><br><span class="line">| 王丽 |  <span class="number">2000</span> |</span><br><span class="line">| 丽华 | <span class="number">20003</span> |</span><br><span class="line">| 李儒 |  <span class="number">2000</span> |</span><br><span class="line">| 小明 |  <span class="number">2000</span> |</span><br><span class="line">| lory | <span class="number">20003</span> |</span><br><span class="line">+------+-------+</span><br><span class="line"><span class="number">7</span> rows <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0</span>.<span class="number">07</span> sec)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5.和改删一样，SELECT一样可以运用WHERE过滤</p>
+<p>常见的运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;  &lt;  &lt;&#x3D;  &gt;&#x3D;  &#x3D;  &lt;&gt;</td>
+<td>大于 小于 大于等于 小于等于 等于 不等于</td>
+</tr>
+<tr>
+<td>BETWEEN…AND…</td>
+<td>显示在某一区间内的值</td>
+</tr>
+<tr>
+<td>IN(set)</td>
+<td>显示在in列表中的值，如in(100，200)</td>
+</tr>
+<tr>
+<td>[NOT] LIKE ‘张pattern’</td>
+<td>模糊查询</td>
+</tr>
+<tr>
+<td>IS NULL</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>and</td>
+<td>并</td>
+</tr>
+<tr>
+<td>or</td>
+<td>或</td>
+</tr>
+<tr>
+<td>not</td>
+<td>非</td>
+</tr>
+</tbody></table>
+<p>6.使用order by设置排序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="operator">*</span> <span class="operator">|</span> [column1, colum2, ...] <span class="keyword">FROM</span> table_name </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column1 <span class="keyword">asc</span><span class="operator">|</span><span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+
+<p>排序的列可以是表中的列名，也可以select语句中指定的列名</p>
+<p>Asc升序 Desc降序</p>
+<p>ORDER BY 子句应该位于SELECT语句的末尾</p>
+<p>7.group by + having</p>
+<p>使用group by子句对列进行分组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, colum2, ... <span class="keyword">FROM</span> table_name </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">column</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用having子句对分组后的结果过滤</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, colum2, ... <span class="keyword">FROM</span> table_name </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> column1 <span class="keyword">having</span> ...;</span><br></pre></td></tr></table></figure>
+
+<p>使用案例</p>
+<p>1.显示每个部门的平均工资和最高工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sal), <span class="built_in">MAX</span>(sal), deptno <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br></pre></td></tr></table></figure>
+
+<p>2.显示每个部门的每种岗位的平均工资和最低工资</p>
+<p>可以先显示每个部门的平均工资和最低工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sal), <span class="built_in">MIN</span>(sal), deptno <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br></pre></td></tr></table></figure>
+
+<p>还需要再添加一个分组的标准</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sal), <span class="built_in">MIN</span>(sal), deptno, job <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno, job;</span><br></pre></td></tr></table></figure>
+
+<p>3.显示平均工资低于2000的部门号和他的平均工资</p>
+<p>先显示各个部门的平均工资和部门号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sal), deptno <span class="keyword">FROM</span> emp </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br></pre></td></tr></table></figure>
+
+<p>然后运用having进行过滤实现平均工资小于2000</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sal) <span class="keyword">as</span> avg_sal, deptno <span class="keyword">FROM</span> emp </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno</span><br><span class="line"><span class="keyword">HAVING</span> avg_sal <span class="operator">&lt;</span> <span class="number">2000</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>以下是SELECT使用例题：</p>
+<p>1.对数学成绩排序后输出[升序]</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> `math` <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.对总分按照降序排序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` , (`math`<span class="operator">+</span>`english`<span class="operator">+</span>`chinese`) <span class="keyword">as</span> grade <span class="keyword">FROM</span> student <span class="keyword">ORDER</span> <span class="keyword">BY</span> grade <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.对姓李的学生按照成绩排序输出[升序]</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> `name` <span class="keyword">LIKE</span> <span class="string">&#x27;李%&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> (`math`<span class="operator">+</span>`english`<span class="operator">+</span>`chinese`)  <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p>1.查询math大于60并且id大于90的学生成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> `math` <span class="operator">&gt;</span> <span class="number">60</span> <span class="keyword">and</span> id <span class="operator">&gt;</span> <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.查询英语成绩大于语文成绩的同学</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> `math` <span class="operator">&gt;</span> `chinese`;</span><br></pre></td></tr></table></figure>
+
+<p>3.查询总分大于200分并且数学成绩小于语文成绩的韩姓同学</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> (`math`<span class="operator">+</span>`chinese`<span class="operator">+</span>`english`)<span class="operator">&gt;</span><span class="number">200</span> <span class="keyword">and</span> `math`<span class="operator">&lt;</span>`chinese` <span class="keyword">and</span> user_name <span class="keyword">LIKE</span> <span class="string">&#x27;韩%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>4.查询英语成绩在80-90分的同学(闭区间)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> `english` <span class="keyword">BETWEEN</span> <span class="number">80</span> <span class="keyword">AND</span> <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+
+<p>5.查询数学分数为89，90，91的同学</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> student <span class="keyword">WHERE</span> `english` <span class="keyword">IN</span>(<span class="number">89</span>,<span class="number">90</span>,<span class="number">91</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="重要的函数"><a href="#重要的函数" class="headerlink" title="重要的函数"></a>重要的函数</h2><h3 id="Count"><a href="#Count" class="headerlink" title="Count"></a>Count</h3><p>统计函数</p>
+<h4 id="基本使用-4"><a href="#基本使用-4" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">|</span> <span class="built_in">COUNT</span>(<span class="keyword">column</span>) <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<p>count(*)和count(column)区别</p>
+<p>count(*)返回满足条件记录的行数</p>
+<p>count(column)统计满足条件的某列有多少的，但排除对应列为null的情况</p>
+<h4 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h4><p>1.统计班级里一共有几个学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student <span class="keyword">where</span> `grade`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|        <span class="number">7</span> |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
+
+<p>2.统计总分大于300的学生个数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student <span class="keyword">where</span> `grade` <span class="operator">&gt;</span> <span class="number">300</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|        <span class="number">4</span> |</span><br><span class="line">+----------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h3><p>合计函数</p>
+<p>Sum函数返回满足where条件的行的和—一般使用在数值列</p>
+<h4 id="基本使用-5"><a href="#基本使用-5" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(<span class="keyword">column</span>) <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<p>仅对数值起作用</p>
+<h4 id="使用案例-1"><a href="#使用案例-1" class="headerlink" title="使用案例"></a>使用案例</h4><p>1.统计一个班数学总成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(math) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<p>2.统计一个班语文、英语、数学各科的总成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(math),<span class="built_in">SUM</span>(english),<span class="built_in">SUM</span>(chinese) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<p>3.统计一个班语文、英语、数学各科和的总成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(math <span class="operator">+</span> english <span class="operator">+</span> chinese) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<p>4.统计一个班级语文的平均分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(chinese)<span class="operator">/</span><span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<p>或者我们也可以使用AVG统计函数求平均值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(chinese) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h3><h4 id="基本使用-6"><a href="#基本使用-6" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(<span class="keyword">column</span>) <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<p>使用案例如上，不再过多赘述</p>
+<h3 id="MAX-MIN"><a href="#MAX-MIN" class="headerlink" title="MAX&#x2F;MIN"></a>MAX&#x2F;MIN</h3><p>数值范围在统计中特别有用</p>
+<h4 id="基本使用-7"><a href="#基本使用-7" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> MAX<span class="operator">/</span><span class="built_in">MIN</span>(<span class="keyword">column</span>) <span class="keyword">FROM</span> table_name [<span class="keyword">WHERE</span> where_definition];</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用案例-2"><a href="#使用案例-2" class="headerlink" title="使用案例"></a>使用案例</h4><p>1.求班级最高分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(math <span class="operator">+</span> english <span class="operator">+</span> chinese)，<span class="built_in">MIN</span>(math <span class="operator">+</span> english <span class="operator">+</span> chinese) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+<p>2.求出班级数学最高分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(math)，<span class="built_in">MIN</span>(math) <span class="keyword">FROM</span> student;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><table>
+<thead>
+<tr>
+<th>字符串函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CHARSET(str)</td>
+<td>返回字串字符集</td>
+</tr>
+<tr>
+<td>CONCAT(str2 [,…])</td>
+<td>连接字串</td>
+</tr>
+<tr>
+<td>INSTR(string, substring)</td>
+<td>返回substring在string中出现的位置，没有则返回0</td>
+</tr>
+<tr>
+<td>UCASE(str2)</td>
+<td>转为大写</td>
+</tr>
+<tr>
+<td>LCASE(str2)</td>
+<td>转为小写</td>
+</tr>
+<tr>
+<td>LEFT(str2, length)</td>
+<td>从str2中的左边起取length个字符</td>
+</tr>
+<tr>
+<td>LENGTH(string)</td>
+<td>string长度[按照字节]</td>
+</tr>
+<tr>
+<td>REPLACE(str, search_str, replace_str)</td>
+<td>在str中用字符串替换</td>
+</tr>
+<tr>
+<td>STRCMP(str1,str2)</td>
+<td>逐个字符比较两个字符串大小</td>
+</tr>
+<tr>
+<td>SUBSTRING(str, position [length])</td>
+<td>从str的position开始，取length个字符，不写则取完</td>
+</tr>
+<tr>
+<td>LTRIM(str2) RTRIM(str2)</td>
+<td>去除前端空格去除后端空格</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>去除左右两边空格</td>
+</tr>
+</tbody></table>
+<h4 id="基本使用-8"><a href="#基本使用-8" class="headerlink" title="基本使用"></a>基本使用</h4><p>CHARSET(str)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CHARSET(name) <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>返回字符集（utf8）</span><br></pre></td></tr></table></figure>
+
+<p>CONCAT(str2 [,…])</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CONCAT(name, <span class="string">&#x27;job is&#x27;</span>, job) <span class="keyword">as</span> name_job <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>字符串拼接</span><br></pre></td></tr></table></figure>
+
+<p>INSTR(string, substring)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> INSTR(string, <span class="string">&#x27;target&#x27;</span>) <span class="keyword">FROM</span> DUAL;<span class="comment">--其中DUAL是亚元表</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>返回出现位置</span><br></pre></td></tr></table></figure>
+
+<p>UCASE(str2) LCASE(str2)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> UCASE(name) <span class="keyword">FROM</span> emp;<span class="operator">/</span><span class="operator">/</span>转为大写</span><br><span class="line"><span class="keyword">SELECT</span> LCASE(name) <span class="keyword">FROM</span> emp;<span class="operator">/</span><span class="operator">/</span>转为小写</span><br></pre></td></tr></table></figure>
+
+<p>LEFT(str2, length) RIGHT(str2, length)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LEFT</span>(name, <span class="number">2</span>) <span class="keyword">FROM</span> emp;<span class="operator">/</span><span class="operator">/</span>从左取<span class="number">2</span>个字符</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">RIGHT</span>(name, <span class="number">2</span>) <span class="keyword">FROM</span> emp;<span class="operator">/</span><span class="operator">/</span>从右取<span class="number">2</span>个字符</span><br></pre></td></tr></table></figure>
+
+<p>LENGTH(string)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> LENGTH(name) <span class="keyword">FROM</span> emp;<span class="operator">/</span><span class="operator">/</span>返回名字长度</span><br></pre></td></tr></table></figure>
+
+<p>REPLACE(str, search_str, replace_str)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> REPLACE(name, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>) <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>将名字中的a替换为b</span><br></pre></td></tr></table></figure>
+
+<p>STRCMP(str1,str2)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> STRCMP(str1,str2) <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>比较字符串大小 小于返回<span class="number">-1</span> 大于返回<span class="number">1</span> 等于返回<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>SUBSTRING(str, position [length])</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUBSTRING</span>(name, <span class="number">1</span>, <span class="number">2</span>) <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>从第一个位置开始取两个字符</span><br></pre></td></tr></table></figure>
+
+<p>LTRIM(str2)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> LTRIM(<span class="string">&#x27; 名字&#x27;</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span><span class="string">&#x27;名字&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h4><p>以首字母小写的方式显示所有员工emp表的名字</p>
+<p>取出第一个字符转为小写然后和后面的字符拼接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CONCAT(LCASE(<span class="keyword">LEFT</span>(name, <span class="number">1</span>)),</span><br><span class="line"><span class="built_in">SUBSTRING</span>(name,<span class="number">2</span>,LENGTH(name))) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>有很多，我挑几个常用的</p>
+<h4 id="ABS-num"><a href="#ABS-num" class="headerlink" title="ABS(num)"></a>ABS(num)</h4><p>绝对值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">ABS</span>(<span class="number">-1</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="CEILING-number"><a href="#CEILING-number" class="headerlink" title="CEILING(number)"></a>CEILING(number)</h4><p>向上取整，得到比number大的最小整数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CEILING</span>(<span class="number">1.34</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="FLOOR-number"><a href="#FLOOR-number" class="headerlink" title="FLOOR(number)"></a>FLOOR(number)</h4><p>向下取整，得到比number小的最大整数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">FLOOR</span>(<span class="number">1.34</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="RAND-seed"><a href="#RAND-seed" class="headerlink" title="RAND([seed])"></a>RAND([seed])</h4><p>随机数范围为[0,1,0]</p>
+<p>不加种子返回的数每次都不同</p>
+<p>种子指定后返回的数不变</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> RAND(<span class="number">6</span>) <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="日期相关函数"><a href="#日期相关函数" class="headerlink" title="日期相关函数"></a>日期相关函数</h3><p>对于日期而言也有非常多的相关函数，有点小多，在这里不过多介绍，即查即用</p>
+<h3 id="加密函数于系统函数"><a href="#加密函数于系统函数" class="headerlink" title="加密函数于系统函数"></a>加密函数于系统函数</h3><h4 id="USER"><a href="#USER" class="headerlink" title="USER()"></a>USER()</h4><p>显示登录到mysql有哪些用户以及登陆的IP</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>() <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------------+</span><br><span class="line">| user()         |</span><br><span class="line">+----------------+</span><br><span class="line">| root@localhost |</span><br><span class="line">+----------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="DATABASE"><a href="#DATABASE" class="headerlink" title="DATABASE()"></a>DATABASE()</h4><p>查询使用数据库名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> DATABASE() <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+------------+</span><br><span class="line">| DATABASE() |</span><br><span class="line">+------------+</span><br><span class="line">| dbtest     |</span><br><span class="line">+------------+</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MD5-str"><a href="#MD5-str" class="headerlink" title="MD5(str)"></a>MD5(str)</h4><p>为字符串计算出一个MD5 32的字符串，常用为用户密码加密(32位)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> MD5(<span class="string">&#x27;密码&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+----------------------------------+</span><br><span class="line">| MD5(&#x27;密码&#x27;)                      |</span><br><span class="line">+----------------------------------+</span><br><span class="line">| a8105204604a0b11e916f3879aae3b0b |</span><br><span class="line">+----------------------------------+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">user</span> <span class="keyword">SET</span> `password`<span class="operator">=</span>MD5(<span class="number">654321</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="PASSWORD-str"><a href="#PASSWORD-str" class="headerlink" title="PASSWORD(str)"></a>PASSWORD(str)</h4><p>加密函数，是MySQL使用的加密方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> mysql.user</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>其中的$A$<span class="number">005</span>$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED就是加密后的密码</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h3><h4 id="IF-expr1-expr2-expr3"><a href="#IF-expr1-expr2-expr3" class="headerlink" title="IF(expr1,expr2,expr3)"></a>IF(expr1,expr2,expr3)</h4><p>如果表达式1为真，返回expr2，否则返回expr3</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> IF(<span class="literal">TRUE</span>, <span class="string">&#x27;BEIJING&#x27;</span>, <span class="string">&#x27;SHANGHAI&#x27;</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span>BEIJING</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="IFNULL-expr1-expr2"><a href="#IFNULL-expr1-expr2" class="headerlink" title="IFNULL(expr1,expr2)"></a>IFNULL(expr1,expr2)</h4><p>如果表达式1为NULL，返回expr1，否则返回expr2</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> IFNULL(<span class="string">&#x27;BEIJING&#x27;</span>, <span class="string">&#x27;SHANGHAI&#x27;</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span>BEIJING</span><br><span class="line"><span class="keyword">SELECT</span> IFNULL(<span class="string">&#x27;NULL&#x27;</span>, <span class="string">&#x27;SHANGHAI&#x27;</span>) <span class="keyword">FROM</span> DUAL;<span class="operator">/</span><span class="operator">/</span>SHANGHAI</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="多分支函数"><a href="#多分支函数" class="headerlink" title="多分支函数"></a>多分支函数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> </span><br><span class="line"><span class="keyword">WHEN</span> expr1 <span class="keyword">THEN</span> expr2 </span><br><span class="line"><span class="keyword">WHEN</span> expr3 <span class="keyword">THEN</span> expr4 </span><br><span class="line"><span class="keyword">ELSE</span> expr5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> </span><br><span class="line"><span class="keyword">WHEN</span> <span class="literal">FALSE</span> <span class="keyword">THEN</span> expr2 </span><br><span class="line"><span class="keyword">WHEN</span> <span class="literal">TRUE</span> <span class="keyword">THEN</span> expr4 </span><br><span class="line"><span class="keyword">ELSE</span> expr5 <span class="keyword">END</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>返回expr2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="例题-3"><a href="#例题-3" class="headerlink" title="例题"></a>例题</h4><p>查询emp表，如果comm是null，就显示0.0</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, IF(comm <span class="keyword">IS</span> <span class="keyword">NULL</span>, <span class="number">0.0</span>, comm) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, IFNULL(comm, <span class="number">0.0</span>) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果emp表的job是CLERK则显示职员，如果是MANAGER则显示经理，如果是SALESMAN就显示销售人员，其他正常显示</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, (</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CASE</span> </span><br><span class="line"><span class="keyword">WHEN</span> job<span class="operator">=</span><span class="string">&#x27;CLERK&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;职员&#x27;</span> </span><br><span class="line"><span class="keyword">WHEN</span> job<span class="operator">=</span><span class="string">&#x27;MANAGER&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;经理&#x27;</span> </span><br><span class="line"><span class="keyword">WHEN</span> job<span class="operator">=</span><span class="string">&#x27;SALESMAN&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;销售人员&#x27;</span> </span><br><span class="line"><span class="keyword">ELSE</span> job <span class="keyword">END</span>) <span class="keyword">AS</span> <span class="string">&#x27;job&#x27;</span></span><br><span class="line"><span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
+
+<p>以上就是MySQL的基本语句，查询的基础部分，和一些常见的函数，我们明天会进入增强查询（多表查询）</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%EF%BC%89/"
+      title="MySQL课堂笔记（基本使用，数据类型，备份恢复）"
+     >
+
+    <p class="title-text">
+      
+        MySQL课堂笔记（基本使用，数据类型，备份恢复）
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Thrinisty<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

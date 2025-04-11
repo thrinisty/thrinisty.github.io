@@ -162,7 +162,7 @@
    
 
 
-<article id="post-MySQL课堂笔记（副本）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-MySQL课堂笔记（） - 副本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,88 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/">MySQL课堂笔记（基本配置）</a>
+        <a class="p-name article-title" href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89%20-%20%E5%89%AF%E6%9C%AC/">MySQL课堂笔记（修改表，CRUD，常用函数）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-11T06:00:00.000Z" itemprop="datePublished">2025-04-11</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              MySQL笔记修改表我们修改表可以通过图形化界面进行修改，这一般比较方便，但是有一些限制，例如需要批量修改，条件限制的情况，我们也需要学会通过指令来对于表进行操作
+添加列12ALTER TABLE table_name ADD(column datatype [DEFAULT expr], column datatype [DEFAULT expr]...);
+
+修改列12ALTER TABLE table_name MODIFY(column datatype [DEFAULT expr], column datatype [DEFAULT expr]...);
+
+删除列1ALTER TABLE table_name DROP(column);
+
+重命名表1RENAME TABLE `oldTable` TO `newTable`;
+
+查看表结构1desc newtable;
+
+12345678910111213+------------+-------------+------+-----+---------+-------+| Field      | Type      ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89%20-%20%E5%89%AF%E6%9C%AC/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-MySQL课堂笔记（基本使用，数据类型，备份恢复）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%EF%BC%89/">MySQL课堂笔记（基本使用，数据类型，备份恢复）</a>
       </h1>
     
   
@@ -192,7 +273,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.6k words 
+            6k words 
           </div>
         </div>
         
@@ -201,7 +282,7 @@
         
           <div class="truncate-text">
             
-              MySQL​	在40天的学习后，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。
+              MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。
 ​	而从今天开始我将开始数据库的学习，预计10天完成MySQL数据库基本操作的学习，以及运用JDBC完成一个实战项目
 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的理解数据库以及更好的使用数据库，我决定再次回顾相关知识点，并且整理笔记
 MySQL的基本使用关于MySQL的安装我就不过多赘述，因为之前也安装过了，详见各大网站上的安装使用教程照着安装即可
@@ -217,7 +298,7 @@ MySQL启动服务在我这里因为安装的时候设置为开机自动启用，
 1sc query MySQL80
 
 显示MySQL80在运行状态
-12345678SERVICE_NAME: MySQL80        TYPE               ...
+12345678SERVICE_NAME: MySQL80        TYPE           ...
             
           </div>
         
@@ -229,7 +310,7 @@ MySQL启动服务在我这里因为安装的时候设置为开机自动启用，
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/" 
+      href="/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -850,82 +931,6 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
     <a class="right-panel  non-pic  "
       
       href="/2025/04/01/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（Math，Arrays，System，大数处理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/31/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Math%EF%BC%8CArrays%EF%BC%8CSystem%EF%BC%8C%E5%A4%A7%E6%95%B0%E5%A4%84%E7%90%86%EF%BC%89/">Java课堂笔记（Math，Arrays，System，大数处理）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-31T03:18:00.000Z" itemprop="datePublished">2025-03-31</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            13k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记MathMath类包含了执行基本数学运算的方法，如初等函数，对数，平方根，三角函数
-常用的方法abs求绝对值12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.abs(-123));//123    &#125;&#125;
-
-pow求幂12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.pow(2, 4));//16.0    &#125;&#125;
-
-ceil向上取整返回大于等于这个数的最小整数
-12345public class Math01 &#123;    public static void main(String[] args) &#123;        System.out.println(Math.ceil...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/31/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88Math%EF%BC%8CArrays%EF%BC%8CSystem%EF%BC%8C%E5%A4%A7%E6%95%B0%E5%A4%84%E7%90%86%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
