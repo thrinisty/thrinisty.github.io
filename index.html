@@ -162,7 +162,7 @@
    
 
 
-<article id="post-MySQL课堂笔记（） - 副本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-MySQL课堂笔记（增强查询，多表查询，外连接，子查询，约束）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,81 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89%20-%20%E5%89%AF%E6%9C%AC/">MySQL课堂笔记（修改表，CRUD，常用函数）</a>
+        <a class="p-name article-title" href="/2025/04/13/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A2%9E%E5%BC%BA%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%96%E8%BF%9E%E6%8E%A5%EF%BC%8C%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%8C%E7%BA%A6%E6%9D%9F%EF%BC%89/">MySQL课堂笔记（增强查询，多表查询，外连接，子查询，约束）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-13T06:45:00.000Z" itemprop="datePublished">2025-04-13</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            20k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              MySQLMySQL表查询在实际开发的过程中，我们需要用到的查询不只有前面的简单查询，我们还需要学习一些更为符合实际的查询方式，如日期查询，多表查询等
+相关表格我们先来建立几个表格，填入响应数据
+员工表emp12345678910CREATE TABLE emp (	`empno` INT,	`ename` VARCHAR ( 30 ),	`job` VARCHAR ( 20 ),	`mgr` INT,	`hiredate` DATE,	`sal` DOUBLE,	`comm` DOUBLE,`deptno` INT );
+
+12345678INSERT INTO empVALUES	( 7396, &#x27;SMITH&#x27;, &#x27;CLERK&#x27;, 7902, &#x27;1990-12-17&#x27;, 800.00, NULL, 20 ),	( 7499, &#x27;ALLEN&#x27;, &#x27;SALESMAN&#x27;, 7902, &#x27;1991-02-20&#x27;, 1600.00, 300.00, 30 ),	( 7...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/13/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A2%9E%E5%BC%BA%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%96%E8%BF%9E%E6%8E%A5%EF%BC%8C%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%8C%E7%BA%A6%E6%9D%9F%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-MySQL课堂笔记（修改表，CRUD，常用函数）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BF%AE%E6%94%B9%E8%A1%A8%EF%BC%8CCRUD%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89/">MySQL课堂笔记（修改表，CRUD，常用函数）</a>
       </h1>
     
   
@@ -224,7 +298,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89%20-%20%E5%89%AF%E6%9C%AC/" 
+      href="/2025/04/11/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BF%AE%E6%94%B9%E8%A1%A8%EF%BC%8CCRUD%EF%BC%8C%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -861,76 +935,6 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
     <a class="right-panel  non-pic  "
       
       href="/2025/04/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%B8%80%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-MySQL课堂笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/">MySQL课堂笔记（）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-31T21:08:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              MySQL笔记
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
