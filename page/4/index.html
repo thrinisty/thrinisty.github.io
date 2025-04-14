@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（递归专题）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/">Java课堂笔记（递归专题）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-07T03:08:00.000Z" itemprop="datePublished">2025-03-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.6k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Java中的递归递归在算法中属于比较复杂的一类了，在这里也希望在 java 的学习中复习算法
+一个简单的入门案例
+1234567891011121314151617public class Object&#123;	public static void main(String[] args) &#123;		Tool Mytool = new Tool();		Mytool.test(4);	&#125;&#125;class Tool&#123;	public void test(int n) &#123;		if(n &gt; 2) &#123;			test(n - 1);		&#125;		System.out.println(n);	&#125;&#125;
+
+
+运行结果
+123234
+
+要等递归的方法结束后才执行递归调用主体函数中的输出，所以结果是从2到4
+计算阶乘
+12345678910111213141516public class Object&#123;	public static void main(String[] args) &#123;		To...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（类与对象，方法，属性，对象的克隆）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -855,95 +935,6 @@ tar -zcf...
     <a class="right-panel  non-pic  "
       
       href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-vim入门" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/18/vim%E5%85%A5%E9%97%A8/">Vim入门</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-18T13:08:03.000Z" itemprop="datePublished">2025-02-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            267 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              VIMvim stdio.h 如果有则进入如果没有则创建文件
-三种模式命令模式（默认进入）yy复制一行  10yy复制十行
-p粘贴
-dd剪切
-u撤销
-x删除一个字符
-shift g跳到最后一行
-gg回到第一行
-*用于查找
-shift z
-插入模式（Insert编辑）通过i或者a按键进入，esc退出并进入命令模式
-底行模式（通过命令模式下进入）：:w保存 q退出 wq保存退出 wq! 强制保存退出
-:10跳到10行
-：nohl消除高亮
-:set nonu 去除行号
-:set nu 加上行号
-:%s&#x2F;old&#x2F;new替换
-&#x2F;进入底行模式用于查找
-如&#x2F;main
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/18/vim%E5%85%A5%E9%97%A8/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

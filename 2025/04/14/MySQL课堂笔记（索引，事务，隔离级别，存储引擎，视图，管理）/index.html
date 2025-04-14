@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="MySQL自增长我们再插入记录的时候有的时候需要有的数据从1开始自动增长，我们这个时候就要运用到自增长 基本使用方式：在定义的时候设置auto_increment字段 1字段名称 整形 primary key auto_increment  插入记录的时候填入null 12345CREATE TABLE dept ( &#96;deptno&#96; INT primary key auto_increment,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）">
+<meta property="og:url" content="http://example.com/2025/04/14/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%8C%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%8C%E8%A7%86%E5%9B%BE%EF%BC%8C%E7%AE%A1%E7%90%86%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MySQL自增长我们再插入记录的时候有的时候需要有的数据从1开始自动增长，我们这个时候就要运用到自增长 基本使用方式：在定义的时候设置auto_increment字段 1字段名称 整形 primary key auto_increment  插入记录的时候填入null 12345CREATE TABLE dept ( &#96;deptno&#96; INT primary key auto_increment,">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/111.png">
+<meta property="og:image" content="http://example.com/images/112.png">
+<meta property="article:published_time" content="2025-04-14T01:15:00.000Z">
+<meta property="article:modified_time" content="2025-04-14T13:45:00.435Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/111.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/1.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Thrinisty </div>
+      <div class="dot"></div>
+      <div class="subtitle">苦逼大学生来的 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-14T01:15:00.000Z" itemprop="datePublished">2025-04-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="自增长"><a href="#自增长" class="headerlink" title="自增长"></a>自增长</h2><p>我们再插入记录的时候有的时候需要有的数据从1开始自动增长，我们这个时候就要运用到自增长</p>
+<p>基本使用方式：在定义的时候设置auto_increment字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名称 整形 <span class="keyword">primary</span> key auto_increment</span><br></pre></td></tr></table></figure>
+
+<p>插入记录的时候填入null</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dept ( </span><br><span class="line">`deptno` <span class="type">INT</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line">`dname` <span class="type">VARCHAR</span> ( <span class="number">30</span> ), </span><br><span class="line">`loc` <span class="type">VARCHAR</span> ( <span class="number">30</span> ) </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept <span class="keyword">values</span>(<span class="keyword">null</span>, <span class="string">&#x27;ddd&#x27;</span>, <span class="string">&#x27;beijing&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要自增需要从10开始，你也可以修改auto_increment设置</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> dept AUTO_INCREMENT <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>插入数据的时候子增值字段也可以不使用null，而插入一个具体的值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> dept <span class="keyword">values</span>(<span class="number">50</span>, <span class="string">&#x27;ddd&#x27;</span>, <span class="string">&#x27;beijing&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>补充：设置自增步长</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. 首先设置全局自增步长</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="variable">@auto_increment_increment</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 然后修改表的自增值</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> dept AUTO_INCREMENT <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>索引可以在添加一定的代价后(占据更大大空间)，极大地增加查询（90%）的速度，而对于增删改（10%）会有一定的速率影响</p>
+<h3 id="基本使用方式"><a href="#基本使用方式" class="headerlink" title="基本使用方式"></a>基本使用方式</h3><p>添加索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] INDEX 索引名称 <span class="keyword">on</span> 表名(字段);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> index 索引名称(字段);</span><br></pre></td></tr></table></figure>
+
+<p>删除索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> index 索引名称 <span class="keyword">on</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p>删除主键索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dept <span class="keyword">drop</span> <span class="keyword">primary</span> key;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><p>1.主键索引，主键自动的为主键添加索引（primary key）</p>
+<p>2.唯一索引（unique），在创建表的时候，添加为唯一索引</p>
+<p>3.普通索引（index）</p>
+<p>4.全文索引（fulltext）在实际使用的时候一般不使用自带的全文索引往往切换为Solr或者ElasticSearch</p>
+<p>显示来自于dept的索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> index <span class="keyword">from</span> dept;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> keys <span class="keyword">from</span> dept;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> indexes <span class="keyword">from</span> dept;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>为以下的表格添加主键索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> `<span class="keyword">order</span>` (</span><br><span class="line">`id` <span class="type">int</span>,</span><br><span class="line">`name` <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">`p_name` <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">`count` <span class="type">int</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> `<span class="keyword">order</span>` <span class="keyword">add</span> <span class="keyword">unique</span> index id_index (id);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> index id_index <span class="keyword">on</span> `<span class="keyword">order</span>`(id);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建索引规则"><a href="#创建索引规则" class="headerlink" title="创建索引规则"></a>创建索引规则</h3><p>1.较为频繁作为查询条件字段应该创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：一个学校中的学生id</span><br></pre></td></tr></table></figure>
+
+<p>2.唯一性太差的字段不适合单独创建索引，即使查询频繁</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：学生的性别</span><br></pre></td></tr></table></figure>
+
+<p>3.更新非常频繁的字段不适合创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：学生账号的登录次数</span><br></pre></td></tr></table></figure>
+
+<p>4.不会出现在where子句中的字段不该创建索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：学生信息表中的详细的家庭住址</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h3><p>事务用于保证数据的一致性，它由一组相关的dml语句组成，改组的dml语句要么全部执行，要么全部失败，例如在转账的时候就需要使用事务来处理，以保证数据的一致性</p>
+<p>事务和锁</p>
+<p>当执行事务操作的时候，mysql会在表上加锁，防止其他用户修改表的数据，这对于用户而言非常重要</p>
+<h3 id="引用示例"><a href="#引用示例" class="headerlink" title="引用示例"></a>引用示例</h3><p>我们现在有一个运用场景，有如下的一张表格代表两个用户的银行账户信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> balance (</span><br><span class="line">`id` <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">`name` <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">`money` <span class="keyword">double</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> balance <span class="keyword">values</span></span><br><span class="line">(<span class="number">100</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="number">3000.00</span>),</span><br><span class="line">(<span class="number">200</span>,<span class="string">&#x27;king&#x27;</span>,<span class="number">6000</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们现在有如下需求：</p>
+<p>将tom的100块钱转移到king的账户下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> balance <span class="keyword">set</span> money <span class="operator">=</span> money<span class="number">-100</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">100</span>;</span><br><span class="line"><span class="keyword">update</span> balance <span class="keyword">set</span> money <span class="operator">=</span> money<span class="operator">+</span><span class="number">100</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但是假如我们的数据库运行出现问题：第一条转账语句成功但是第二条失败，则tom转出的100块钱就凭空消失了，这个时候我们就需要运用到事务操作，将两条语句当为一个整体执行（要么全部执行成功，要么失败）</p>
+<h3 id="事务基本操作"><a href="#事务基本操作" class="headerlink" title="事务基本操作"></a>事务基本操作</h3><h4 id="start-transaction"><a href="#start-transaction" class="headerlink" title="start transaction"></a>start transaction</h4><p>开始一个事务</p>
+<h4 id="savepoint"><a href="#savepoint" class="headerlink" title="savepoint"></a>savepoint</h4><p>保存点名–设置保存点</p>
+<h4 id="rollback-to"><a href="#rollback-to" class="headerlink" title="rollback to"></a>rollback to</h4><p>保存点名–回退事务</p>
+<h4 id="rollback"><a href="#rollback" class="headerlink" title="rollback"></a>rollback</h4><p>回退全部的事务</p>
+<h4 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h4><p>提交事务，所有的操作生效，不可以回退</p>
+<p>我们现在回到我们的实际案例上面</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">start</span> transaction; <span class="comment">--设置了事物的开始</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">savepoint</span> a;  <span class="comment">--保存点a</span></span><br><span class="line"><span class="keyword">update</span> balance <span class="keyword">set</span> money <span class="operator">=</span> money<span class="number">-100</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">100</span>;<span class="comment">--dml</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">savepoint</span> b;  <span class="comment">--保存点a</span></span><br><span class="line"><span class="keyword">update</span> balance <span class="keyword">set</span> money <span class="operator">=</span> money<span class="operator">+</span><span class="number">100</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">200</span>;<span class="comment">--dml</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ROLLBACK</span>;  <span class="comment">--回滚</span></span><br><span class="line"><span class="keyword">commit</span>;  <span class="comment">--提交</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> balance;</span><br></pre></td></tr></table></figure>
+
+<p>执行这样一段代码的话，数据不会被更改，因为进行了回滚，如果删除回滚在进行提交，执行成功，tom的100元给到了king</p>
+<p>回退事务：当执行回退事物的时候，通过指定的保存点就可以回退到指定的点</p>
+<p>提交事务：使用commit进行提交，执行了commit后就会确认事务的变化，结束事务，删除保存点，释放锁，数据生效。当使用commit语句结束事务以后，其他的会话可以查看到事物变化后的新数据</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1.如果不开始事务，默认情况下，dml操作是自动提交的，不可以进行回滚</p>
+<p>2.如果开始一个事务，没有创建保存点，可以执行rollback操作，默认回滚到事务开始的状态</p>
+<p>3.可以在事务还没有提交的时候，创建多个保存点</p>
+<p>4.可以在事务还没有提交的时候，选择回退到哪个保存点</p>
+<p>5.mysql事务机制需要innodb存储引擎，myisam不可以使用事务机制</p>
+<h3 id="事务的acid特性"><a href="#事务的acid特性" class="headerlink" title="事务的acid特性"></a>事务的acid特性</h3><p>（atomicity）原子性：原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生</p>
+<p>（consistency）一致性：事务必须使数据库从一个一致性状态变换到另一个一致性状态</p>
+<p>（isolation）隔离性：事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离</p>
+<p>（durability）持久性：持久性是指一个事务一旦被提交，他对于数据库中的数据的改变就是永久的，接下来即使数据库发生故障可而不应该对其有任何的影响</p>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p>脏读：当一个事务读取另一个事务尚未提交的修改时，产生脏读</p>
+<p>不可重复读：同一查询在同一事物中多次进行，由于其他提交事务所做的修改或者删除，每次返回结果不同的结果集，产生不可重复读</p>
+<p>幻读：同意查询在同一事物中多次进行，由于其他提交事务的插入操作，每次返回不同的结果集，产生了幻读</p>
+<h3 id="事务隔离表格"><a href="#事务隔离表格" class="headerlink" title="事务隔离表格"></a>事务隔离表格</h3><p>事务隔离级别：MySQL隔离级别定义了事物与事务之间的隔离程度</p>
+<table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th>丢失修改</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">读未提交</td>
+<td>不会发生</td>
+<td>可能发生</td>
+<td>可能发生</td>
+<td>可能发生</td>
+</tr>
+<tr>
+<td align="center">读已提交</td>
+<td>不会发生</td>
+<td>不会发生</td>
+<td>可能发生</td>
+<td>可能发生</td>
+</tr>
+<tr>
+<td align="center">可重复读</td>
+<td>不会发生</td>
+<td>不会发生</td>
+<td>不会发生</td>
+<td>可能发生</td>
+</tr>
+<tr>
+<td align="center">可串行化</td>
+<td>不会发生</td>
+<td>不会发生</td>
+<td>不会发生</td>
+<td>不会发生</td>
+</tr>
+</tbody></table>
+<h3 id="Mysql中解决幻读"><a href="#Mysql中解决幻读" class="headerlink" title="Mysql中解决幻读"></a>Mysql中解决幻读</h3><p>Mysql中的默认隔离级别是可重复读，但是在使用innodb引擎的时候不会发生幻读，原因如下</p>
+<p>InnoDB 存储引擎通过多版本并发控制(MVCC, Multi-Version Concurrency Control)机制，在”可重复读”(Repeatable Read)隔离级别下有效解决了幻读问题。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">普通<span class="keyword">SELECT</span>操作(快照读)</span><br><span class="line">通过ReadView判断哪些版本对当前事务可见</span><br><span class="line">总是读取事务开始时的一致性快照</span><br><span class="line">其他事务的插入操作不会影响当前事务的查询结果</span><br><span class="line"></span><br><span class="line">当前读操作</span><br><span class="line">对于<span class="keyword">SELECT</span> ... <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>、<span class="keyword">UPDATE</span>、<span class="keyword">DELETE</span>等操作：</span><br><span class="line">InnoDB会加Next<span class="operator">-</span>Key Lock(记录锁<span class="operator">+</span>间隙锁)</span><br><span class="line">防止其他事务在查询范围内插入新记录</span><br><span class="line">从而彻底解决幻读问题</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">START</span> TRANSACTION;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> <span class="number">1</span>; <span class="comment">-- 看到3,5</span></span><br><span class="line"><span class="comment">-- 此时事务B插入id=4并提交</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> <span class="number">1</span>; <span class="comment">-- 仍然只看到3,5(快照读)</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> id <span class="operator">&gt;</span> <span class="number">1</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>; <span class="comment">-- 会看到3,4,5(当前读)</span></span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在可重复读隔离级别下，普通SELECT不会看到事务B插入的id&#x3D;4，而加锁的SELECT会看到并锁定这些记录。</p>
+<h3 id="读已提交和可重复读"><a href="#读已提交和可重复读" class="headerlink" title="读已提交和可重复读"></a>读已提交和可重复读</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">读已提交(Read Committed)</th>
+<th align="left">可重复读(Repeatable Read)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>数据可见性规则</strong></td>
+<td align="left">总是看到最新已提交的数据</td>
+<td align="left"><strong>看到事务开始时的数据快照</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>锁机制</strong></td>
+<td align="left">语句级锁(执行完立即释放)</td>
+<td align="left">事务级锁(保持到事务结束)</td>
+</tr>
+<tr>
+<td align="left"><strong>不可重复读</strong></td>
+<td align="left">可能发生</td>
+<td align="left">不会发生</td>
+</tr>
+<tr>
+<td align="left"><strong>性能</strong></td>
+<td align="left">较高</td>
+<td align="left">中等</td>
+</tr>
+</tbody></table>
+<h3 id="可重复读和可串行化"><a href="#可重复读和可串行化" class="headerlink" title="可重复读和可串行化"></a>可重复读和可串行化</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">可重复读(Repeatable Read)</th>
+<th align="left">可串行化(Serializable)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>并发控制原理</strong></td>
+<td align="left">MVCC(多版本并发控制)为主</td>
+<td align="left">严格的二阶段封锁协议</td>
+</tr>
+<tr>
+<td align="left"><strong>读取行为</strong></td>
+<td align="left">快照读(非锁定读)</td>
+<td align="left">所有读自动转为锁定读(S锁)</td>
+</tr>
+<tr>
+<td align="left"><strong>写入行为</strong></td>
+<td align="left">需要时加X锁</td>
+<td align="left">总是加X锁</td>
+</tr>
+<tr>
+<td align="left"><strong>锁范围</strong></td>
+<td align="left">仅锁定实际访问的行和间隙</td>
+<td align="left">更大范围的锁(更保守)</td>
+</tr>
+<tr>
+<td align="left"><strong>性能</strong></td>
+<td align="left">高并发，读不阻塞写</td>
+<td align="left">低并发，读写相互阻塞</td>
+</tr>
+</tbody></table>
+<h3 id="常用代码"><a href="#常用代码" class="headerlink" title="常用代码"></a>常用代码</h3><h4 id="查看隔离级别"><a href="#查看隔离级别" class="headerlink" title="查看隔离级别"></a>查看隔离级别</h4><p>可以通过以下代码查看数据库设置的隔离级别</p>
+<p>MySQL 5.7及之前版本</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@tx_isolation</span>;</span><br></pre></td></tr></table></figure>
+
+<p>MySQL 8.0及之后版本</p>
+<p>查看系统当前隔离级别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> @<span class="variable">@transaction_isolation</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------------------------+</span></span><br><span class="line"><span class="operator">|</span> @<span class="variable">@transaction_isolation</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------------------+</span></span><br><span class="line"><span class="operator">|</span> REPEATABLE<span class="operator">-</span>READ         <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>可见Mysql的默认隔离级别为可重复读</p>
+<h4 id="设置隔离级别"><a href="#设置隔离级别" class="headerlink" title="设置隔离级别"></a>设置隔离级别</h4><p>设置当前会话隔离级别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> SESSION TRANSACTION ISOLATION LEVEL 隔离级别;</span><br></pre></td></tr></table></figure>
+
+<p>设置系统当前隔离级别</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">global</span> TRANSACTION ISOLATION LEVEL 隔离级别;</span><br></pre></td></tr></table></figure>
+
+<h5 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> SESSION TRANSACTION ISOLATION LEVEL read uncommitted;</span><br></pre></td></tr></table></figure>
+
+<h5 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> SESSION TRANSACTION ISOLATION LEVEL read committed;</span><br></pre></td></tr></table></figure>
+
+<h5 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> SESSION TRANSACTION ISOLATION LEVEL repeatable read;</span><br></pre></td></tr></table></figure>
+
+<h5 id="可串行化"><a href="#可串行化" class="headerlink" title="可串行化"></a>可串行化</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> SESSION TRANSACTION ISOLATION LEVEL serializable;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2><p>1.MySQL的表类型由存储引擎决定，主要包括MYISAM，InnoDB，Memory</p>
+<p>2.MySQL数据表只要支持六种类型：CSV，Memory，ARCHIVE，MRG_MYISAM，MYISAM，InnoDB</p>
+<p>3.这两种存储又分为两种：一类是事务安全型，例如InnoDB，其余为第二类，称为非事务安全型</p>
+<p>在MySQL中可以使用如下的指令查看存储引擎</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> ENGINES;</span><br></pre></td></tr></table></figure>
+
+<h3 id="引擎比较"><a href="#引擎比较" class="headerlink" title="引擎比较"></a>引擎比较</h3><p>接下来来比较InnoDB、Myisam、Memory、Archive之间的优缺点：</p>
+<table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">InnoDB</th>
+<th align="left">MyISAM</th>
+<th align="left">Memory</th>
+<th align="left">Archive</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">事务支持</td>
+<td align="left">支持</td>
+<td align="left">不支持</td>
+<td align="left">不支持</td>
+<td align="left">不支持</td>
+</tr>
+<tr>
+<td align="left">锁定级别</td>
+<td align="left">行级锁</td>
+<td align="left">表锁</td>
+<td align="left">表锁</td>
+<td align="left">行锁(仅插入)</td>
+</tr>
+<tr>
+<td align="left">外键支持</td>
+<td align="left">支持</td>
+<td align="left">不支持</td>
+<td align="left">不支持</td>
+<td align="left">不支持</td>
+</tr>
+<tr>
+<td align="left">存储位置</td>
+<td align="left">磁盘</td>
+<td align="left">磁盘</td>
+<td align="left">内存</td>
+<td align="left">磁盘</td>
+</tr>
+<tr>
+<td align="left">压缩能力</td>
+<td align="left">中等</td>
+<td align="left">低</td>
+<td align="left">无</td>
+<td align="left">极高</td>
+</tr>
+<tr>
+<td align="left">崩溃恢复</td>
+<td align="left">优秀</td>
+<td align="left">差</td>
+<td align="left">无(数据丢失)</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">全文索引</td>
+<td align="left">5.6+支持</td>
+<td align="left">支持</td>
+<td align="left">不支持</td>
+<td align="left">不支持</td>
+</tr>
+<tr>
+<td align="left">适用场景</td>
+<td align="left">高并发OLTP</td>
+<td align="left">读密集型</td>
+<td align="left">临时&#x2F;缓存</td>
+<td align="left">归档存储</td>
+</tr>
+</tbody></table>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>1.MyISAM不支持事务、也不支持外键、但是访问速度极快、对于事物完整性没有要求</p>
+<p>2.InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全、但是相比于MyISAM存储引擎，InnoDB写的处理效率差一些并且会占用更多的从磁盘空间以保留数据和索引</p>
+<p>3.Memory存储引擎使用存在内存中的内容来创建表，每个Memory表只实际对应一个磁盘文件，该类型的表访问速度极快，因为数据是存放在内存中的，并且默认使用了Hash索引，但是MySQL服务关闭，表中的数据就会丢失，表的结构还在</p>
+<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p>修改存储引擎</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> talble 表名 engine <span class="operator">=</span> 存储引擎;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> balance engine <span class="operator">=</span> innodb;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个MyISAM存储引擎的表，无法使用事务</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> balance (</span><br><span class="line">`id` <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">`name` <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">`money` <span class="keyword">double</span></span><br><span class="line">) ENGINE MYISAM;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个Memory存储引擎的表，支持Hash索引，执行速度很快</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> balance (</span><br><span class="line">`id` <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">`name` <span class="type">varchar</span>(<span class="number">32</span>),</span><br><span class="line">`money` <span class="keyword">double</span></span><br><span class="line">) ENGINE Memory;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.如果应用不需要事务，处理的只是基本的增删改查，那么MyISAM是绝佳的选择，速度快</p>
+<p>2.需要事务支持，就选择InnoDB</p>
+<p>3.Memory存储引擎将数据存在内存中，由于没有磁盘的IO等待，速度非常快，但数据不持久</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>我们有的时候需要将表中的某几个字段显示使用（有权限需要，不能够每个人都使用select查询整一张表格），我们可以将这几个字段拿出来做成一个视图，还可以将视图的查看权限赋予某个用户</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>视图是一个虚拟表，其内容由查询定义，同真实的表一样，视图包含列，数据来自于对应的真实表（基表）</p>
+<p>1.视图是根据基表（可以多个基表）来创建的，视图是虚拟的表</p>
+<p>2.视图也有列，数据来自于基表</p>
+<p>3.通过修改视图可以修改基表的数据</p>
+<p>4.基表的改变也会影响到视图的数据</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>创建视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名称 <span class="keyword">as</span> <span class="keyword">select</span>语句;</span><br></pre></td></tr></table></figure>
+
+<p>更新视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">view</span> 视图名称 <span class="keyword">as</span> <span class="keyword">select</span>语句;</span><br></pre></td></tr></table></figure>
+
+<p>显示视图是如何创建的（select语句）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">view</span> 视图名;</span><br></pre></td></tr></table></figure>
+
+<p>删除视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图<span class="number">1</span>,视图<span class="number">2.</span>..;</span><br></pre></td></tr></table></figure>
+
+<p>我们要对于员工表创建一个名为emp_view的视图（数据包含empno,ename,job,deptno）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> emp_view <span class="keyword">as</span> </span><br><span class="line"><span class="keyword">select</span> empno,ename,job,deptno <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
+
+<p>我们现在来查看一下这个视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp_view;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-------+--------+----------+--------+</span></span><br><span class="line"><span class="operator">|</span> empno <span class="operator">|</span> ename  <span class="operator">|</span> job      <span class="operator">|</span> deptno <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+--------+----------+--------+</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7396</span> <span class="operator">|</span> SMITH  <span class="operator">|</span> CLERK    <span class="operator">|</span>     <span class="number">20</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7499</span> <span class="operator">|</span> ALLEN  <span class="operator">|</span> SALESMAN <span class="operator">|</span>     <span class="number">30</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7596</span> <span class="operator">|</span> WARD   <span class="operator">|</span> SALESMAN <span class="operator">|</span>     <span class="number">30</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7696</span> <span class="operator">|</span> JOOES  <span class="operator">|</span> MANAGER  <span class="operator">|</span>     <span class="number">20</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7796</span> <span class="operator">|</span> MARTIN <span class="operator">|</span> SALESMAN <span class="operator">|</span>     <span class="number">30</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span>  <span class="number">7896</span> <span class="operator">|</span> BLAKE  <span class="operator">|</span> MANAGER  <span class="operator">|</span>     <span class="number">30</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+--------+----------+--------+</span></span><br></pre></td></tr></table></figure>
+
+<p>删除视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> emp_view;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例题：针对emp，dept，salgrade 三张表格创建一个emp_view视图，可以显示雇员编号，雇员名称，雇员部门名称，薪水级别</p>
+<p>相关的select语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> empno,ename,dname,grade <span class="keyword">from</span> emp, dept, salgrade </span><br><span class="line"><span class="keyword">where</span> emp.deptno <span class="operator">=</span> dept.deptno</span><br><span class="line"><span class="keyword">and</span> sal <span class="keyword">between</span> losal <span class="keyword">and</span> hisal;</span><br></pre></td></tr></table></figure>
+
+<p>制作视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> emp_view <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> empno,ename,dname,grade <span class="keyword">from</span> emp, dept, salgrade </span><br><span class="line"><span class="keyword">where</span> emp.deptno <span class="operator">=</span> dept.deptno</span><br><span class="line"><span class="keyword">and</span> sal <span class="keyword">between</span> losal <span class="keyword">and</span> hisal;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="视图细节"><a href="#视图细节" class="headerlink" title="视图细节"></a>视图细节</h3><p>1.创建视图后，到数据库看，对应的视图只有一个视图结构文件(视图名.frm)</p>
+<p>2.视图和基表的修改相互影响</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> emp_view <span class="keyword">set</span> deptno <span class="operator">=</span> <span class="number">40</span> <span class="keyword">where</span> ename<span class="operator">=</span><span class="string">&#x27;SMITH&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> emp <span class="keyword">set</span> deptno <span class="operator">=</span> <span class="number">20</span> <span class="keyword">where</span> ename<span class="operator">=</span><span class="string">&#x27;SMITH&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.视图中可以再次使用视图</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>安全：一些数据表有着重要的信息，某些字段需要保密，不可以让用户直接看到，这个时候我们就可以创建一个视图，在这个视图中保留安全的字段，而不包含保密的字段</p>
+<p>性能：关系数据库常常会分表存储，使用外键建立这一些表的关系，这个时候，数据库查询通常会用到join连接，这么做不但麻烦，效率也比较低，如果建立一个视图，将相关表的字段组合在一起，就可以避免使用join查询数据</p>
+<p>灵活：如果系统中有一张旧的表，这张表由于设计的问题，即将被废弃，然而，很多表都是基于这一张表，不方便修改，这个时候就可以建立一张视图，视图中的数据直接映射到新建的表，这样就可以做很少的改动，也达到了升级数据表的目的</p>
+<h2 id="Mysql管理"><a href="#Mysql管理" class="headerlink" title="Mysql管理"></a>Mysql管理</h2><h3 id="user表"><a href="#user表" class="headerlink" title="user表"></a>user表</h3><p>mysql中的用户，都存储在系统数据库mysql中的user表</p>
+<p>其中有一些重要的字段</p>
+<p>host：允许登录的位置，localhost表示该用户只允许本机登录，也可以指定ip</p>
+<p>user：用户名称</p>
+<p>authentication_string：密码，通过mysql的password()函数加密后的密码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> host,<span class="keyword">user</span>,authentication_string <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+------------------------------------------------------------------------+</span></span><br><span class="line"><span class="operator">|</span> host      <span class="operator">|</span> <span class="keyword">user</span>             <span class="operator">|</span> authentication_string                                                  <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+------------------------------------------------------------------------+</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.infoschema <span class="operator">|</span> $A$<span class="number">005</span>$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.session    <span class="operator">|</span> $A$<span class="number">005</span>$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.sys        <span class="operator">|</span> $A$<span class="number">005</span>$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> root             <span class="operator">|</span> $A$<span class="number">005</span>$ xgY]U4ieS</span><br><span class="line"><span class="number">8</span>Q<span class="operator">+</span>#hB9QVmRfma9kzzSPEIJ1FgvgP7VMuobh4V.rZD0mc7FD  <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+------------------------------------------------------------------------+</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p>当做项目开发的时候，Mysql数据库管理人员可以根据不同的开发人员，赋给相应的Mysql操作权限，供人员使用</p>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">&#x27;thrinisty&#x27;</span> @<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> host,<span class="keyword">user</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+</span></span><br><span class="line"><span class="operator">|</span> host      <span class="operator">|</span> <span class="keyword">user</span>             <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.infoschema <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.session    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> mysql.sys        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> root             <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> localhost <span class="operator">|</span> thrinisty        <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在Navicat中可以用新的用户连接数据库</p>
+<p><img src="/../images/111.png" alt="111"></p>
+<p>可以看到我们新用户表和root用户的表不太一样</p>
+<p><img src="/../images/112.png" alt="112"></p>
+<p>这是因为不同的数据库用户，登录到DBMS，根据相应的权限，可以操作的数据库，数据对象（表、视图、触发器）都不一样</p>
+<h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">user</span> <span class="string">&#x27;用户名&#x27;</span> @<span class="string">&#x27;允许登录的位置&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h4><p>注意以下修改方式是5.7.5版本以下的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> password <span class="operator">=</span> password(<span class="string">&#x27;密码&#x27;</span>);<span class="comment">--修改自身密码</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> password <span class="keyword">for</span> <span class="string">&#x27;用户名&#x27;</span> @<span class="string">&#x27;登录位置&#x27;</span> <span class="operator">=</span> password(<span class="string">&#x27;密码&#x27;</span>);</span><br><span class="line"><span class="comment">--修改他人的密码，需要有用户密码的权限</span></span><br></pre></td></tr></table></figure>
+
+<p>我用的8.0版本需要使用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="keyword">USER</span>() IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;654321&#x27;</span>;<span class="comment">--修改自身密码</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;username&#x27;</span>@<span class="string">&#x27;hostname&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;654321&#x27;</span>;</span><br><span class="line"><span class="comment">--修改他人的密码，需要有用户密码的权限</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h4>
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/"
+      title="MySQL课堂笔记（习题课）"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        MySQL课堂笔记（习题课）
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/04/13/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A2%9E%E5%BC%BA%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%EF%BC%8C%E5%A4%96%E8%BF%9E%E6%8E%A5%EF%BC%8C%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%8C%E7%BA%A6%E6%9D%9F%EF%BC%89/"
+      title="MySQL课堂笔记（增强查询，多表查询，外连接，子查询，约束）"
+     >
+
+    <p class="title-text">
+      
+        MySQL课堂笔记（增强查询，多表查询，外连接，子查询，约束）
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Thrinisty<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

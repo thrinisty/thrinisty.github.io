@@ -162,6 +162,160 @@
    
 
 
+<article id="post-MySQL课堂笔记（习题课）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/">MySQL课堂笔记（习题课）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-15T06:00:00.000Z" itemprop="datePublished">2025-04-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            42 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              MySQL习题我们系统的学完了MySQL相关知识，我们现在来用例题巩固以下我们的知识
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/14/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%8C%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%8C%E8%A7%86%E5%9B%BE%EF%BC%8C%E7%AE%A1%E7%90%86%EF%BC%89/">MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-14T01:15:00.000Z" itemprop="datePublished">2025-04-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              MySQL自增长我们再插入记录的时候有的时候需要有的数据从1开始自动增长，我们这个时候就要运用到自增长
+基本使用方式：在定义的时候设置auto_increment字段
+1字段名称 整形 primary key auto_increment
+
+插入记录的时候填入null
+12345CREATE TABLE dept ( `deptno` INT primary key auto_increment,`dname` VARCHAR ( 30 ), `loc` VARCHAR ( 30 ) );
+
+1insert into dept values(null, &#x27;ddd&#x27;, &#x27;beijing&#x27;);
+
+如果你需要自增需要从10开始，你也可以修改auto_increment设置
+1ALTER TABLE dept AUTO_INCREMENT = 10;
+
+插入数据的时候子增值字段也可以不使用null，而插入一个具体的值
+1insert into dept values(50, &#x27;ddd&#x27;, &#x27;beijing&#x27;)...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/14/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%8C%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%8C%E8%A7%86%E5%9B%BE%EF%BC%8C%E7%AE%A1%E7%90%86%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-MySQL课堂笔记（增强查询，多表查询，外连接，子查询，约束）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -782,159 +936,6 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap，其中HashMa
     <a class="right-panel  non-pic  "
       
       href="/2025/04/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8802%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（集合01）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8801%EF%BC%89/">Java课堂笔记（集合01）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-01T10:08:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            22k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记集合集合框架体系（要求记忆）
-单列集合
-
-Collection下有两大重要的接口一个List另一个为Set
-双列集合
-存放的是K-V
-
-Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
-两个集合不同区别，存放数据的个数
-123456789101112131415public class Collection_ &#123;    @SuppressWarnings(&#123;&quot;all&quot;&#125;)    public static void main(String[] args) &#123;        //单列集合        ArrayList arrayList = new ArrayList();        arrayList.add(&quot;A&quot;);        arrayList.add(&quot;B&quot;);        arrayList.add(&quot;C&quot;);	    //双列集合        HashMap hashMap = new H...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8801%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-自学第一月份总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%B8%80%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/">Java课堂笔记（自学第一月份总结）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-01T07:38:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            533 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              自学第一月份总结​	还是过的挺快的，从三月初决定不再考研开始，我投入了大量的时间去巩固Java的基础，也刷了很少的一部分面试算法题目，回顾了一些来自于之前课堂上的知识，例如操作系统，计算机网络等。
-​	也是在这一个月中很幸运的收到了来自第一份正式的面试邀约，无论结果如何，都对我是一次很好的锻炼机会吧。我也明白，虽然自身能力目前还达不到找到工作的水准，但是我知道自己也是在不断地向前走的，回过来看一看我自己，相比刚来到大学的时候的青涩，不敢勇于表达而言，我在面试中可以较为完整的表达出来自自己的一些观点，有着自己的一些思考，算是不错的进步了。
-​	从计划而言，原先的Java30天速成的计划可能得向后延期了，因为我发现，除了我原先想的知识以外，还有很多实用的Java外知识等着我去学习，如MySQL数据库，SQL注入，JDBC，正规式等要学完这一些，得再加上15天的时间，哎，总之继续努力吧。
-​	在课余上，买了把吉他，天天都会把自己折磨的有点手疼，进步也是蛮快的，15天左右了，练了些基础上的内容，拿着变调夹也可以弹一些简单的安河桥之类的，晴天前奏（学会扫弦还不大可能）
-​	感觉还是非常充实...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%B8%80%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
