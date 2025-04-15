@@ -162,6 +162,81 @@
    
 
 
+<article id="post-Git笔记（副本）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/">Git笔记()</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-15T13:10:00.000Z" itemprop="datePublished">2025-04-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            914 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee）
+之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链接到的Github，而我现在学Java改用IDEA了，又需要重新配置一下才可以方便使用。
+找的课程也就4~5个小时，就当过一遍教程了，再对不了解的代码分支，分支合并学习一下，以下是该课程涉及的一些知识点（代码推送、代码拉取、代码克隆、IDEA集成Github、Gitee、GitLab）
+重要概念版本控制版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统
+其中最重要的就是可以记录文件修改历史，从而让用户能够查看历史版本，方便切换版本
+对于个人而言或许不太需要版本控制，但是如果一旦上升到公司集体，为了方便安全的对于代码进行修改（对于多个修改进行正确的合并），版本控制的使用就异...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-MySQL课堂笔记（习题课）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +267,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            42 words 
+            5.6k words 
           </div>
         </div>
         
@@ -202,7 +277,23 @@
           <div class="truncate-text">
             
               MySQL习题我们系统的学完了MySQL相关知识，我们现在来用例题巩固以下我们的知识
+练习一1.显示所有部门的名称
+1select deptno,dname from dept;
 
+2.显示所有雇员名以及全年收入（12*薪水 + 奖金）取名为年收入
+这里道题注意null+数字为空，需要使用判断语句处理
+12select ename, (sal*12 + if(comm is null,0,comm))as&#x27;年收入&#x27; from emp;
+
+3.显示工资超过2850雇员的姓名以及工资
+1select ename,sal from emp where sal &gt; 2850;
+
+4.显示工资不再1500到2850之间雇员的姓名以及工资
+1select ename,sal from emp where sal &gt; 2850 and sal &lt; 1500;
+
+5.显示编号为7796的雇员名称以及所在部门编号
+1select ename,deptno from emp where empno=7796;
+
+6.显示部门在20，30中工资超过1500的雇员名...
             
           </div>
         
@@ -263,7 +354,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            9k words 
+            9.6k words 
           </div>
         </div>
         
@@ -511,7 +602,7 @@
           <div class="truncate-text">
             
               MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。
-​	而从今天开始我将开始数据库的学习，预计10天完成MySQL数据库基本操作的学习，以及运用JDBC完成一个实战项目
+​	而从今天开始我将开始数据库的学习，预计5天完成MySQL数据库基本操作的学习，之后运用JDBC完成一个实战项目
 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的理解数据库以及更好的使用数据库，我决定再次回顾相关知识点，并且整理笔记
 MySQL的基本使用关于MySQL的安装我就不过多赘述，因为之前也安装过了，详见各大网站上的安装使用教程照着安装即可
 MySQL启动服务在我这里因为安装的时候设置为开机自动启用，所以不用执行该指令
@@ -526,7 +617,7 @@ MySQL启动服务在我这里因为安装的时候设置为开机自动启用，
 1sc query MySQL80
 
 显示MySQL80在运行状态
-12345678SERVICE_NAME: MySQL80        TYPE           ...
+12345678SERVICE_NAME: MySQL80        TYPE            ...
             
           </div>
         
@@ -853,89 +944,6 @@ java事件处理采取的是”委派事件模型”，当事件发生的时候�
     <a class="right-panel  non-pic  "
       
       href="/2025/04/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（集合02）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8802%EF%BC%89/">Java课堂笔记（集合02）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-02T12:31:00.000Z" itemprop="datePublished">2025-04-02</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            11k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记Map接口定义及性质双列集合
-存放的是K-V
-
-Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap，其中HashMap时使用频率最高的
-1.Map与Collection并列存在，保存具有映射关系的数据，Key-Value
-2.Map中的key和value可以是任何引用类型的数据，会封装在HashMap$Node对象中
-3.Map中的key不允许重复，原因和HashSet一样
-4.Map中的key可以重复
-5.Map中的key和value可以为null，但是key中的null只能有一个，而value不做限制
-6.常用类String类可以作为Map的key
-7.key和value之间存在单向的一对一关系，即通过指定的key总可以找到对应的value
-8.map存放数据k-v，一对key-value是存放在HashMapNode中的
-为了程序员遍历方便，还会创建EntrySet集合，该集合放入的是Entry（事实上是将EntrySet中的table 存储的Entry节点指向Map的Node）
-1transient Node&lt;K,V&gt...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8802%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

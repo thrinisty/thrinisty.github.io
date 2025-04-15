@@ -28,7 +28,7 @@
 <meta property="og:description" content="MySQL笔记修改表我们修改表可以通过图形化界面进行修改，这一般比较方便，但是有一些限制，例如需要批量修改，条件限制的情况，我们也需要学会通过指令来对于表进行操作 添加列12ALTER TABLE table_name ADD(column datatype [DEFAULT expr], column datatype [DEFAULT expr]...);  修改列12ALTER TABLE">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-11T06:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-11T13:39:16.204Z">
+<meta property="article:modified_time" content="2025-04-15T12:47:18.711Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -271,7 +271,7 @@
 <p>6.插入的记录可以有多条，在后续加（），（）即可</p>
 <p>7.如果是表中的所有字段添加数据的时候，可以不写字段名称</p>
 <p>8.默认值的使用，当不给某个字段值的时候，如果有默认值就会添加，否则填入null，如果NOT NULL则报错</p>
-<h3 id="Update（改）"><a href="#Update（改）" class="headerlink" title="Update（改）"></a>Update（改）</h3><h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATA table_name <span class="keyword">SET</span> col_name1 <span class="operator">=</span> expr1 [col_name2 <span class="operator">=</span> expr2] [<span class="keyword">WHERE</span> where_definition]</span><br></pre></td></tr></table></figure>
+<h3 id="Update（改）"><a href="#Update（改）" class="headerlink" title="Update（改）"></a>Update（改）</h3><h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> col_name1 <span class="operator">=</span> expr1 [col_name2 <span class="operator">=</span> expr2] [<span class="keyword">WHERE</span> where_definition]</span><br></pre></td></tr></table></figure>
 
 <p>以下是一个使用案例</p>
 <p>1.将所有的员工薪水修改为5000元</p>

@@ -20,17 +20,17 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。 ​	而从今天开始我将开始数据库的学习，预计10天完成MySQL数据库基本操作的学习，以及运用JDBC完成一个实战项目 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的">
+  <meta name="description" content="MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。 ​	而从今天开始我将开始数据库的学习，预计5天完成MySQL数据库基本操作的学习，之后运用JDBC完成一个实战项目 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL课堂笔记（基本使用，数据类型，备份恢复）">
 <meta property="og:url" content="http://example.com/2025/04/10/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。 ​	而从今天开始我将开始数据库的学习，预计10天完成MySQL数据库基本操作的学习，以及运用JDBC完成一个实战项目 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的">
+<meta property="og:description" content="MySQL​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。 ​	而从今天开始我将开始数据库的学习，预计5天完成MySQL数据库基本操作的学习，之后运用JDBC完成一个实战项目 ​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的理">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/109.png">
 <meta property="og:image" content="http://example.com/images/110.png">
 <meta property="article:published_time" content="2025-04-10T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-11T07:54:12.818Z">
+<meta property="article:modified_time" content="2025-04-15T12:52:51.371Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/109.png">
@@ -208,7 +208,7 @@
       <div class="e-content article-entry" itemprop="articleBody">
         
           <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><p>​	经过40天的Java学习，我系统性的学习了Java相关知识点，了解了各个知识点背后的源码逻辑，可以用Java语言实现各类算法，以及解决实际问题，独立的设计，编写相关项目。</p>
-<p>​	而从今天开始我将开始数据库的学习，预计10天完成MySQL数据库基本操作的学习，以及运用JDBC完成一个实战项目</p>
+<p>​	而从今天开始我将开始数据库的学习，预计5天完成MySQL数据库基本操作的学习，之后运用JDBC完成一个实战项目</p>
 <p>​	我在之前选修数据库课程的时候，只是停留在理论上，对于知识的理解也只是限于应付考试，为了更好的理解数据库以及更好的使用数据库，我决定再次回顾相关知识点，并且整理笔记</p>
 <h2 id="MySQL的基本使用"><a href="#MySQL的基本使用" class="headerlink" title="MySQL的基本使用"></a>MySQL的基本使用</h2><p>关于MySQL的安装我就不过多赘述，因为之前也安装过了，详见各大网站上的安装使用教程照着安装即可</p>
 <h3 id="MySQL启动服务"><a href="#MySQL启动服务" class="headerlink" title="MySQL启动服务"></a>MySQL启动服务</h3><p>在我这里因为安装的时候设置为开机自动启用，所以不用执行该指令</p>

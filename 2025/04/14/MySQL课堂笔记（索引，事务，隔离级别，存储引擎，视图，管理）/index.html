@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/images/111.png">
 <meta property="og:image" content="http://example.com/images/112.png">
 <meta property="article:published_time" content="2025-04-14T01:15:00.000Z">
-<meta property="article:modified_time" content="2025-04-14T13:45:00.435Z">
+<meta property="article:modified_time" content="2025-04-15T08:19:46.044Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/111.png">
@@ -200,7 +200,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            9k words 
+            9.6k words 
           </div>
         </div>
         
@@ -630,7 +630,86 @@
 
 
 
-<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h4>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><p>MySQL中有非常多的权限可以赋予用户，我们来使用以下常见的权限</p>
+<h4 id="常见的权限"><a href="#常见的权限" class="headerlink" title="常见的权限"></a>常见的权限</h4><table>
+<thead>
+<tr>
+<th>全选</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GRANT OPTION</td>
+<td>允许授予权限</td>
+</tr>
+<tr>
+<td>ALL PRIVIEGES</td>
+<td>设置除GRANT OPTTION之外的简单权限</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>允许使用 ALTER TABLE</td>
+</tr>
+<tr>
+<td>CREATE</td>
+<td>允许使用 CREATE TABLE</td>
+</tr>
+<tr>
+<td>CREATE USER</td>
+<td>允许使用增删改用户、移除所有权限</td>
+</tr>
+<tr>
+<td>CREATE VIEW</td>
+<td>允许使用CREATE VIEW</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>允许使用DELETE</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>允许使用DROP TABLE</td>
+</tr>
+<tr>
+<td>INDEX</td>
+<td>允许创建删除索引</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>允许使用INSERT插入</td>
+</tr>
+<tr>
+<td>SELECT</td>
+<td>允许使用查询</td>
+</tr>
+<tr>
+<td>SHOW DATABASES</td>
+<td>允许显示所有数据库</td>
+</tr>
+<tr>
+<td>USAGE</td>
+<td>无权限</td>
+</tr>
+</tbody></table>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><p>赋权指令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> 权限列表 <span class="keyword">on</span> 库.对象名 <span class="keyword">to</span> </span><br><span class="line"><span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;登录位置&#x27;</span> [identified <span class="keyword">by</span> <span class="string">&#x27;密码&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>回收权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">revoke</span> 权限列表 <span class="keyword">on</span> 库.对象名 <span class="keyword">from</span> </span><br><span class="line"><span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;登录位置&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>刷新权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<p>赋给thrinisty全部表全部对象的all权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;thrinisty&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="管理细节"><a href="#管理细节" class="headerlink" title="管理细节"></a>管理细节</h3><p>1.在创建用户的时候，如果不指定host，则为%，表示所有ip都有链接的权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> jack;</span><br></pre></td></tr></table></figure>
+
+<p>2.在删除用户的时候，如果host不是%，需要明确指定‘用户’@‘host值’</p>
+
         
       </div>
 
