@@ -14,7 +14,7 @@
   
 
   
-  <title>Git笔记(概念，常用命令，Git操作，分支) | Hexo</title>
+  <title>Git笔记(代码管理，本地库，分支，团队协作) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -22,7 +22,7 @@
 
   <meta name="description" content="GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee） 之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git笔记(概念，常用命令，Git操作，分支)">
+<meta property="og:title" content="Git笔记(代码管理，本地库，分支，团队协作)">
 <meta property="og:url" content="http://example.com/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee） 之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/images/119.png">
 <meta property="og:image" content="http://example.com/images/120.png">
 <meta property="article:published_time" content="2025-04-15T13:10:00.000Z">
-<meta property="article:modified_time" content="2025-04-16T12:45:05.965Z">
+<meta property="article:modified_time" content="2025-04-16T13:47:46.530Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/113.png">
@@ -187,7 +187,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        Git笔记(概念，常用命令，Git操作，分支)
+        Git笔记(代码管理，本地库，分支，团队协作)
       </h1>
     
   
@@ -206,7 +206,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6.4k words 
+            6.6k words 
           </div>
         </div>
         
@@ -227,7 +227,7 @@
 <h3 id="代码托管中心"><a href="#代码托管中心" class="headerlink" title="代码托管中心"></a>代码托管中心</h3><p>代码托管中心是基于网络服务器的远程代码仓库，一般简单地称为远程库，在上述工作机制中，我们还可以把本地库运用push将本地库推送到远程库中，以下是一些常见的代码托管中心</p>
 <p>局域网 GitLab</p>
 <p>互联网 Github     Gitee 码云</p>
-<h2 id="Git的常用命令"><a href="#Git的常用命令" class="headerlink" title="Git的常用命令"></a>Git的常用命令</h2><table>
+<h2 id="本地库操作"><a href="#本地库操作" class="headerlink" title="本地库操作"></a>本地库操作</h2><h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><table>
 <thead>
 <tr>
 <th>命令名称</th>
@@ -267,21 +267,21 @@
 <td>版本穿梭</td>
 </tr>
 </tbody></table>
-<h2 id="Git操作"><a href="#Git操作" class="headerlink" title="Git操作"></a>Git操作</h2><h3 id="设置用户签名"><a href="#设置用户签名" class="headerlink" title="设置用户签名"></a>设置用户签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name thrinisty</span><br><span class="line">git config --global user.email ******@email.com</span><br></pre></td></tr></table></figure>
+<h3 id="Git操作"><a href="#Git操作" class="headerlink" title="Git操作"></a>Git操作</h3><h4 id="设置用户签名"><a href="#设置用户签名" class="headerlink" title="设置用户签名"></a>设置用户签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name thrinisty</span><br><span class="line">git config --global user.email ******@email.com</span><br></pre></td></tr></table></figure>
 
 <p>签名的作用是区分不同的操作者的身份，用户的签名信息在每一个版本的提交信息中能够看到，以确认本次提交是谁做的，Git首次安装必须要设置一下用户签名，否则无法提交代码</p>
 <p>注意，这里设置用户签名和将来登录Github的帐号没有任何的关系</p>
-<h3 id="初始化本地库"><a href="#初始化本地库" class="headerlink" title="初始化本地库"></a>初始化本地库</h3><p>找到你要git提交的文件进入，输入以下指令创建空的git本地库</p>
+<h4 id="初始化本地库"><a href="#初始化本地库" class="headerlink" title="初始化本地库"></a>初始化本地库</h4><p>找到你要git提交的文件进入，输入以下指令创建空的git本地库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../images/114.png" alt="114"></p>
-<h3 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h4 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 
 <p>默认是在master分支下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        images/</span><br><span class="line">        src/</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 
 <p>其中的images和src还没有被添加到暂存区，没有被追踪</p>
-<h3 id="添加至暂存区"><a href="#添加至暂存区" class="headerlink" title="添加至暂存区"></a>添加至暂存区</h3><p>添加所有文件</p>
+<h4 id="添加至暂存区"><a href="#添加至暂存区" class="headerlink" title="添加至暂存区"></a>添加至暂存区</h4><p>添加所有文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . </span><br></pre></td></tr></table></figure>
 
 <p>添加image文件夹</p>
@@ -289,7 +289,7 @@
 
 <p>这个时候我们也可以使用git status来查看新添加进入的文件</p>
 <p><img src="/../images/115.png" alt="115"></p>
-<h3 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h3><p>生成历史版本</p>
+<h4 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h4><p>生成历史版本</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;init commit&quot; [可选字段 默认提交所有暂存区中内容]</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../images/116.png" alt="116"></p>
@@ -298,7 +298,7 @@
 
 
 
-<h3 id="查看版本信息"><a href="#查看版本信息" class="headerlink" title="查看版本信息"></a>查看版本信息</h3><p>我们也可以通过一下的指令来查看版本信息</p>
+<h4 id="查看版本信息"><a href="#查看版本信息" class="headerlink" title="查看版本信息"></a>查看版本信息</h4><p>我们也可以通过一下的指令来查看版本信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git reflog</span></span><br><span class="line">c3418c7 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit (initial): init commit</span><br></pre></td></tr></table></figure>
 
 <p>发现有一个提交过的版本名为init commit</p>
@@ -307,7 +307,7 @@
 
 
 
-<h3 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h3><p>修改文件之后我们需要将修改的文件再次添加到暂存区，以及提交到本地库</p>
+<h4 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h4><p>修改文件之后我们需要将修改的文件再次添加到暂存区，以及提交到本地库</p>
 <p>例如我们在images文件夹下新增了一张图片</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git status</span></span><br><span class="line">On branch master</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        images/2.jpg</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
 
@@ -328,7 +328,7 @@
 
 
 
-<h3 id="版本切换"><a href="#版本切换" class="headerlink" title="版本切换"></a>版本切换</h3><p>Git切换版本，底层实际上就是移动的Head指针</p>
+<h4 id="版本切换"><a href="#版本切换" class="headerlink" title="版本切换"></a>版本切换</h4><p>Git切换版本，底层实际上就是移动的Head指针</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard c3418c7</span><br></pre></td></tr></table></figure>
 
 <p>这个时候我们的版本指针指向的就是第一次提交的版本</p>
@@ -456,6 +456,10 @@
 <h3 id="跨团队协作"><a href="#跨团队协作" class="headerlink" title="跨团队协作"></a>跨团队协作</h3><p>有的时候我们需要找一个外来人员更改代码，但是我们又不想要让这个外来人员进入团队，我们就需要跨团队协作</p>
 <p>这个时候外来人员可以通过项目链接选择使用fork看到代码，修改代码，提交修改，但是只是修改自己的本地仓库</p>
 <p>外来人员想要将修改的代码合并到对应的项目中可以使用pull request发送请求，而仓库的管理人员就可以审核申请，之后还可以查看修改，如果没有问题就可以确认合并。</p>
+<h2 id="IDEA集成"><a href="#IDEA集成" class="headerlink" title="IDEA集成"></a>IDEA集成</h2><p><strong>Github</strong>  <strong>Gitee</strong>  <strong>GitLab</strong></p>
+<p>这部分的内容照着尚硅谷的B站课程过一遍就好，一般都记得住，不会用的时候再去复习一下就好，用的多就会了，没必记录笔记</p>
+<p>在公司中代码保护非常的常见，之前我在讯飞得生产实习就有明确要求只准许使用公司内网连接，网络实时监控，不允许向网络上提交代码相关的内容</p>
+<p>而一个项目的开发中代码的保护也是很重要，这个时候就需要使用到GitLab自建代码托管平台，在局域网是进行代码管理</p>
 
         
       </div>
