@@ -14,7 +14,7 @@
   
 
   
-  <title>Git笔记() | Hexo</title>
+  <title>Git笔记(概念，常用命令，Git操作，分支) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -22,14 +22,21 @@
 
   <meta name="description" content="GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee） 之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git笔记()">
+<meta property="og:title" content="Git笔记(概念，常用命令，Git操作，分支)">
 <meta property="og:url" content="http://example.com/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E5%89%AF%E6%9C%AC%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee） 之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/113.png">
+<meta property="og:image" content="http://example.com/images/114.png">
+<meta property="og:image" content="http://example.com/images/115.png">
+<meta property="og:image" content="http://example.com/images/116.png">
+<meta property="og:image" content="http://example.com/images/117.png">
+<meta property="og:image" content="http://example.com/images/118.png">
+<meta property="og:image" content="http://example.com/images/119.png">
+<meta property="og:image" content="http://example.com/images/120.png">
 <meta property="article:published_time" content="2025-04-15T13:10:00.000Z">
-<meta property="article:modified_time" content="2025-04-15T13:55:51.108Z">
+<meta property="article:modified_time" content="2025-04-16T12:45:05.965Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/113.png">
@@ -180,7 +187,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        Git笔记()
+        Git笔记(概念，常用命令，Git操作，分支)
       </h1>
     
   
@@ -199,7 +206,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            914 words 
+            6.4k words 
           </div>
         </div>
         
@@ -220,6 +227,235 @@
 <h3 id="代码托管中心"><a href="#代码托管中心" class="headerlink" title="代码托管中心"></a>代码托管中心</h3><p>代码托管中心是基于网络服务器的远程代码仓库，一般简单地称为远程库，在上述工作机制中，我们还可以把本地库运用push将本地库推送到远程库中，以下是一些常见的代码托管中心</p>
 <p>局域网 GitLab</p>
 <p>互联网 Github     Gitee 码云</p>
+<h2 id="Git的常用命令"><a href="#Git的常用命令" class="headerlink" title="Git的常用命令"></a>Git的常用命令</h2><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git config –global user.name 用户名称</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git config –global user.email 邮箱</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态</td>
+</tr>
+<tr>
+<td>git add 文件名</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit -m “日志信息” 文件名</td>
+<td>提交到本地库</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td>git reset –hard 版本号</td>
+<td>版本穿梭</td>
+</tr>
+</tbody></table>
+<h2 id="Git操作"><a href="#Git操作" class="headerlink" title="Git操作"></a>Git操作</h2><h3 id="设置用户签名"><a href="#设置用户签名" class="headerlink" title="设置用户签名"></a>设置用户签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name thrinisty</span><br><span class="line">git config --global user.email ******@email.com</span><br></pre></td></tr></table></figure>
+
+<p>签名的作用是区分不同的操作者的身份，用户的签名信息在每一个版本的提交信息中能够看到，以确认本次提交是谁做的，Git首次安装必须要设置一下用户签名，否则无法提交代码</p>
+<p>注意，这里设置用户签名和将来登录Github的帐号没有任何的关系</p>
+<h3 id="初始化本地库"><a href="#初始化本地库" class="headerlink" title="初始化本地库"></a>初始化本地库</h3><p>找到你要git提交的文件进入，输入以下指令创建空的git本地库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/114.png" alt="114"></p>
+<h3 id="查看本地库状态"><a href="#查看本地库状态" class="headerlink" title="查看本地库状态"></a>查看本地库状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>默认是在master分支下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">No commits yet</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        images/</span><br><span class="line">        src/</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+
+<p>其中的images和src还没有被添加到暂存区，没有被追踪</p>
+<h3 id="添加至暂存区"><a href="#添加至暂存区" class="headerlink" title="添加至暂存区"></a>添加至暂存区</h3><p>添加所有文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . </span><br></pre></td></tr></table></figure>
+
+<p>添加image文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add image</span><br></pre></td></tr></table></figure>
+
+<p>这个时候我们也可以使用git status来查看新添加进入的文件</p>
+<p><img src="/../images/115.png" alt="115"></p>
+<h3 id="提交本地库"><a href="#提交本地库" class="headerlink" title="提交本地库"></a>提交本地库</h3><p>生成历史版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;init commit&quot; [可选字段 默认提交所有暂存区中内容]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/116.png" alt="116"></p>
+<p>这个时候再次查看git本地库状态，看见所有在暂存区的内容被提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git status</span></span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看版本信息"><a href="#查看版本信息" class="headerlink" title="查看版本信息"></a>查看版本信息</h3><p>我们也可以通过一下的指令来查看版本信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git reflog</span></span><br><span class="line">c3418c7 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit (initial): init commit</span><br></pre></td></tr></table></figure>
+
+<p>发现有一个提交过的版本名为init commit</p>
+<p>以下是一个更为详细的版本信息查看</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">log</span></span></span><br><span class="line">commit c3418c789ad7bfb246a65f88f26f37764a011764 (HEAD -&gt; master)</span><br><span class="line">Author: thrinisty &lt;714605471@qq.com&gt;</span><br><span class="line">Date:   Wed Apr 16 14:57:49 2025 +0800</span><br><span class="line"></span><br><span class="line">	init commit</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h3><p>修改文件之后我们需要将修改的文件再次添加到暂存区，以及提交到本地库</p>
+<p>例如我们在images文件夹下新增了一张图片</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git status</span></span><br><span class="line">On branch master</span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        images/2.jpg</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们就需要重新将这张图片存储到到暂存区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git status</span></span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   images/2.jpg</span><br></pre></td></tr></table></figure>
+
+
+
+<p>再重新提交到本地库，从而生成第二个版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git commit -m <span class="string">&quot;New picture&quot;</span></span></span><br><span class="line">[master 8c69e8c] New picture</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 images/2.jpg</span><br></pre></td></tr></table></figure>
+
+
+
+<p>现在我们再查看版本信息，就可以看到第二次提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git reflog</span></span><br><span class="line">8c69e8c (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: New picture</span><br><span class="line">c3418c7 HEAD@&#123;1&#125;: commit (initial): init commit</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="版本切换"><a href="#版本切换" class="headerlink" title="版本切换"></a>版本切换</h3><p>Git切换版本，底层实际上就是移动的Head指针</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard c3418c7</span><br></pre></td></tr></table></figure>
+
+<p>这个时候我们的版本指针指向的就是第一次提交的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c3418c7 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to c3418c7</span><br><span class="line">8c69e8c HEAD@&#123;1&#125;: commit: New picture</span><br><span class="line">c3418c7 (HEAD -&gt; master) HEAD@&#123;2&#125;: commit (initial): init commit</span><br></pre></td></tr></table></figure>
+
+<p>而我们添加的工作区中的第二次新添加的图片也会消失不见</p>
+<p>当然我们也可以版本穿梭回去</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 8c69e8c</span><br></pre></td></tr></table></figure>
+
+<p>我们工作区中的图片就会被添加回来</p>
+<p><img src="/../images/117.png" alt="117"></p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>在版本控制过程中，同时推进多个任务，为每个任务，我们就可以创建每个任务的单独分支。使用分支意味着程序员可以把自己的工作从开发主线上分离开来，开发自己分支的时候，不会影响到主线分支的运行</p>
+<p>而对于初学者而言，分支可以简单理解为副本，一个分支就是一个单独的副本（分支的底层的实现也是通过指针完成）</p>
+<p><img src="/../images/118.png" alt="118"></p>
+<p>分支优点：同时并行推进多个功能的开发，提高开发效率</p>
+<p>在各个分支的开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响，失败的分支重新删除即可</p>
+<h3 id="分支相关指令"><a href="#分支相关指令" class="headerlink" title="分支相关指令"></a>分支相关指令</h3><table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git branch 分支名</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>git branch -v</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+</tbody></table>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>我们有的时候需要对于工作代码进行热修补，我们可以创建一个hot-fix分支，切换到分支，在分支上对于代码进行修改，完成之后切换到master分支下就可以使用git merge进行合并</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git branch hot-fix</span><br><span class="line">git checkout hot-fix</span><br><span class="line">相关的热修复</span><br><span class="line">git checkout master</span><br><span class="line">git merge hot-fix</span><br></pre></td></tr></table></figure>
+
+<p>最后的本地库状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git reflog</span></span><br><span class="line">37195a2 (HEAD -&gt; master, hot-fix) HEAD@&#123;0&#125;: merge hot-fix: Fast-forward</span><br><span class="line">8c69e8c HEAD@&#123;1&#125;: checkout: moving from hot-fix to master</span><br><span class="line">37195a2 (HEAD -&gt; master, hot-fix) HEAD@&#123;2&#125;: commit: commit 1.jpg</span><br><span class="line">8c69e8c HEAD@&#123;3&#125;: checkout: moving from master to hot-fix</span><br><span class="line">8c69e8c HEAD@&#123;4&#125;: reset: moving to 8c69e8c</span><br><span class="line">c3418c7 HEAD@&#123;5&#125;: reset: moving to c3418c7</span><br><span class="line">8c69e8c HEAD@&#123;6&#125;: commit: New picture</span><br><span class="line">c3418c7 HEAD@&#123;7&#125;: commit (initial): init commit</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h3><p>以上的例子是在master没有修改的情况下完成的合并，所以可以合并成功，在企业中我们在合并分支的时候往往遇到冲突</p>
+<p>合并分支的时候，两个分支在同一个文件的同一个位置有两套完全不同的修改，而Git无法替我们决定使用哪一个，必须要认为决定新代码内容</p>
+<p>例如我们在master中创建了一个1.txt 然后创建一个another分支，在两个分支下分别修改这个1.txt，分别提交，尝试在master中合并another，发现没有办法正常自动合并</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git merge another</span><br><span class="line">Auto-merging 1.txt.txt</span><br><span class="line">CONFLICT (content): Merge conflict in 1.txt.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+
+<p>而用git status指令查看，发现了1.txt合并冲突</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">  (fix conflicts and run &quot;git commit&quot;)</span><br><span class="line">  (use &quot;git merge --abort&quot; to abort the merge)</span><br><span class="line"></span><br><span class="line">Unmerged paths:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)</span><br><span class="line">        both modified:   1.txt.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>而打开冲突的文件，会发现git帮我们完成了冲突的标注</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">master中的修改</span><br><span class="line">=======</span><br><span class="line">分支中的修改</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">&gt;&gt;&gt;&gt;&gt;&gt; another</span></span><br></pre></td></tr></table></figure>
+
+<p>我们需要手动合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">master中的修改</span><br><span class="line">分支中的修改</span><br></pre></td></tr></table></figure>
+
+<p>需要重新添加提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;merge test&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">71460@thrinisty MINGW64 ~/多用户通讯系统 (master|MERGING)</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git commit -m <span class="string">&quot;merge test&quot;</span></span></span><br><span class="line">[master 0f34b4c] merge test</span><br><span class="line"></span><br><span class="line">71460@thrinisty MINGW64 ~/多用户通讯系统 (master)</span><br></pre></td></tr></table></figure>
+
+<p>发现两个分支合并成功，其实无论master还是another都是版本记录的指针，而所在的分支，其实是由Head决定的，所以创建分支的本质就是多创建一个指针，切换Head就是切换分支</p>
+<h2 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h2><p>我们在实际开发的过程中不光有本地的仓库，还应该将代码同步到云端（代码托管平台）</p>
+<p>远程仓库命令</p>
+<table>
+<thead>
+<tr>
+<th>命令名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git remote -v</td>
+<td>查看当前所有远程地址别名</td>
+</tr>
+<tr>
+<td>git remote add 别名 远程地址</td>
+<td>起一个别名</td>
+</tr>
+<tr>
+<td>git push 别名 分支</td>
+<td>推送本地分支上的内容到远程仓库</td>
+</tr>
+<tr>
+<td>git clone 远程地址</td>
+<td>将远程仓库的内容克隆到本地</td>
+</tr>
+<tr>
+<td>git pull 远程地址别名 远程分支名</td>
+<td>将远程仓库对于分支最新内容拉取与本地分支直接合并</td>
+</tr>
+</tbody></table>
+<h3 id="远程仓库操作"><a href="#远程仓库操作" class="headerlink" title="远程仓库操作"></a>远程仓库操作</h3><h4 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h4><p>在github创建一个远程仓库名为Multi-user-communication-system（举例）</p>
+<p>其中<a target="_blank" rel="noopener" href="https://github.com/thrinisty/Multi-user-communication-system.git%E6%98%AF%E6%88%91%E4%BB%AC%E7%9A%84%E4%BB%93%E5%BA%93%E9%93%BE%E6%8E%A5%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%AF%B9%E4%BA%8E%E8%BF%99%E4%B8%AA%E9%93%BE%E6%8E%A5%E8%B5%B7%E4%B8%80%E4%B8%AA%E5%88%AB%E5%90%8Dsystem">https://github.com/thrinisty/Multi-user-communication-system.git是我们的仓库链接，我们可以对于这个链接起一个别名system</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add system </span><br><span class="line">https://github.com/thrinisty/Multi-user-communication-system.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="推送本地仓库到远程仓库"><a href="#推送本地仓库到远程仓库" class="headerlink" title="推送本地仓库到远程仓库"></a>推送本地仓库到远程仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push system master</span><br></pre></td></tr></table></figure>
+
+<p>这个时候我们就将代码推送到了远程仓库</p>
+<p><img src="/../images/119.png" alt="119"></p>
+<h4 id="拉取代码"><a href="#拉取代码" class="headerlink" title="拉取代码"></a>拉取代码</h4><p>如果需要拉取云端的代码对本地的代码进行合并（请注意保持本地库的代码是最新的状态）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull system master</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull system master</span><br><span class="line">From https://github.com/thrinisty/Multi-user-communication-system</span><br><span class="line"> * branch            master     -&gt; FETCH_HEAD</span><br><span class="line">Already up to date.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h4><p>如果没有本地库代码，我们还可以使用git clone完成项目的克隆，别名默认为origin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/thrinisty/Multi-user-communication-system</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="团队内协作"><a href="#团队内协作" class="headerlink" title="团队内协作"></a>团队内协作</h3><p>在克隆的本地仓库可以用另外一个人的帐号，进行推送，但是需要赋予相关的权限，需要将这个人的账号添加进入团队</p>
+<h4 id="添加团队人员"><a href="#添加团队人员" class="headerlink" title="添加团队人员"></a>添加团队人员</h4><p>在仓库的拥有者中仓库设置的Collaborators可以选取添加仓库的相关人员，而添加的相关人员就会有push代码的权限</p>
+<p><img src="/../images/120.png" alt="120"></p>
+<h4 id="团队成员修改提交"><a href="#团队成员修改提交" class="headerlink" title="团队成员修改提交"></a>团队成员修改提交</h4><p>之后团队内成员可以拉取合并代码，并修改提交，参与到项目的研发中</p>
+<h3 id="跨团队协作"><a href="#跨团队协作" class="headerlink" title="跨团队协作"></a>跨团队协作</h3><p>有的时候我们需要找一个外来人员更改代码，但是我们又不想要让这个外来人员进入团队，我们就需要跨团队协作</p>
+<p>这个时候外来人员可以通过项目链接选择使用fork看到代码，修改代码，提交修改，但是只是修改自己的本地仓库</p>
+<p>外来人员想要将修改的代码合并到对应的项目中可以使用pull request发送请求，而仓库的管理人员就可以审核申请，之后还可以查看修改，如果没有问题就可以确认合并。</p>
 
         
       </div>
