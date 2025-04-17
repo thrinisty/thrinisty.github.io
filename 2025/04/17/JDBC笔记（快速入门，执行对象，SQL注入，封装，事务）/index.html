@@ -14,7 +14,7 @@
   
 
   
-  <title>JDBC笔记() | Hexo</title>
+  <title>JDBC笔记(快速入门，执行对象，SQL注入，封装，事务) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -22,15 +22,15 @@
 
   <meta name="description" content="JDBC笔记JDBCJDBC是JAVA程序操作数据库的一种技术，在绝大多数的框架中JDBC一般都被封装在了各式各样的框架之中，这些框架之后也会学习。但是掌握JDBC是如何连接数据库，操作数据库，返回数据库结果，使用数据库返回结果这也是一个后端开发者应该掌握的基础，掌握了之后对后续框架的理解也是一种帮助 Java对于各大数据库厂商提供了一个连接操作的统一接口，其中定义的方法包括了连接、curd、关闭">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC笔记()">
-<meta property="og:url" content="http://example.com/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/index.html">
+<meta property="og:title" content="JDBC笔记(快速入门，执行对象，SQL注入，封装，事务)">
+<meta property="og:url" content="http://example.com/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%8C%E6%89%A7%E8%A1%8C%E5%AF%B9%E8%B1%A1%EF%BC%8CSQL%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="JDBC笔记JDBCJDBC是JAVA程序操作数据库的一种技术，在绝大多数的框架中JDBC一般都被封装在了各式各样的框架之中，这些框架之后也会学习。但是掌握JDBC是如何连接数据库，操作数据库，返回数据库结果，使用数据库返回结果这也是一个后端开发者应该掌握的基础，掌握了之后对后续框架的理解也是一种帮助 Java对于各大数据库厂商提供了一个连接操作的统一接口，其中定义的方法包括了连接、curd、关闭">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/121.png">
 <meta property="og:image" content="http://example.com/images/122.png">
 <meta property="article:published_time" content="2025-04-17T06:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-17T14:10:48.734Z">
+<meta property="article:modified_time" content="2025-04-17T14:24:50.411Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/121.png">
@@ -168,7 +168,7 @@
        
 
 
-<article id="post-JDBC笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-JDBC笔记（快速入门，执行对象，SQL注入，封装，事务）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
    
@@ -181,7 +181,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        JDBC笔记()
+        JDBC笔记(快速入门，执行对象，SQL注入，封装，事务)
       </h1>
     
   
@@ -200,7 +200,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            15k words 
+            14k words 
           </div>
         </div>
         
@@ -374,40 +374,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Prepared</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> JDBCUtils.getConnection();</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql1</span> <span class="operator">=</span> <span class="string">&quot;update balance set money = money - 100 where id = 1&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql2</span> <span class="operator">=</span> <span class="string">&quot;update balance set money = money + 100 where id = 3&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">PreparedStatement</span> <span class="variable">statement</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection.setAutoCommit(<span class="literal">false</span>);<span class="comment">//设置为不自动提交</span></span><br><span class="line">            statement = connection.prepareStatement(sql1);</span><br><span class="line">            <span class="type">int</span> <span class="variable">row</span> <span class="operator">=</span> statement.executeUpdate();</span><br><span class="line">            <span class="keyword">if</span>(row &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SQLException</span>();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            statement = connection.prepareStatement(sql2);</span><br><span class="line">            row = statement.executeUpdate();</span><br><span class="line">            <span class="keyword">if</span>(row &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SQLException</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            connection.commit();<span class="comment">//提交事务</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            <span class="comment">//当发生执行SQL语句的时候，我们可以在异常处理回滚</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                connection.rollback();</span><br><span class="line">                <span class="comment">//当没有存档点的情况下我们回滚到事务开始时，即设置自动提交的地方</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException ex) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(ex);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            JDBCUtils.close(resultSet, statement, connection);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这样的话，即使我们的第二条语句执行了一个不存在的用户3，用户1账户的钱也不会消失，注意当row&#x3D;0时主动抛出异常，以便catch处理回滚</p>
-<h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><h3 id="基本介绍-2"><a href="#基本介绍-2" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>1.当需要成批插入或者更新记录的时候，可以使用Java批处理，这一机制允许多条语句一次性提交给数据库批量处理，通常情况下比单独提交更有效率</p>
-<p>2.JDBC的批量处理语句包括了以下的方法</p>
-<table>
-<thead>
-<tr>
-<th>方法名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>addBatch</td>
-<td>添加需要批量处理的SQL语句或者参数</td>
-</tr>
-<tr>
-<td>executeBatch</td>
-<td>执行批量处理语句</td>
-</tr>
-<tr>
-<td>clearBatch</td>
-<td>清空批处理包的语句</td>
-</tr>
-</tbody></table>
-<p>3.JDBC连接MySQL时，如果要使用批处理，需要在url中添加参数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?rewriteBatchedStatements<span class="operator">=</span><span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>4.批处理往往与PreparedStatement一起搭配使用，可以及减少编译次数又减少运行次数，效率大大提升</p>
-<h3 id="传统的添加方式"><a href="#传统的添加方式" class="headerlink" title="传统的添加方式"></a>传统的添加方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span> (&#123;<span class="string">&quot;all&quot;</span>&#125;)</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> JDBCUtils.getConnection();</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into balance values (?,?,?)&quot;</span>;</span><br><span class="line">        <span class="type">PreparedStatement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.prepareStatement(sql);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            statement.setInt(<span class="number">1</span>, i);</span><br><span class="line">            statement.setString(<span class="number">2</span>, <span class="string">&quot;TomCat&quot;</span>);</span><br><span class="line">            statement.setDouble(<span class="number">3</span>, i * <span class="number">2</span>);</span><br><span class="line">            statement.executeUpdate();</span><br><span class="line">        &#125;</span><br><span class="line">        JDBCUtils.close(<span class="literal">null</span>, statement, connection);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>耗时还是挺久的大概6、7秒钟完成，感兴趣可以输出运行时间测试一下</p>
-<h3 id="批处理运行"><a href="#批处理运行" class="headerlink" title="批处理运行"></a>批处理运行</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    <span class="variable">@SuppressWarnings</span> (&#123;&quot;all&quot;&#125;)</span><br><span class="line">    public <span class="keyword">static</span> void main(String[] args) throws Exception&#123;</span><br><span class="line">        Connection connection <span class="operator">=</span> JDBCUtils.getConnection();</span><br><span class="line">        String <span class="keyword">sql</span> <span class="operator">=</span> &quot;insert into balance values (?,?,?)&quot;;</span><br><span class="line">        PreparedStatement statement <span class="operator">=</span> connection.prepareStatement(<span class="keyword">sql</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i <span class="operator">=</span> <span class="number">1</span>; i <span class="operator">&lt;</span> <span class="number">1000</span>; i<span class="operator">+</span><span class="operator">+</span>) &#123;</span><br><span class="line">            statement.setInt(<span class="number">1</span>, i);</span><br><span class="line">            statement.setString(<span class="number">2</span>, &quot;TomCat&quot;);</span><br><span class="line">            statement.setDouble(<span class="number">3</span>, i <span class="operator">*</span> <span class="number">2</span>);</span><br><span class="line">            statement.addBatch();</span><br><span class="line">            if((i <span class="operator">+</span> <span class="number">1</span>) <span class="operator">%</span> <span class="number">1000</span> <span class="operator">=</span><span class="operator">=</span> <span class="number">0</span>) &#123;</span><br><span class="line">                statement.executeBatch();</span><br><span class="line">                statement.clearBatch();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        JDBCUtils.close(<span class="keyword">null</span>, statement, connection);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意在JDBCUtils工具类中的url添加相关参数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String url <span class="operator">=</span> agreement <span class="operator">+</span> &quot;//&quot; <span class="operator">+</span> address <span class="operator">+</span> &quot;:&quot; <span class="operator">+</span> port <span class="operator">+</span> &quot;/&quot; <span class="operator">+</span> dataBase <span class="operator">+</span> &quot;?rewriteBatchedStatements=true&quot;;</span><br></pre></td></tr></table></figure>
-
 
         
       </div>
@@ -420,10 +386,15 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2025/04/18/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E6%89%B9%E5%A4%84%E7%90%86%EF%BC%89/"
+      title="JDBC笔记(批处理)"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        JDBC笔记(批处理)
         
     </p>
   </a>
