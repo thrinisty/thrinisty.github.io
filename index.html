@@ -162,6 +162,82 @@
    
 
 
+<article id="post-JDBC笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/">JDBC笔记()</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-17T06:30:00.000Z" itemprop="datePublished">2025-04-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.5k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JDBC笔记JDBCJDBC是JAVA程序操作数据库的一种技术，在绝大多数的框架中JDBC一般都被封装在了各式各样的框架之中，这些框架之后也会学习。但是掌握JDBC是如何连接数据库，操作数据库，返回数据库结果，使用数据库返回结果这也是一个后端开发者应该掌握的基础，掌握了之后对后续框架的理解也是一种帮助
+Java对于各大数据库厂商提供了一个连接操作的统一接口，其中定义的方法包括了连接、curd、关闭连接等。而数据库工资负责实现这一些接口，方便Java的开发者利用数据库接口去创建对应数据库实例的创建，再通过动态绑定机制调用数据库实现的相关方法，以下是一个代码示例方便理解（仅仅是模拟，不代表实际开发）
+Java数据库接口
+12345public interface JdbcInterface &#123;    public Object getConnection();    public void crud();    public void close();&#125;
+
+数据库实现接口
+1234567891011121314151617public class MysqlJdb...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Git笔记（代码管理，本地库，分支，团队协作）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -173,7 +249,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/">Git笔记(代码管理，本地库，分支，团队协作)</a>
+        <a class="p-name article-title" href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/">Git笔记(代码管理，本地库，分支，团队协作)</a>
       </h1>
     
   
@@ -181,7 +257,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-15T13:10:00.000Z" itemprop="datePublished">2025-04-15</time>
+  <time class="dt-published" datetime="2025-04-16T13:10:00.000Z" itemprop="datePublished">2025-04-16</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -201,12 +277,12 @@
         
           <div class="truncate-text">
             
-              GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee）
+              GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天（15号）一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee）
 之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链接到的Github，而我现在学Java改用IDEA了，又需要重新配置一下才可以方便使用。
-找的课程也就4~5个小时，就当过一遍教程了，再对不了解的代码分支，分支合并学习一下，以下是该课程涉及的一些知识点（代码推送、代码拉取、代码克隆、IDEA集成Github、Gitee、GitLab）
+找的课程也就4~5个小时，就当过一遍教程了，对不了解的代码分支，分支合并学习一下，以下是该课程涉及的一些知识点（代码推送、代码拉取、代码克隆、IDEA集成Github、Gitee、GitLab）
 重要概念版本控制版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统
 其中最重要的就是可以记录文件修改历史，从而让用户能够查看历史版本，方便切换版本
-对于个人而言或许不太需要版本控制，但是如果一旦上升到公司集体，为了方便安全的对于代码进行修改（对于多个修改进行正确的合并），版本控制的使用就异...
+对于个人而言或许不太需要版本控制，但是如果一旦上升到公司集体，为了方便安全的对于代码进行修改（对于多个修改进行正确的合并），版本控制的...
             
           </div>
         
@@ -218,7 +294,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/04/15/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/" 
+      href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -872,78 +948,6 @@ java事件处理采取的是”委派事件模型”，当事件发生的时候�
     <a class="right-panel  non-pic  "
       
       href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（泛型，JUnit）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/">Java课堂笔记（泛型，JUnit）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-03T07:36:00.000Z" itemprop="datePublished">2025-04-03</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            15k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记泛型使用案例我们先来看一个例子
-运用集合来存储狗
-1234567891011121314151617181920212223public class Generic_ &#123;    public static void main(String[] args) &#123;        ArrayList list = new ArrayList();        list.add(new Dog(&quot;旺财&quot;, 19));        list.add(new Dog(&quot;来福&quot;, 33));        list.add(new Dog(&quot;小黑&quot;, 12));        Iterator iterator = list.iterator();        while (iterator.hasNext()) &#123;            Dog d = (Dog) iterator.next();            System.out.println(d);        &#12...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
