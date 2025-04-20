@@ -162,6 +162,85 @@
    
 
 
+<article id="post-Java课堂笔记（IO流）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/06/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88IO%E6%B5%81%EF%BC%89/">Java课堂笔记（IO流）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-06T11:29:00.000Z" itemprop="datePublished">2025-04-06</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            25k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记IO流的部分我打算用两天的时间完成学习，再用一天来结束class以及反射的内容，Java的基础知识点就告一段落。
+文件基础知识文件在程序中是以流的形式来操作的
+Java程序（内存）——输出流——&gt;文件
+文件——输入流——&gt;Java程序（内存）
+流：数据在数据源（文件）和程序（内存）之间经历的路径
+输入流：数据从文件到程序的路径
+输出流：数据从程序到文件的路径
+常用的文件操作创建文件创建文件对象相关方法，注意只有调用createNewFile才会创建文件
+方式一：通过路径创建文件对象，并创建文件
+1234567891011@Test    public void create01() &#123;        String filePath = &quot;e:\\JavaFile\\1.txt&quot;;        File file = new File(filePath);        try &#123;            file.createNewFile();            System.out.println(&quot...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/06/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88IO%E6%B5%81%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（多线程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -854,83 +933,6 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
 
 
 
-   
-
-
-<article id="post-Java课堂笔记（枚举类，注解，异常处理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/24/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3%EF%BC%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%89/">Java课堂笔记（枚举类，注解，异常处理）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-24T13:15:00.000Z" itemprop="datePublished">2025-03-24</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            12k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记枚举类在设计一个季节对象的时候，我们可以用传统的方式实现
-123456789101112public class Enumeration &#123;    Season season = new Season(&quot;春天&quot;, &quot;温暖&quot;);&#125;class Season &#123;    private String season;    private String description;    Season(String season, String description) &#123;        this.season = season;        this.description = description;    &#125;&#125;
-
-但是众所周知，季节只有四季，不能体现只有四个这个特征，为了解决这个问题，我们可以使用枚举类来定义季节，设计几个有限的值
-枚举定义是一组常量的集合：枚举是一种特殊的类，里面只包含一组有限的特定对象
-自定义枚举
-1.不需要提供set方法，因为枚举对象通常是只读的
-2.写...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/24/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3%EF%BC%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -938,7 +940,7 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a>  
+      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/3/">
       <i class="fa-solid fa-angle-right"></i>
