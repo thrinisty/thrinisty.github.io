@@ -843,7 +843,7 @@ com.thrinisty 表示包名
    
 
 
-<article id="post-编译原理课堂笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-Java课堂笔记（进制，位运算，流程控制）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -854,7 +854,7 @@ com.thrinisty 表示包名
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">编译原理课堂笔记</a>
+        <a class="p-name article-title" href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%BF%9B%E5%88%B6%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97%EF%BC%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%89/">Java课堂笔记（进制，位运算，流程控制）</a>
       </h1>
     
   
@@ -862,7 +862,7 @@ com.thrinisty 表示包名
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-03T04:09:00.000Z" itemprop="datePublished">2025-03-03</time>
+  <time class="dt-published" datetime="2025-03-03T00:08:00.000Z" itemprop="datePublished">2025-03-03</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -873,7 +873,7 @@ com.thrinisty 表示包名
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.7k words 
+            4.2k words 
           </div>
         </div>
         
@@ -882,22 +882,19 @@ com.thrinisty 表示包名
         
           <div class="truncate-text">
             
-              听课笔记短路与短路与求值在较低一层的逻辑
-1(a &lt; b) &amp;&amp; (c &gt; d) //在这里是一个短路的与操作
-
-在实现方面下是通过以下的流程执行
-1234567891011t1 = a &lt; b;if(t1) goto T2;goto T1;	//当跳转至T1时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T2;goto T1;T0://真出口T1://假出口
-
-短路或短路或求值在较低一层的逻辑
-1(a &lt; b) || (c &gt; d) //在这里是一个短路的或操作
-
-在实现方面下是通过以下的流程执行
-1234567891011t1 = a &lt; b;if(t1) goto T0;goto T2;	//当跳转至T0时T2部分的内容不做相关操作，从而实现了短路的效果T2:t2 = c &gt; d;if(t2) goto T0;goto T1;T0://真出口T1://假出口
-
-布尔类型的中间隐式转换1x = a &lt; b;
-
-在实现方面下是通过以下的流程执行
-12345...
+              听课笔记Java中的进制二进制  	0b 开头		 如 0b101， 0B1111
+十进制  						 如 10， 100
+八进制  	0 开头表示	如 077，0734
+十六进制  0x开头表示	如 0xFFFF， 0Xab03， 0xaaaa， 0XEEFE
+Java中的位运算~2 按位取反
+2&amp;3 按位与
+2|3  按位或
+3^6 按位异或
+Java 中的位运算符算术左移，&lt;&lt;，符号位不变低位补 0
+算数右移，&gt;&gt;，符号位不变用符号位补高位
+逻辑右移，&gt;&gt;&gt;，低位溢出，高位补 0
+Java中的分支控制if &amp;&amp; else随便写了一个，较为简陋
+123456789101112131415161718import java.util.Scanner;public class Test&#123;		public static void main(String[] args) &#123;		Scanner myscanner = new Scanner(System.in);		System.out.prin...
             
           </div>
         
@@ -909,7 +906,7 @@ com.thrinisty 表示包名
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/03/03/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" 
+      href="/2025/03/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%BF%9B%E5%88%B6%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97%EF%BC%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -932,7 +929,7 @@ com.thrinisty 表示包名
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a>  
+      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/5/">
       <i class="fa-solid fa-angle-right"></i>
