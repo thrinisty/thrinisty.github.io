@@ -162,6 +162,87 @@
    
 
 
+<article id="post-Redis笔记(NoSQL，Redis)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/22/Redis%E7%AC%94%E8%AE%B0(NoSQL%EF%BC%8CRedis)/">Redis笔记(NoSQL，Redis)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-22T13:07:00.000Z" itemprop="datePublished">2025-04-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.3k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              笔记模板
+Redis笔记花了大概两天完成，Java8内容的学习，比预期的要上了短一些，本来打算按照学习计划先进行Java开发框架的学习，但是发现面试的时候Redis考点会更多一点，所以将Redis部分的学习提前，预定大概10天完成（黑马Redis教程）
+教程包括了：八种不同的数据结构，两个消息队列，四个相关的运维操作，Scrip脚本，事务操作
+NoSQLSQL是关系型数据库，而NoSQL是非关系型数据库
+与SQL的区别结构化SQL高度结构化，每个字段每个值都会有严格的要求，一般难以修改。而NoSQL是非结构化的，对于key没有严格要求，支持自定义，还可以键值类型，列类型，文档存储，Graph存储，相对SQL，结构便于修改
+关联性SQL有外键的约束，数据是相关联的，NoSQL没有关联（程序员手动维护）
+SQL查询只要是SQL都可以使用相同的查询语句查询，而NoSQL没有固定的语法格式
+
+每一个类型的数据查询方式不同
+事务SQL有事务满足ACID，而NoSQL只满足BASE
+总结
+Redis基本介绍Remote Dictionary Server 远程词典服务器，是一个基于内存的键值...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/22/Redis%E7%AC%94%E8%AE%B0(NoSQL%EF%BC%8CRedis)/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java8笔记（Lambda表达式，Stream API，Optional）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -192,7 +273,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            13k words 
+            14k words 
           </div>
         </div>
         
@@ -898,86 +979,6 @@ MySQL启动服务在我这里因为安装的时候设置为开机自动启用，
 
 
 
-   
-
-
-<article id="post-Java课堂笔记（反射）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/">Java课堂笔记（反射）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-08T07:29:00.000Z" itemprop="datePublished">2025-04-08</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            15k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记反射reflection
-引出反射我们需要怎样才可以读出配置文件的内容，并调用配置文件的方法
-配置文件
-12classPath = com.reflection.Catmethod = hi
-
-目标类文件
-12345678package com.reflection;public class Cat &#123;    public void hi() &#123;        System.out.println(&quot;hi&quot;);    &#125;&#125;
-
-问题实现
-第一点很容易，我们通过创建properties在进行加载，就可以很容易的得到配置中的内容
-12345678910public class ReflectionQuestion &#123;    public static void main(String[] args) throws IOException &#123;        String filePath = &quot;src\\re.properties&quot;;        Properties pro...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -985,7 +986,7 @@ MySQL启动服务在我这里因为安装的时候设置为开机自动启用，
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a>  
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/2/">
       <i class="fa-solid fa-angle-right"></i>

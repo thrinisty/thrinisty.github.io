@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（反射）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/">Java课堂笔记（反射）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-08T07:29:00.000Z" itemprop="datePublished">2025-04-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            15k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记反射reflection
+引出反射我们需要怎样才可以读出配置文件的内容，并调用配置文件的方法
+配置文件
+12classPath = com.reflection.Catmethod = hi
+
+目标类文件
+12345678package com.reflection;public class Cat &#123;    public void hi() &#123;        System.out.println(&quot;hi&quot;);    &#125;&#125;
+
+问题实现
+第一点很容易，我们通过创建properties在进行加载，就可以很容易的得到配置中的内容
+12345678910public class ReflectionQuestion &#123;    public static void main(String[] args) throws IOException &#123;        String filePath = &quot;src\\re.properties&quot;;        Properties pro...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（IO流）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -479,77 +559,6 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap，其中HashMa
    
 
 
-<article id="post-笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/">笔记()</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-01T13:10:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              笔记模板
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
 <article id="post-Java课堂笔记（集合01）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -685,6 +694,77 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
     <a class="right-panel  non-pic  "
       
       href="/2025/04/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%B8%80%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Redis笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/01/Redis%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/">Redis笔记()</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-31T16:00:00.000Z" itemprop="datePublished">2025-04-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              笔记模板
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/01/Redis%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -859,80 +939,6 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
 
 
 
-   
-
-
-<article id="post-面试小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/27/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/">字节跳动面试小结</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-27T09:10:00.000Z" itemprop="datePublished">2025-03-27</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.8k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              面试小结这一次面试没有想象中的那么压力山大，面试官也没有去死咬着某个知识点去提问，而是通过投递的简历来提问，其中计算机操作系统相关的题目较多，而我有对计算机系统方面的线程进程问题又比较了解，在这个部分表现得还算过得去，但是在于存储的方面我确实没有一个很好的实践积累，回答的大多都是在理论上的知识点，还有设备IO方面，我知道的也不是很多，面试官看我不是很清楚也就没有深挖。计算机网络相关的基础没有问到，不知道是不是看我的简历上有一两个网络编程的经验就跳过了。
-缺少知识点：多线程相关的细节，Mysql，Redis，哈希表，红黑树
-面试除了基础知识的提问，还考察了在设计项目上的思路，例如操作系统上如何去降低一个响应的时间：我除了进程之外也懂得不多，我就回答的是可以优化进程调度的一个策略，例如调整时间片大小，在线程之下创建亚线程。内存我直接不管了，另外加多CPU支持并行，多的我面试的时候也没有想到。
-以下是AI生成的其他回答
-123456789101112131415 I/O优化异步I/O：用非阻塞I/O（如epoll、io_uring）替代同步阻塞调用。缓冲和批处理：合并小I/O请求为大操...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/27/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -940,7 +946,7 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a>  
+      <a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/3/">
       <i class="fa-solid fa-angle-right"></i>

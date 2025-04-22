@@ -162,6 +162,80 @@
    
 
 
+<article id="post-面试小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/27/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/">字节跳动面试小结</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-27T09:10:00.000Z" itemprop="datePublished">2025-03-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.8k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              面试小结这一次面试没有想象中的那么压力山大，面试官也没有去死咬着某个知识点去提问，而是通过投递的简历来提问，其中计算机操作系统相关的题目较多，而我有对计算机系统方面的线程进程问题又比较了解，在这个部分表现得还算过得去，但是在于存储的方面我确实没有一个很好的实践积累，回答的大多都是在理论上的知识点，还有设备IO方面，我知道的也不是很多，面试官看我不是很清楚也就没有深挖。计算机网络相关的基础没有问到，不知道是不是看我的简历上有一两个网络编程的经验就跳过了。
+缺少知识点：多线程相关的细节，Mysql，Redis，哈希表，红黑树
+面试除了基础知识的提问，还考察了在设计项目上的思路，例如操作系统上如何去降低一个响应的时间：我除了进程之外也懂得不多，我就回答的是可以优化进程调度的一个策略，例如调整时间片大小，在线程之下创建亚线程。内存我直接不管了，另外加多CPU支持并行，多的我面试的时候也没有想到。
+以下是AI生成的其他回答
+123456789101112131415 I/O优化异步I/O：用非阻塞I/O（如epoll、io_uring）替代同步阻塞调用。缓冲和批处理：合并小I/O请求为大操...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/27/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（枚举类，注解，异常处理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -880,77 +954,6 @@ UDP将数据，源，目的封装为数据包，不需要建立连接
 
 
 
-   
-
-
-<article id="post-Java课堂笔记（面向对象改造，零钱通综合实验，章节练习）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/13/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%94%B9%E9%80%A0%EF%BC%8C%E9%9B%B6%E9%92%B1%E9%80%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C%EF%BC%8C%E7%AB%A0%E8%8A%82%E7%BB%83%E4%B9%A0%EF%BC%89/">Java课堂笔记（面向对象改造，零钱通综合实验，章节练习）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-13T07:08:00.000Z" itemprop="datePublished">2025-03-13</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            13k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记零钱通综合案例目的是使用Java开发零钱通项目，可以完成收益入账，消费，查看明细，退出等功能
-1.显示菜单，可以显示菜单，给出对应提示12345678910111213141516171819202122232425262728293031323334package com.smallchange;import java.util.Scanner;public class SmallChangeSys &#123;    public static void main(String[] args) &#123;        boolean loop = true;        do &#123;            System.out.println(&quot;==========零钱通==========&quot;);            System.out.println(&quot;\t\t1 零钱通明细&quot;);            System.out.println(&quot;\t\t2 收益入账&quot;);           ...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/13/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%94%B9%E9%80%A0%EF%BC%8C%E9%9B%B6%E9%92%B1%E9%80%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C%EF%BC%8C%E7%AB%A0%E8%8A%82%E7%BB%83%E4%B9%A0%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
 
   <nav id="page-nav">
     <!-- 在第二页时 page.prev_link 不知为何无法返回正确的链接 -->
@@ -958,7 +961,7 @@ UDP将数据，源，目的封装为数据包，不需要建立连接
       <i class="fa-solid fa-angle-left"></i>
     </a>
     <div id="num-bar">
-      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a>  
+      <a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a>  
     </div>
     <a id="next-btn" class="page-nav-btn " href="/page/4/">
       <i class="fa-solid fa-angle-right"></i>
