@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>Redis笔记(NoSQL，Redis，数据结构) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="笔记模板 Redis笔记花了大概两天完成，Java8内容的学习，比预期的要上了短一些，本来打算按照学习计划先进行Java开发框架的学习，但是发现面试的时候Redis考点会更多一点，所以将Redis部分的学习提前，预定大概10天完成（黑马Redis教程） 教程包括了：八种不同的数据结构，两个消息队列，四个相关的运维操作，Scrip脚本，事务操作 NoSQLSQL是关系型数据库，而NoSQL是非关系型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis笔记(NoSQL，Redis，数据结构)">
+<meta property="og:url" content="http://example.com/2025/04/22/Redis%E7%AC%94%E8%AE%B0(NoSQL%EF%BC%8CRedis%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="笔记模板 Redis笔记花了大概两天完成，Java8内容的学习，比预期的要上了短一些，本来打算按照学习计划先进行Java开发框架的学习，但是发现面试的时候Redis考点会更多一点，所以将Redis部分的学习提前，预定大概10天完成（黑马Redis教程） 教程包括了：八种不同的数据结构，两个消息队列，四个相关的运维操作，Scrip脚本，事务操作 NoSQLSQL是关系型数据库，而NoSQL是非关系型">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/124.png">
+<meta property="og:image" content="http://example.com/images/125.png">
+<meta property="og:image" content="http://example.com/images/126.png">
+<meta property="og:image" content="http://example.com/images/127.png">
+<meta property="og:image" content="http://example.com/images/128.png">
+<meta property="og:image" content="http://example.com/images/129.png">
+<meta property="og:image" content="http://example.com/images/130.png">
+<meta property="article:published_time" content="2025-04-22T13:07:00.000Z">
+<meta property="article:modified_time" content="2025-04-23T11:50:39.117Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/124.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/1.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Thrinisty </div>
+      <div class="dot"></div>
+      <div class="subtitle">苦逼大学生来的 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-Redis笔记(NoSQL，Redis，数据结构)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Redis笔记(NoSQL，Redis，数据结构)
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-22T13:07:00.000Z" itemprop="datePublished">2025-04-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.5k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>笔记模板</p>
+<h1 id="Redis笔记"><a href="#Redis笔记" class="headerlink" title="Redis笔记"></a>Redis笔记</h1><p>花了大概两天完成，Java8内容的学习，比预期的要上了短一些，本来打算按照学习计划先进行Java开发框架的学习，但是发现面试的时候Redis考点会更多一点，所以将Redis部分的学习提前，预定大概10天完成（黑马Redis教程）</p>
+<p>教程包括了：八种不同的数据结构，两个消息队列，四个相关的运维操作，Scrip脚本，事务操作</p>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><p>SQL是关系型数据库，而NoSQL是非关系型数据库</p>
+<h3 id="与SQL的区别"><a href="#与SQL的区别" class="headerlink" title="与SQL的区别"></a>与SQL的区别</h3><h4 id="结构化"><a href="#结构化" class="headerlink" title="结构化"></a>结构化</h4><p>SQL高度结构化，每个字段每个值都会有严格的要求，一般难以修改。而NoSQL是非结构化的，对于key没有严格要求，支持自定义，还可以键值类型，列类型，文档存储，Graph存储，相对SQL，结构便于修改</p>
+<h4 id="关联性"><a href="#关联性" class="headerlink" title="关联性"></a>关联性</h4><p>SQL有外键的约束，数据是相关联的，NoSQL没有关联（程序员手动维护）</p>
+<h4 id="SQL查询"><a href="#SQL查询" class="headerlink" title="SQL查询"></a>SQL查询</h4><p>只要是SQL都可以使用相同的查询语句查询，而NoSQL没有固定的语法格式</p>
+<p><img src="/../images/124.png" alt="124"></p>
+<p>每一个类型的数据查询方式不同</p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>SQL有事务满足ACID，而NoSQL只满足BASE</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/../images/125.png" alt="125"></p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>Remote Dictionary Server 远程词典服务器，是一个基于内存的键值型NoSQL数据库，以下是Redis的基本特征</p>
+<p>键值型：value支持多种不同数据结构，功能丰富</p>
+<p>单线程：每个命令具备原子性（Redis 6可以多线程处理网络请求）</p>
+<p>高性能：低延迟，速度快（基于内存，IO多路复用，良好的编码【C语言编写】）</p>
+<p>持久化：内存以往是不持久化的，而Redis定期存入磁盘，支持持久化</p>
+<p>高可用：支持主从集群，分片集群</p>
+<p>语言支持：支持多种语言的客户端</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>我们一般的redis数据库会配置在Linux环境下，之后可以使用Windows的GUI软件RESP来使用Linux下的数据库</p>
+<p>再Linux下装好redis后，可以使用如下的指令</p>
+<p>命令行客户端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+
+<p>服务端启动脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br></pre></td></tr></table></figure>
+
+<p>哨兵启动脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-sentinel</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以在redis.conf中设置，允许访问的地址，密码，是否后台运行等</p>
+<p>再用如下的指令指定配置文件启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>利用如下指令查找开启的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis</span><br></pre></td></tr></table></figure>
+
+<p>杀死对应端口的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 2574</span><br></pre></td></tr></table></figure>
+
+
+
+<p>用命令行客户端连接redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -a ******</span><br></pre></td></tr></table></figure>
+
+<p>连接成功后，ping和服务端交互</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ping</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+
+<p>还可以进行存取数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set name jack</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; set age 21</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get name</span><br><span class="line">&quot;jack&quot;</span><br><span class="line">127.0.0.1:6379&gt; get age</span><br><span class="line">&quot;21&quot;</span><br></pre></td></tr></table></figure>
+
+<p>再windows宿主机使用如下指令连接（虚拟机网络适配器改为桥接连接模式）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 192.168.104.52 -p 6379 -a ******</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用GUI客户端连接</p>
+<p>网址链接： <a target="_blank" rel="noopener" href="https://github.com/lework/RedisDesktopManager-Windows">https://github.com/lework/RedisDesktopManager-Windows</a></p>
+<p><img src="/../images/126.png" alt="126"></p>
+<h2 id="Redis数据结构"><a href="#Redis数据结构" class="headerlink" title="Redis数据结构"></a>Redis数据结构</h2><p>Redis是一个键值对形式存储的数据库，key一般是String类型的，不过Value的类型非常多种多样</p>
+<p><img src="/../images/127.png" alt="127"></p>
+<p>其中前五种是基本数据类型，后三种是特殊数据类型</p>
+<p>数据类型的具体使用详见 <a target="_blank" rel="noopener" href="https://redis.io/docs/latest/commands">https://redis.io/docs/latest/commands</a></p>
+<p>如果在连接到redis下的客户端中可以使用如下指令获取帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help @数据类型</span><br></pre></td></tr></table></figure>
+
+<p>例如查看String的相关指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help @String</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Key的层级格式"><a href="#Key的层级格式" class="headerlink" title="Key的层级格式"></a>Key的层级格式</h3><p>Redis没有类似MySQL中的Table概念，而所有的键值对都是存储在一起的，怎么区分不同类型的key？</p>
+<p>例如需要存储用户，商品信息到redis，一个用户的id是1，而另一个商品id也为1</p>
+<p>而为了解决这类的问题，redis引入了key的层级结构：Redis的key允许有多个单词形成层级结构，多个单词之间用：隔开，格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目名称:业务名称:类型:id</span><br></pre></td></tr></table></figure>
+
+<p>格式并非固定不变，可以根据需求删除或者添加词条</p>
+<p>user相关的key：com.user:1</p>
+<p>product相关的key：com.product:1</p>
+<p><img src="/../images/128.png" alt="128"></p>
+<h3 id="Redis通用命令"><a href="#Redis通用命令" class="headerlink" title="Redis通用命令"></a>Redis通用命令</h3><p>虽然有非常多的数据类型以及相关操作，但是其中也有一些通用的命令</p>
+<h4 id="KEYS"><a href="#KEYS" class="headerlink" title="KEYS"></a>KEYS</h4><p>查看符合模板的所有key，不建议在Redis服务器端使用，会阻塞所有的其他指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEYS pattern</span><br></pre></td></tr></table></figure>
+
+<p>例如：返回所有的键值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEYS *</span><br></pre></td></tr></table></figure>
+
+<p>返回a开头的所有键值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KEYS a*</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="DEL"><a href="#DEL" class="headerlink" title="DEL"></a>DEL</h4><p>删除一个指定的键值(例如age)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEL age</span><br></pre></td></tr></table></figure>
+
+<p>也可以删除多个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEL k1 k2 k3</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MSET"><a href="#MSET" class="headerlink" title="MSET"></a>MSET</h4><p>批量插入键值对</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSET k1 v1 k2 v2 k3 v3 k4 v4</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="EXISTS"><a href="#EXISTS" class="headerlink" title="EXISTS"></a>EXISTS</h4><p>判断是否存在键值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXISTS k4</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="EXPIRE"><a href="#EXPIRE" class="headerlink" title="EXPIRE"></a>EXPIRE</h4><p>给一个key设置有效期，有效期到达时key会被删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPIRE key second</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPIRE name 5</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><p>查看一个键的有效期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TTL key</span><br></pre></td></tr></table></figure>
+
+<p>其中返回-1代表永久有效 -2为无效，其余为有效的秒数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TTL k1</span><br><span class="line">(integer) -1</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3><p>是字符串类型，是Redis中最简单的存储类型，value是字符串，根据不同的格式又分为了三类：String 普通字符串  int 整数类型  float  浮点类型</p>
+<p>无论是哪一种格式存储，底层都是字节数组形式，只是编码方式不同，字符串类型的最大空间不可以超过512M</p>
+<p>以下是String类型常见的命令</p>
+<h4 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h4><p>添加或者修改一个存在的String类型的键值对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set k1 123</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>根据key获取String类型的value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get k1</span><br><span class="line">&quot;123&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MSET-1"><a href="#MSET-1" class="headerlink" title="MSET"></a>MSET</h4><p>批量添加多个String类型的的键值对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSET t1 1 t2 2 t3 3</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="MGET"><a href="#MGET" class="headerlink" title="MGET"></a>MGET</h4><p>根据多个key获取多个String类型的value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MGET k1 k2 k3</span><br><span class="line">1) &quot;v1&quot;</span><br><span class="line">2) &quot;v2&quot;</span><br><span class="line">3) &quot;v3&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="INCR"><a href="#INCR" class="headerlink" title="INCR"></a>INCR</h4><p>让一个整型的key自增1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get 1</span><br><span class="line">&quot;23&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INCR 1</span><br><span class="line">(integer) 24</span><br><span class="line">get 1</span><br><span class="line">&quot;24&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="INCRBY"><a href="#INCRBY" class="headerlink" title="INCRBY"></a>INCRBY</h4><p>让一个整形的key自增并指定步长，例如incrby num 2让num自增2</p>
+<p>在INCR的基础上增加步长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INCRBY 1 4</span><br><span class="line">(integer) 28</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="INCRBYFLOAT"><a href="#INCRBYFLOAT" class="headerlink" title="INCRBYFLOAT"></a>INCRBYFLOAT</h4><p>让一个浮点类型的数字自增并指定步长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">append 2 3.1415296</span><br><span class="line">(integer) 9</span><br><span class="line">get 2</span><br><span class="line">&quot;3.1415296&quot;</span><br><span class="line">INCRBYFLOAT 2 1.1</span><br><span class="line">&quot;4.2415296&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SETNX"><a href="#SETNX" class="headerlink" title="SETNX"></a>SETNX</h4><p>添加一个String类型的键值对，前提是这个key不存在，否则不执行</p>
+<p>k1以及存在，不执行语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SETNX k1 1</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SETEX"><a href="#SETEX" class="headerlink" title="SETEX"></a>SETEX</h4><p>添加一个String类型的键值对，并且指定有效期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETEX key seconds value</span><br></pre></td></tr></table></figure>
+
+<p>设置键3值12，持续30每秒</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETEX 3 30 12</span><br></pre></td></tr></table></figure>
+
+<p>或者可以这么写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set 3 12 ex 30</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h3><p>Hash类型，又称为散列，它的value是一个无序字典，类似于Java中的HashMap结构，String结构是将对象序列化为JSON字符串后存储，当需要修改某个字段的时候很不方便</p>
+<p><img src="/../images/129.png" alt="129"></p>
+<p>而Hash结构可以将对象中的每个字段独立存储，可以针对单个字段作增删改查</p>
+<p><img src="/../images/130.png" alt="130"></p>
+<h4 id="HSET"><a href="#HSET" class="headerlink" title="HSET"></a>HSET</h4><p>添加或者修改hash类型key的field值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hset key field value</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hset hash1 field value</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HGET"><a href="#HGET" class="headerlink" title="HGET"></a>HGET</h4><p>获取一个hash类型的key的field值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HGET key field</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hget hash1 field</span><br><span class="line">&quot;value&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HMSET"><a href="#HMSET" class="headerlink" title="HMSET"></a>HMSET</h4><p>批量添加多个hash类型key的field值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMSET hash1 field2 value2 field3 value3</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HMGET"><a href="#HMGET" class="headerlink" title="HMGET"></a>HMGET</h4><p>批量获取多个hash类型的key的field值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HMGET hash1 field field1 field2</span><br><span class="line">1) &quot;value&quot;</span><br><span class="line">2) &quot;value2&quot;</span><br><span class="line">3) &quot;value2&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HDEL"><a href="#HDEL" class="headerlink" title="HDEL"></a>HDEL</h4><p>删除指定hash中的某个字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HDEL hash fieldString</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HGETALL"><a href="#HGETALL" class="headerlink" title="HGETALL"></a>HGETALL</h4><p>获取一个hash类型的key中所有的field和value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HGETALL hash1</span><br><span class="line">1) &quot;field&quot;</span><br><span class="line">2) &quot;value&quot;</span><br><span class="line">3) &quot;field1&quot;</span><br><span class="line">4) &quot;value2&quot;</span><br><span class="line">5) &quot;field2&quot;</span><br><span class="line">6) &quot;value2&quot;</span><br><span class="line">7) &quot;field3&quot;</span><br><span class="line">8) &quot;value3&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HKEYS"><a href="#HKEYS" class="headerlink" title="HKEYS"></a>HKEYS</h4><p>获取一个hash类型的所有field</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HKEYS hash1</span><br><span class="line">1) &quot;field&quot;</span><br><span class="line">2) &quot;field1&quot;</span><br><span class="line">3) &quot;field2&quot;</span><br><span class="line">4) &quot;field3&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HVALS"><a href="#HVALS" class="headerlink" title="HVALS"></a>HVALS</h4><p>获取一个hash类型的所有value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HVALS hash1</span><br><span class="line">1) &quot;value&quot;</span><br><span class="line">2) &quot;value2&quot;</span><br><span class="line">3) &quot;value2&quot;</span><br><span class="line">4) &quot;value3&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HINCRBY"><a href="#HINCRBY" class="headerlink" title="HINCRBY"></a>HINCRBY</h4><p>让一个hash类型key的字段值自增，并指定步长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HSET hash fieldInt 1</span><br><span class="line">(integer) 1</span><br><span class="line">HINCRBY hash fieldInt 3</span><br><span class="line">(integer) 4</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HSETNX"><a href="#HSETNX" class="headerlink" title="HSETNX"></a>HSETNX</h4><p>添加一个hash类型key的field值，前提是field不存在，否则不执行（就是不允许修改存在的键的值）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HSETNX hash fieldString HelloWorld</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="List类型"><a href="#List类型" class="headerlink" title="List类型"></a>List类型</h3><p>对于List而言，可以使用该数据类型进行模拟栈：只需要入口和出口在同一边，如LPUSH+LPOP或者RPUSH+RPOP</p>
+<p>也可以模拟一个队列：需要入口和出口在不同边即可，如RPUSH+LPOP或者RPUSH+LPOP</p>
+<p>阻塞队列的模拟：入口出口不同边，取出采用BLPOP或者BRPOP</p>
+<p>基本介绍</p>
+<p>Redis中的List类型，和Java中的LinkedList类似，可以看作是一个双向链表的结构，既支持正向检索也可以支持反向检索</p>
+<p>特征：有序，元素可以重复，插入和删除较快，查询效率一般</p>
+<p>以下是List的常见命令</p>
+<h4 id="LPUSH"><a href="#LPUSH" class="headerlink" title="LPUSH"></a>LPUSH</h4><p>向列表左侧插入一个或者多个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LPUSH key element ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LPUSH list a b c d e f g</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="LPOP"><a href="#LPOP" class="headerlink" title="LPOP"></a>LPOP</h4><p>移除并返回列表左侧的第一个元素，没有则返回nil</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LPOP key </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LPOP list</span><br><span class="line">&quot;g&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="RPUSH"><a href="#RPUSH" class="headerlink" title="RPUSH"></a>RPUSH</h4><p>向列表右侧插入一个或者多个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RPUSH list a b c d e f g h</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="RPOP"><a href="#RPOP" class="headerlink" title="RPOP"></a>RPOP</h4><p>移除并返回列表右侧的第一个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RPOP list</span><br><span class="line">&quot;h&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="LRANGE"><a href="#LRANGE" class="headerlink" title="LRANGE"></a>LRANGE</h4><p>返回一段角标范围内的所有元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LRANGE key star end</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LRANGE list 1 3</span><br><span class="line">1) &quot;b&quot;</span><br><span class="line">2) &quot;c&quot;</span><br><span class="line">3) &quot;d&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="BLPOP与BRPOP"><a href="#BLPOP与BRPOP" class="headerlink" title="BLPOP与BRPOP"></a>BLPOP与BRPOP</h4><p>和LPOP，RPOP类似，只是在没有元素时等待指定时间，而不是返回nil</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BLPOP list 60</span><br><span class="line">1) &quot;list&quot;</span><br><span class="line">2) &quot;target&quot;</span><br><span class="line">(15.01s)</span><br></pre></td></tr></table></figure>
+
+<p>其中list本来没有值，进入阻塞等待最多60s，新创建的客户端加入list 数据 target数据被读到</p>
+<h3 id="Set类型"><a href="#Set类型" class="headerlink" title="Set类型"></a>Set类型</h3><p>Redis的Set结构和Java中的HashSet类似，可以看为是一个value为null的HashMap，因为是一个hash表，因此具备和HashSet类似的特征：无序，元素不可重复，查找快，支持交集、并集、差集的功能</p>
+<p>以下是Set类型常见的命令</p>
+<h4 id="SADD"><a href="#SADD" class="headerlink" title="SADD"></a>SADD</h4><p>向set中添加一个或者多个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SADD key member ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SADD set a b c d e f g</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SREM"><a href="#SREM" class="headerlink" title="SREM"></a>SREM</h4><p>移除set中的指定元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SREM key member ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SREM set a b c</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SCARD"><a href="#SCARD" class="headerlink" title="SCARD"></a>SCARD</h4><p>返回set中的元素个数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SCARD key</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SCARD set</span><br><span class="line">(integer) 4</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SISMEMBER"><a href="#SISMEMBER" class="headerlink" title="SISMEMBER"></a>SISMEMBER</h4><p>判断一个元素是否存在于set中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SISMEMBER key member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SISMEMBER set g</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SMEMBERS"><a href="#SMEMBERS" class="headerlink" title="SMEMBERS"></a>SMEMBERS</h4><p>获取set中的所有元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SMEMBERS set</span><br><span class="line">1) &quot;g&quot;</span><br><span class="line">2) &quot;d&quot;</span><br><span class="line">3) &quot;f&quot;</span><br><span class="line">4) &quot;e&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>前置操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SADD set1 a b c d e f</span><br><span class="line">SADD set2 a b</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SINTER"><a href="#SINTER" class="headerlink" title="SINTER"></a>SINTER</h4><p>求两个集合的交集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SINTER set1 set2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) &quot;b&quot;</span><br><span class="line">2) &quot;a&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a>SDIFF</h4><p>求两个集合的差集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SDIFF set1 set2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1) &quot;c&quot;</span><br><span class="line">2) &quot;e&quot;</span><br><span class="line">3) &quot;f&quot;</span><br><span class="line">4) &quot;d&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SUNION"><a href="#SUNION" class="headerlink" title="SUNION"></a>SUNION</h4><p>求两个集合的并集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUNION set1 set2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1) &quot;b&quot;</span><br><span class="line">2) &quot;a&quot;</span><br><span class="line">3) &quot;d&quot;</span><br><span class="line">4) &quot;c&quot;</span><br><span class="line">5) &quot;e&quot;</span><br><span class="line">6) &quot;f&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="SortedSet类型"><a href="#SortedSet类型" class="headerlink" title="SortedSet类型"></a>SortedSet类型</h3><p>Redis的SortedSet是一个可排序的set集合，与Java中的TreeSet有些类似，但是底层数据结构差别巨大，SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层是一个跳表（Skip List）加上hash表</p>
+<p>以下是SortedSet的特征：可排序 元素不重复  查询速度快</p>
+<p>因为SortedSet的可排序性，经常用于实现排行榜等功能</p>
+<p>以下是Sorted的常见命令，所有排名默认为升序，降序在命令Z后加REV即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREVRANGE </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZADD"><a href="#ZADD" class="headerlink" title="ZADD"></a>ZADD</h4><p>添加一个或者多个元素到sorted set，如果与存在则更新其score值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZADD key score member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZADD sortedset 1 Hello</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZREM"><a href="#ZREM" class="headerlink" title="ZREM"></a>ZREM</h4><p>删除sorted set中的一个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZREM key member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zrem sortedset HelloWorld</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZSCORE"><a href="#ZSCORE" class="headerlink" title="ZSCORE"></a>ZSCORE</h4><p>获取sorted set中指定元素的score值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSCORE key member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZSCORE sortedset Hello</span><br><span class="line">&quot;1&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZRANK"><a href="#ZRANK" class="headerlink" title="ZRANK"></a>ZRANK</h4><p>获取sorted set中的指定元素排名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZRANK key member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZRANK sortedset Hello</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZCARD"><a href="#ZCARD" class="headerlink" title="ZCARD"></a>ZCARD</h4><p>获取sorted set中的元素个数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZCARD key</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zcard sortedset</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZCOUNT"><a href="#ZCOUNT" class="headerlink" title="ZCOUNT"></a>ZCOUNT</h4><p>统计指定范围内元素的个数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZCOUNT key min max</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZCOUNT sortedset 2 5</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZINCRBY"><a href="#ZINCRBY" class="headerlink" title="ZINCRBY"></a>ZINCRBY</h4><p>让sorted set 中指定score元素自增，指定步长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZINCRBY key increment member</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZINCRBY sortedset 4 1</span><br><span class="line">&quot;22&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZRANGE"><a href="#ZRANGE" class="headerlink" title="ZRANGE"></a>ZRANGE</h4><p>按照score排序后，获取指定排名范围内的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZRANGE key min max</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZRANGE sortedset 0 1</span><br><span class="line">1) &quot;Hello&quot;</span><br><span class="line">2) &quot;World&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZRANGEBYSCORE"><a href="#ZRANGEBYSCORE" class="headerlink" title="ZRANGEBYSCORE"></a>ZRANGEBYSCORE</h4><p>按照score排序后，获取指定score范围内的元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZRANGEBYSCORE key min max</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ZRANGEBYSCORE sortedset 0 44</span><br><span class="line">1) &quot;Hello&quot;</span><br><span class="line">2) &quot;World&quot;</span><br><span class="line">3) &quot;1&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ZDIFF、ZINTER、ZUNION"><a href="#ZDIFF、ZINTER、ZUNION" class="headerlink" title="ZDIFF、ZINTER、ZUNION"></a>ZDIFF、ZINTER、ZUNION</h4><p>求差集、交集、并集</p>
+<p>和Set类中的类似，不再过多叙述</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/04/24/Redis%E7%AC%94%E8%AE%B0%EF%BC%88Java%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89/"
+      title="Redis笔记(Java客户端)"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        Redis笔记(Java客户端)
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/04/20/Java8%E7%AC%94%E8%AE%B0%EF%BC%88Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8CStream%20API%EF%BC%8COptional%EF%BC%89/"
+      title="Java8笔记(Lambda表达式，函数式接口，Stream API，Optional)"
+     >
+
+    <p class="title-text">
+      
+        Java8笔记(Lambda表达式，函数式接口，Stream API，Optional)
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Thrinisty<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

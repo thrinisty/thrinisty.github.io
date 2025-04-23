@@ -162,6 +162,89 @@
    
 
 
+<article id="post-Java课堂笔记（包装类，String，StringBuffer，StringBuilder）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/28/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8C%85%E8%A3%85%E7%B1%BB%EF%BC%8CString%EF%BC%8CStringBuffer%EF%BC%8CStringBuilder%EF%BC%89/">Java课堂笔记（包装类，String，StringBuffer，StringBuilder）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-28T07:03:00.000Z" itemprop="datePublished">2025-03-28</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记包装类Wrapper（包装器）
+定义针对八种基本的数据类型类型响应的引用类型
+有类的特点，可以调用类的方法
+除了 int -&gt; Integer char- &gt; Character 其余的六个都是将首字母大写就是对应的包装类
+Boolean  Byte Short Long Float Double
+Boolean 与 Character 二者是实现了比较和可序列化的接口的Object子类
+12public final class Boolean implements java.io.Serializable,                                      Comparable&lt;Boolean&gt;
+
+1class Character implements java.io.Serializable, Comparable&lt;Character&gt;
+
+而这些数字的类型一般都是继承了Number类，而Number类是实现了可序列化的接口的Object子类，数字类型直接实现比较接口
+图标如下
+
+装箱与拆箱自动拆装箱，本质...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/28/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8C%85%E8%A3%85%E7%B1%BB%EF%BC%8CString%EF%BC%8CStringBuffer%EF%BC%8CStringBuilder%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-面试小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -847,98 +930,6 @@ UDP通信流程1.建立发送端和接收端
     <a class="right-panel  non-pic  "
       
       href="/2025/03/15/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%AD%97%E7%AC%A6%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%8Cnetstat%E6%8C%87%E4%BB%A4%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（网络基础知识，TCP，UDP，字节流传输）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/14/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%8CTCP%EF%BC%8CUDP%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%89/">Java课堂笔记（网络基础知识，TCP，UDP，字节流传输）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-14T07:08:00.000Z" itemprop="datePublished">2025-03-14</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            7.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java网络多线程IP地址定义：用于唯一标识网络中的每一台计算机
-查看IP地址的指令：ipconfig
-IP地址组成：网络地址 + 主机地址
-A类地址 0 + 7位网络号 + 24位主机号
-B类地址 b10 + 14位网络号 + 16位主机号
-C类地址 b110 + 21位网络号 +8位主机号
-D类 b1110 + 28位多播组号
-E类 b11110 + 27位保留位
-域名www.baidu.com
-将ip地址映射为域名，方便记忆
-端口号概念：用于标识计算机上某个特定的网络程序
-通过IP + 端口即可访问一个特定网络上的特定程序
-表示形式：以整数形式表示：0—65535 （两个字节）
-0-1024被占用（在实际开发中不使用这一些端口）
-网络通讯协议在网络编程中数据的组织形式就是协议
-TCP&#x2F;IP传输控制协议&#x2F;因特网互联协议，又称网络通讯协议
-
-网络层级以及对应协议
-
-TCP与UDPTCP通过三次握手建立连接，四次握手释放连接
-TCP协议进行通信的两个应用进程：客户端、服务端
-UDP将数据，源，目的封装为数据包，不需要建立连接
-每一个数据包的大小限制为64K以内...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/14/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%8CTCP%EF%BC%8CUDP%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81%E4%BC%A0%E8%BE%93%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
