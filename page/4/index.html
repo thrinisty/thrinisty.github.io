@@ -162,6 +162,83 @@
    
 
 
+<article id="post-项目标准开发流程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/17/%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">项目标准开发流程</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-17T01:08:00.000Z" itemprop="datePublished">2025-03-17</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            272 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              项目开发流程需求分析—设计阶段—编码实现—测试阶段—实施阶段
+1.需求分析（需求分析师）目的是产出一个需求分析报告，包含客户具体要求，项目功能
+2.设计阶段（架构师&#x2F;项目经理）设计工作UML类图，流程图，模块设计，数据库，架构，原型开发 组建团队
+3.实现阶段（程序员&#x2F;码农）完成架构师的模块功能，测试自己的模块
+4.测试阶段（测试工程师）单元测试，测试用例，白盒测试，黑盒测试，集成测试
+5.实施阶段（实施工程师）将项目部署到客户的平台，保证运行正常，要求对环境的部署能力要高
+6.维护阶段（不固定人员）Debug，项目升级，发现bug
+
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/17/%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（UDP网络编程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -851,86 +928,6 @@ com.thrinisty 表示包名
     <a class="right-panel  non-pic  "
       
       href="/2025/03/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%A4%9A%E5%8F%82%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8Cthis%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（递归专题）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/">Java课堂笔记（递归专题）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-07T03:08:00.000Z" itemprop="datePublished">2025-03-07</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.6k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记Java中的递归递归在算法中属于比较复杂的一类了，在这里也希望在 java 的学习中复习算法
-一个简单的入门案例
-1234567891011121314151617public class Object&#123;	public static void main(String[] args) &#123;		Tool Mytool = new Tool();		Mytool.test(4);	&#125;&#125;class Tool&#123;	public void test(int n) &#123;		if(n &gt; 2) &#123;			test(n - 1);		&#125;		System.out.println(n);	&#125;&#125;
-
-
-运行结果
-123234
-
-要等递归的方法结束后才执行递归调用主体函数中的输出，所以结果是从2到4
-计算阶乘
-12345678910111213141516public class Object&#123;	public static void main(String[] args) &#123;		To...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

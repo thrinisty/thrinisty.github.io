@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（递归专题）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/">Java课堂笔记（递归专题）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-07T03:08:00.000Z" itemprop="datePublished">2025-03-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.6k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Java中的递归递归在算法中属于比较复杂的一类了，在这里也希望在 java 的学习中复习算法
+一个简单的入门案例
+1234567891011121314151617public class Object&#123;	public static void main(String[] args) &#123;		Tool Mytool = new Tool();		Mytool.test(4);	&#125;&#125;class Tool&#123;	public void test(int n) &#123;		if(n &gt; 2) &#123;			test(n - 1);		&#125;		System.out.println(n);	&#125;&#125;
+
+
+运行结果
+123234
+
+要等递归的方法结束后才执行递归调用主体函数中的输出，所以结果是从2到4
+计算阶乘
+12345678910111213141516public class Object&#123;	public static void main(String[] args) &#123;		To...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/07/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%80%92%E5%BD%92%E4%B8%93%E9%A2%98%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（类与对象，方法，属性，对象的克隆）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -859,84 +939,6 @@ shift z
     <a class="right-panel  non-pic  "
       
       href="/2025/02/18/vim%E5%85%A5%E9%97%A8/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-关于git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/01/15/%E5%85%B3%E4%BA%8Egit/">GIT</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-01-15T02:00:00.000Z" itemprop="datePublished">2025-01-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            600 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              关于Gitgit的功能相当于一个游戏的存档功能，可用作代码的管理，正确使用git即可提高编码的效率以及存储安全，
-
-在VScode之中可以通过GUI进行快速的配置与github的git链接，首先用默认的浏览器注册一个GitHub账号，保持账号的登陆状态，按照网络上的教程安装git（详细可参照各大博客上的相关教程）
-再次打开vscode即可在上图的位置看到打开文件夹以及克隆仓库的两个选项，我们选择创建一个文件夹，在文件夹下可以新建一个本地的git仓库，可以自行在仓库中添加一些内容，提交就等价于游戏中保存一个本地存档，而同步相当于提交本地的游戏数据到云端存储，而第一次存储到github中需要按照相关的步骤对本地的环境进行授权操作。
-
-以上是源代码的管理图，有着代码各个版本的说明以及修改内容介绍，蓝色的代表本地存档，而紫色的代表云存档，二者进度不一定相同，例如提交了本地仓库，但是没有同步至云端。
-在对应的仓库目录下，我们可以在终端使用git log指令查看日志，来检索git提交的版本信息 ，键入q来进行退出
-
-上述我们通过了在本地的初始化建立git仓库，默认提交到了github中，当然...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/01/15/%E5%85%B3%E4%BA%8Egit/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

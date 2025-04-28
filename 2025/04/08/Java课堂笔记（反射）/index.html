@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/images/107.png">
 <meta property="og:image" content="http://example.com/images/108.png">
 <meta property="article:published_time" content="2025-04-08T07:29:00.000Z">
-<meta property="article:modified_time" content="2025-04-09T14:03:59.291Z">
+<meta property="article:modified_time" content="2025-04-28T01:12:37.290Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/107.png">
@@ -386,7 +386,7 @@
 
 
 <h3 id="类加载的流程图"><a href="#类加载的流程图" class="headerlink" title="类加载的流程图"></a>类加载的流程图</h3><p><img src="/../images/108.png" alt="108"></p>
-<h4 id="加载阶段（由JVM控制）"><a href="#加载阶段（由JVM控制）" class="headerlink" title="加载阶段（由JVM控制）"></a>加载阶段（由JVM控制）</h4><p>JVM机将字节码从不同的数据源（class文件、jaar包，网络）转化为二进制字节流加载到内存中，并且生成代表该类的java.lang.Class对象</p>
+<h4 id="加载阶段（由JVM控制）"><a href="#加载阶段（由JVM控制）" class="headerlink" title="加载阶段（由JVM控制）"></a>加载阶段（由JVM控制）</h4><p>JVM机将字节码从不同的数据源（class文件、jar包，网络）转化为二进制字节流加载到内存中，并且生成代表该类的java.lang.Class对象</p>
 <h4 id="连接阶段（由JVM控制）"><a href="#连接阶段（由JVM控制）" class="headerlink" title="连接阶段（由JVM控制）"></a>连接阶段（由JVM控制）</h4><h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><p>确保Class字节流中的信息符合当前虚拟机的要求，并且不会危害虚拟机的安全（这个阶段是可以手动关闭的）</p>
 <p>在编译运行的时候：使用-Xverify:none参数关闭大部分的类验证措施，以缩短虚拟机类加载的时间</p>
 <h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>JVM在该阶段对静态变量，分配内存，并默认初始化（0，null，false等），这些变量所使用的内存都在方法区中进行分配</p>
