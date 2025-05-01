@@ -162,6 +162,169 @@
    
 
 
+<article id="post-Git笔记（代码管理，本地库，分支，团队协作）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/">Git笔记(代码管理，本地库，分支，团队协作)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-16T13:10:00.000Z" itemprop="datePublished">2025-04-16</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.7k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天（15号）一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee）
+之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链接到的Github，而我现在学Java改用IDEA了，又需要重新配置一下才可以方便使用。
+找的课程也就4~5个小时，就当过一遍教程了，对不了解的代码分支，分支合并学习一下，以下是该课程涉及的一些知识点（代码推送、代码拉取、代码克隆、IDEA集成Github、分支合并）
+重要概念版本控制版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统
+其中最重要的就是可以记录文件修改历史，从而让用户能够查看历史版本，方便切换版本
+对于个人而言或许不太需要版本控制，但是如果一旦上升到公司集体，为了方便安全的对于代码进行修改（对于多个修改进行正确的合并），版本控制的使用就异常重要
+...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-MySQL课堂笔记（习题课）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/">MySQL课堂笔记（习题课）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-15T06:00:00.000Z" itemprop="datePublished">2025-04-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.6k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              MySQL习题我们系统的学完了MySQL相关知识，我们现在来用例题巩固一下我们的知识
+练习一1.显示所有部门的名称
+1select deptno,dname from dept;
+
+2.显示所有雇员名以及全年收入（12*薪水 + 奖金）取名为年收入
+这里道题注意null+数字为空，需要使用判断语句处理
+12select ename, (sal*12 + if(comm is null,0,comm))as&#x27;年收入&#x27; from emp;
+
+3.显示工资超过2850雇员的姓名以及工资
+1select ename,sal from emp where sal &gt; 2850;
+
+4.显示工资不再1500到2850之间雇员的姓名以及工资
+1select ename,sal from emp where sal &gt; 2850 and sal &lt; 1500;
+
+5.显示编号为7796的雇员名称以及所在部门编号
+1select ename,deptno from emp where empno=7796;
+
+6.显示部门在20，30中工资超过1500的雇员名...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-MySQL课堂笔记（索引，事务，隔离级别，存储引擎，视图，管理）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -782,168 +945,6 @@ java事件处理采取的是”委派事件模型”，当事件发生的时候�
     <a class="right-panel  non-pic  "
       
       href="/2025/04/03/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%B3%9B%E5%9E%8B%EF%BC%8CJUnit%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（集合02）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8802%EF%BC%89/">Java课堂笔记（集合02）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-02T12:31:00.000Z" itemprop="datePublished">2025-04-02</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            11k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记Map接口定义及性质双列集合
-存放的是K-V
-
-Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap，其中HashMap时使用频率最高的
-1.Map与Collection并列存在，保存具有映射关系的数据，Key-Value
-2.Map中的key和value可以是任何引用类型的数据，会封装在HashMap$Node对象中
-3.Map中的key不允许重复，原因和HashSet一样
-4.Map中的key可以重复
-5.Map中的key和value可以为null，但是key中的null只能有一个，而value不做限制
-6.常用类String类可以作为Map的key
-7.key和value之间存在单向的一对一关系，即通过指定的key总可以找到对应的value
-8.map存放数据k-v，一对key-value是存放在HashMapNode中的
-为了程序员遍历方便，还会创建EntrySet集合，该集合放入的是Entry（事实上是将EntrySet中的table 存储的Entry节点指向Map的Node）
-1transient Node&lt;K,V&gt...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8802%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（集合01）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8801%EF%BC%89/">Java课堂笔记（集合01）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-01T10:08:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            22k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记集合集合框架体系（要求记忆）
-单列集合
-
-Collection下有两大重要的接口一个List另一个为Set
-双列集合
-存放的是K-V
-
-Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
-两个集合不同区别，存放数据的个数
-123456789101112131415public class Collection_ &#123;    @SuppressWarnings(&#123;&quot;all&quot;&#125;)    public static void main(String[] args) &#123;        //单列集合        ArrayList arrayList = new ArrayList();        arrayList.add(&quot;A&quot;);        arrayList.add(&quot;B&quot;);        arrayList.add(&quot;C&quot;);	    //双列集合        HashMap hashMap = new H...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%9B%86%E5%90%8801%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

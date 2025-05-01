@@ -162,6 +162,166 @@
    
 
 
+<article id="post-自学第二月份总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/05/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%BA%8C%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/">自学第二月份总结</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-05-01T08:46:00.000Z" itemprop="datePublished">2025-05-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            654 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              自学第二月份总结​	在学习Java后端开发的第二个月中，用10天的时间为Java语言基础收了个尾，结束了反射，多线程基础，IO流的学习
+​	学习完成Java部分的内容后又花了5天的时间回顾了MySQL数据库基础，巩固了一些数据库使用上的细节（存储引擎，事务，隔离级别等）。2天的时间完成了Java8一些新特性的学习，理解了Lambda表达式的使用，Stream API的概念以及使用方式，Optional类的学习
+​	之后又用了两天的时间完成JDBC的相关概念学习（SQL注入，连接池）学会了如何使用JDBC操作数据库，配置DBUtils，能够独立对于JDBC结合德鲁伊连接池，阿帕奇的Utils将SQL查询封装为Dao对象便于操作，用了两天的时间对于Redis有了一些初级的了解（数据结构，NoSQL，客户端），之后又花了一天半的时间完成了git版本控制工具的使用，能够结合远程代码托管平台（Github，Gitee），使用命令行或者IDEA集成开发环境，对于自己写的代码进行版本管理
+​	最后的8天稍微有些懈怠，由于课程安排有些紧凑，实际上满打满算的学习只有大概5天左右，完成了JavaWe...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/05/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%BA%8C%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-JavaWeb笔记（Tomcat，Maven）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/29/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Tomcat%EF%BC%8CMaven%EF%BC%89/">JavaWeb笔记(Tomcat，Maven)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-29T07:00:00.000Z" itemprop="datePublished">2025-04-29</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.1k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaWeb笔记TomcatJavaWeb：所用通过Java语言编写可以通过浏览器访问的程序的总称，基于请求和响应来开发的
+Web资源：根据资源实现的技术和呈现的效果不同，分为静态资源和动态资源
+静态资源：html，css，js，txt，mp4，jpg
+动态资源：jsp页面，Servlet程序
+常见的服务器：Tomcat，Jboss，GlassFish，Resin，WebLogic
+安装启动版本对应
+
+我使用的是tomcat9.0+Servlet4.0+JDK8
+将Tomcat解压到你想要的路径下
+在安装的bin目录下双击startup启动tomcat服务器，在浏览器中输入以下网址开启Tomcat服务页面
+1http://localhost:8080
+
+
+如果在启动的时候黑框立马闪退，有可能是没有设置系统变量
+变量：JAVA_HOME 值：安装的JDK目录
+关闭：双击shutdown.bat关闭
+在config目录下有一个server.xml配置文件，在其中可以修改端口号8080，可以改为一个你想要用的其他端口号替换，再重启Tomcat服务器即可完成修改
+部署Web第一种方式是...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/29/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Tomcat%EF%BC%8CMaven%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-JavaWeb笔记（jQuery，XML）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -249,7 +409,7 @@ jQuery定义：是JavaScript和Query查询的结合，是辅助JavaScript开发�
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/26/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88JavaScript%E4%BA%8B%E4%BB%B6%EF%BC%8CDOM%E6%A8%A1%E5%9E%8B%EF%BC%89/">JavaWeb笔记(JavaScript事件，DOM模型，jQuery)</a>
+        <a class="p-name article-title" href="/2025/04/26/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88JavaScript%E4%BA%8B%E4%BB%B6%EF%BC%8CDOM%E6%A8%A1%E5%9E%8B%EF%BC%89/">JavaWeb笔记(JavaScript事件，DOM模型)</a>
       </h1>
     
   
@@ -790,169 +950,6 @@ Java数据库接口
     <a class="right-panel  non-pic  "
       
       href="/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%8C%E6%89%A7%E8%A1%8C%E5%AF%B9%E8%B1%A1%EF%BC%8CSQL%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Git笔记（代码管理，本地库，分支，团队协作）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/">Git笔记(代码管理，本地库，分支，团队协作)</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-16T13:10:00.000Z" itemprop="datePublished">2025-04-16</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            6.7k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              GITMysql基础部分内容结束，本来打算直接进入JDBC的学习，但是一来我有点小累，学不动Java了，二来我的编译原理课程需要使用到Git，实习的公司也要求熟练运用Git，所以就先看看这一个部分的知识，整理笔记并实际运用，预计今天（15号）一个晚自习和明天把这一块知识拿下（熟练使用Git、Github、GitLab、Gitee）
-之前的博客中我也介绍了一下Git大体是个什么玩意，但是使用的是VsCode链接到的Github，而我现在学Java改用IDEA了，又需要重新配置一下才可以方便使用。
-找的课程也就4~5个小时，就当过一遍教程了，对不了解的代码分支，分支合并学习一下，以下是该课程涉及的一些知识点（代码推送、代码拉取、代码克隆、IDEA集成Github、分支合并）
-重要概念版本控制版本控制是一种记录文件内容变化，以便将来查阅特定版本修订情况的系统
-其中最重要的就是可以记录文件修改历史，从而让用户能够查看历史版本，方便切换版本
-对于个人而言或许不太需要版本控制，但是如果一旦上升到公司集体，为了方便安全的对于代码进行修改（对于多个修改进行正确的合并），版本控制的使用就异常重要
-...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/16/Git%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%EF%BC%8C%E6%9C%AC%E5%9C%B0%E5%BA%93%EF%BC%8C%E5%88%86%E6%94%AF%EF%BC%8C%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-MySQL课堂笔记（习题课）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/">MySQL课堂笔记（习题课）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-15T06:00:00.000Z" itemprop="datePublished">2025-04-15</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            5.6k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              MySQL习题我们系统的学完了MySQL相关知识，我们现在来用例题巩固一下我们的知识
-练习一1.显示所有部门的名称
-1select deptno,dname from dept;
-
-2.显示所有雇员名以及全年收入（12*薪水 + 奖金）取名为年收入
-这里道题注意null+数字为空，需要使用判断语句处理
-12select ename, (sal*12 + if(comm is null,0,comm))as&#x27;年收入&#x27; from emp;
-
-3.显示工资超过2850雇员的姓名以及工资
-1select ename,sal from emp where sal &gt; 2850;
-
-4.显示工资不再1500到2850之间雇员的姓名以及工资
-1select ename,sal from emp where sal &gt; 2850 and sal &lt; 1500;
-
-5.显示编号为7796的雇员名称以及所在部门编号
-1select ename,deptno from emp where empno=7796;
-
-6.显示部门在20，30中工资超过1500的雇员名...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/15/MySQL%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%A0%E9%A2%98%E8%AF%BE%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

@@ -162,6 +162,162 @@
    
 
 
+<article id="post-Java课堂笔记（IDEA集成开发环境，Java包，访问修饰符，封装）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/09/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88IDEA%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%8CJava%E5%8C%85%EF%BC%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%89/">Java课堂笔记（IDEA集成开发环境，Java包，访问修饰符，封装）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-09T07:08:00.000Z" itemprop="datePublished">2025-03-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.4k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记IDEA的使用IDEA支持30天试用，如果是学生或者教师可以在官网使用学校邮箱或者学信网获取授权使用
+IDEA之中各种快捷键，定义模板，变量名，自动补全，自动添加导入可以极大地增加开发的效率
+Java中的包包的本质是创建不同的文件夹来保存类文件
+包有三个重大的作用
+1.可以区分相同名字的类
+2.当类很多的时候可以高效的管理类
+3.控制访问范围
+包的基本语法package com.thrinisty
+package 关键字 表示打包
+com.thrinisty 表示包名
+以下是一个包的入门案例
+建立了两个包 小强的包 小明的包 在各自的包中定义了Dog方法
+在use包中定义了主方法，主方法中可以导入小明的Dog类，但是再导入小强的Dog类因为方法同名，可以通过com.xiaoqiang.Dog()使用小强的Dog类
+
+12345678910111213package use;import com.xiaoming.Dog;public class Test &#123;    public static void main(String[] args) &#123;    ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/09/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88IDEA%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%EF%BC%8CJava%E5%8C%85%EF%BC%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-Java课堂笔记（重载，多参方法，构造器，作用域，this）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%A4%9A%E5%8F%82%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8Cthis%EF%BC%89/">Java课堂笔记（重载，多参方法，构造器，作用域，this）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-08T13:38:00.000Z" itemprop="datePublished">2025-03-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            14k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记Java中的重载Java中允许同名方法的存在，这种情况下要求同名方法的参数不同
+以下是一个具体的案例
+1234567891011121314151617181920public class Object &#123;    public static void main(String[] args) &#123;        Tool myTool = new Tool();		myTool.Print(1);		myTool.Print(&#x27;1&#x27;);		myTool.Print(&quot;This is overload&quot;);    &#125;&#125;class Tool &#123;	public void Print(int n) &#123;		System.out.println(n);	&#125;	public void Print(char n) &#123;		System.out.println(n);	&#125;	public void Print(String n) &#123;		System.out.pr...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%BD%BD%EF%BC%8C%E5%A4%9A%E5%8F%82%E6%96%B9%E6%B3%95%EF%BC%8C%E6%9E%84%E9%80%A0%E5%99%A8%EF%BC%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8Cthis%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（递归专题）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -760,185 +916,6 @@ Test.java -编译javac（需要...
     <a class="right-panel  non-pic  "
       
       href="/2025/02/20/C%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-linux中重要的指令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/">Linux</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-19T07:08:03.000Z" itemprop="datePublished">2025-02-19</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            486 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              linux中的一些常用指令cd（change directory）更改目录其中 &#x2F; 是linux中的根目录， . 代表的是当前的目录， .. 表示上一层目录大部分的情况下 .&#x2F; 可以省略 直接cd + 目录下的文件路径
-cd ||  cd ~进入家目录
-cd - 进入上一次的目录
-ls（list）显示当前目录的文件-l参数会显示各个类型属性
--a还会显示额外的文件
--al综合前两个
-cp（copy）拷贝文件cp + 拷贝源路径 + 目标路径
--r 参数 递归地拷贝
-mv（move to）剪切用法与复制类似
-特殊用法（更改名字）
-mv + 目标原来的文件名 + 现在的文件名
-chmod （change mode）修改文件权限可以通过chmod 744 文件名 修改
-chmod u+x 文件
-chmod g-r  文件
-chmod o+r 文件
-
-rm（remove）删除文件-rf 强制删除参数
-touch 创建文件touch a b c
-mkdir 创建文件夹tar 压缩tar -zcf 压缩名字 需要压缩的文件文件
-tar -xzf 解压文件
-tar -zcf...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/19/linux%E4%B8%AD%E9%87%8D%E8%A6%81%E7%9A%84%E6%8C%87%E4%BB%A4/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-vim入门" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/18/vim%E5%85%A5%E9%97%A8/">Vim入门</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-18T13:08:03.000Z" itemprop="datePublished">2025-02-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            267 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              VIMvim stdio.h 如果有则进入如果没有则创建文件
-三种模式命令模式（默认进入）yy复制一行  10yy复制十行
-p粘贴
-dd剪切
-u撤销
-x删除一个字符
-shift g跳到最后一行
-gg回到第一行
-*用于查找
-shift z
-插入模式（Insert编辑）通过i或者a按键进入，esc退出并进入命令模式
-底行模式（通过命令模式下进入）：:w保存 q退出 wq保存退出 wq! 强制保存退出
-:10跳到10行
-：nohl消除高亮
-:set nonu 去除行号
-:set nu 加上行号
-:%s&#x2F;old&#x2F;new替换
-&#x2F;进入底行模式用于查找
-如&#x2F;main
-
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/18/vim%E5%85%A5%E9%97%A8/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
