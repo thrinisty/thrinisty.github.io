@@ -14,7 +14,7 @@
   
 
   
-  <title>JavaWeb笔记(Tomcat，Maven) | Hexo</title>
+  <title>JavaWeb笔记(Tomcat，Maven，Docker) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -22,8 +22,8 @@
 
   <meta name="description" content="JavaWeb笔记TomcatJavaWeb：所用通过Java语言编写可以通过浏览器访问的程序的总称，基于请求和响应来开发的 Web资源：根据资源实现的技术和呈现的效果不同，分为静态资源和动态资源 静态资源：html，css，js，txt，mp4，jpg 动态资源：jsp页面，Servlet程序 常见的服务器：Tomcat，Jboss，GlassFish，Resin，WebLogic 安装启动版本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaWeb笔记(Tomcat，Maven)">
-<meta property="og:url" content="http://example.com/2025/04/29/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Tomcat%EF%BC%8CMaven%EF%BC%89/index.html">
+<meta property="og:title" content="JavaWeb笔记(Tomcat，Maven，Docker)">
+<meta property="og:url" content="http://example.com/2025/04/29/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Tomcat%EF%BC%8CMaven%EF%BC%8CDocker%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="JavaWeb笔记TomcatJavaWeb：所用通过Java语言编写可以通过浏览器访问的程序的总称，基于请求和响应来开发的 Web资源：根据资源实现的技术和呈现的效果不同，分为静态资源和动态资源 静态资源：html，css，js，txt，mp4，jpg 动态资源：jsp页面，Servlet程序 常见的服务器：Tomcat，Jboss，GlassFish，Resin，WebLogic 安装启动版本">
 <meta property="og:locale" content="en_US">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/images/140.png">
 <meta property="og:image" content="http://example.com/images/141.png">
 <meta property="article:published_time" content="2025-04-29T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-01T08:45:01.831Z">
+<meta property="article:modified_time" content="2025-05-03T12:57:24.447Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/138.png">
@@ -170,7 +170,7 @@
        
 
 
-<article id="post-JavaWeb笔记（Tomcat，Maven）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-JavaWeb笔记（Tomcat，Maven，Docker）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
    
@@ -183,7 +183,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        JavaWeb笔记(Tomcat，Maven)
+        JavaWeb笔记(Tomcat，Maven，Docker)
       </h1>
     
   
@@ -202,7 +202,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.1k words 
+            3.1k words 
           </div>
         </div>
         
@@ -222,8 +222,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../images/139.png" alt="139"></p>
-<p>如果在启动的时候黑框立马闪退，有可能是没有设置系统变量</p>
-<p>变量：JAVA_HOME 值：安装的JDK目录</p>
+<p>如果在启动的时候出现黑框立马闪退，有可能是没有设置系统变量</p>
+<p>变量：JAVA_HOME   值：安装的JDK目录</p>
 <p>关闭：双击shutdown.bat关闭</p>
 <p>在config目录下有一个server.xml配置文件，在其中可以修改端口号8080，可以改为一个你想要用的其他端口号替换，再重启Tomcat服务器即可完成修改</p>
 <h3 id="部署Web"><a href="#部署Web" class="headerlink" title="部署Web"></a>部署Web</h3><h4 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h4><p>是需要把Web工程目录放入Tomcat的webapps目录下即可，这种方式比较方便</p>
@@ -262,6 +262,45 @@
 
 <p>父子模块管理</p>
 <p>在父工程中的pom文件下添加的依赖可以被子模块中使用，所有将公共的依赖放置在父工程中可以简化依赖，也可以设置为不默认继承依赖，而是手动集成父工程依赖</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>Docker是一个用于构建运行传送应用程序的平台，可以解决环境配置的问题，将第三方软件库，依赖等打包，运行在任何的环境</p>
+<p>Docker是一个容器的实现，容器是一个虚拟化技术是一个独立的环境，使用宿主机的OS操作系统，减少资源的浪费（运行多个操作系统和图形化界面）</p>
+<p>容器是Docker的一个运行实例，提供一个可以移植的环境，可以在这个环境中运行应用程序，镜像和容器的关系类似Java中的类和实例，Docker仓库可以存储Docker镜像和上传，我们打包容器为镜像上传给别人，别人就可以使用镜像创建相应的容器</p>
+<h3 id="大致使用"><a href="#大致使用" class="headerlink" title="大致使用"></a>大致使用</h3><p>Dockerfile是构建指令，包含了如何配置环境的一些指令，用于告诉如何构建镜像</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">14</span>-alpine</span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> index.js /index.js</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;/index.js&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>构建镜像</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t hello-docker .</span><br></pre></td></tr></table></figure>
+
+<p>查看镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br><span class="line">REPOSITORY   TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">nginx        latest    9bea9f2796e2   5 months ago   192MB</span><br></pre></td></tr></table></figure>
+
+<p>运行镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-docker</span><br></pre></td></tr></table></figure>
+
+<p>可以通过网页使用在线的play with docker来远程通过dockerhub下载镜像，运行容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull thrinisty/hello-docker</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h3><p>用于定义和运行多容器Docker应用程序的工具，使用yaml文件来设置应用程序服务</p>
+<p>通过docker-compose.yaml配置文件将一组互相关联的容器组合在一起，形成项目，通过一条命令即可创建并启动所有的服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h3><p>我们现在在Docker上下载一个redis的镜像，并且通过镜像创建运行redis容器，之后在宿主机上用客户端连接服务器</p>
+<p>查找可用redis镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search redis</span><br></pre></td></tr></table></figure>
+
+<p>下载redis镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+<p>运行redis容器，并且通过-p参数将容器端口映射到宿主机端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name redis_test -p 6379:6379 -d redis</span><br></pre></td></tr></table></figure>
+
+<p>在宿主机连接docker运行中的redis容器对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure>
+
 
         
       </div>
