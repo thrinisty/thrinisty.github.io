@@ -162,6 +162,81 @@
    
 
 
+<article id="post-JavaWeb笔记（Servlet）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%89/">JavaWeb笔记(Servlet)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-05-06T06:00:00.000Z" itemprop="datePublished">2025-05-06</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaWeb笔记之前Maven没有配置好导致了JavaWeb的环境配置比较困难，去大概了解了一下Maven构建的相关知识，现在可以快速通过坐标导入相关的jar包了，马上开始Servlet的学习
+Servlet入门使用我使用的是Maven构建的Servlet程序，不需要web.xml进行注册，只需要使用@WebServlet注解完成绑定即可访问使用
+新建一个类，实现Servlet的接口方法
+12@WebServlet(&quot;/hello&quot;)//使用该注解可以绑定访问/hello地址的时候调用Servlet服务public class HelloServlet implements Servlet
+
+12345678910111213141516171819202122232425@Overridepublic void init(ServletConfig servletConfig) throws ServletException &#123;&#125;@Overridepublic ServletConfig getServletConfig() &#123...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-自学第二月份总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -874,82 +949,6 @@ clearBatch
     <a class="right-panel  non-pic  "
       
       href="/2025/04/18/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E6%89%B9%E5%A4%84%E7%90%86%EF%BC%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8CDBUtils%EF%BC%8CBasicDao%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-JDBC笔记（快速入门，执行对象，SQL注入，封装，事务）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%8C%E6%89%A7%E8%A1%8C%E5%AF%B9%E8%B1%A1%EF%BC%8CSQL%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%89/">JDBC笔记(快速入门，执行对象，SQL注入，封装，事务)</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-17T06:30:00.000Z" itemprop="datePublished">2025-04-17</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              JDBC笔记JDBCJDBC是JAVA程序操作数据库的一种技术，在绝大多数的框架中JDBC一般都被封装在了各式各样的框架之中，这些框架之后也会学习。但是掌握JDBC是如何连接数据库，操作数据库，返回数据库结果，使用数据库返回结果这也是一个后端开发者应该掌握的基础，掌握了之后对后续框架的理解也是一种帮助
-Java对于各大数据库厂商提供了一个连接操作的统一接口，其中定义的方法包括了连接、curd、关闭连接等。而数据库工资负责实现这一些接口，方便Java的开发者利用数据库接口去创建对应数据库实例的创建，再通过动态绑定机制调用数据库实现的相关方法，以下是一个代码示例方便理解（仅仅是模拟，不代表实际开发）
-Java数据库接口
-12345public interface JdbcInterface &#123;    public Object getConnection();    public void crud();    public void close();&#125;
-
-数据库实现接口
-1234567891011121314151617public class MysqlJdb...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/17/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%EF%BC%8C%E6%89%A7%E8%A1%8C%E5%AF%B9%E8%B1%A1%EF%BC%8CSQL%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%B0%81%E8%A3%85%EF%BC%8C%E4%BA%8B%E5%8A%A1%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
