@@ -162,6 +162,81 @@
    
 
 
+<article id="post-Java课堂笔记（多态，动态绑定机制，多态的应用）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/">Java课堂笔记（多态，动态绑定机制，多态的应用）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-11T07:08:00.000Z" itemprop="datePublished">2025-03-11</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.9k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              听课笔记多态定义：方法或者对象具有多种形态
+1.重写或者重载体现出了方法的多态
+2.对象体现多态（是多态的核心）
+当一个类对于某一个类做一些操作的时候，我们可以对于每一个后向类编写方法，但是如果这些类都继承于同一个类，我们可以通过对于着一些类的父类编写方法来统一操作这一类的各个子类。通过这样做我们可以极大的提高代码的复用性
+例如我们有猫类，狗类继承于动物类，我们要通过一个人类来模拟喂食的时候需要在人类的方法中定义两个feed重载方法，这样子有大量的冗余
+1234567891011121314package com.npu.poly;public class Poly01 &#123;    public static void main(String[] args) &#123;        Master Tom = new Master(&quot;汤姆&quot;);        Dog dog =  new Dog(&quot;大黄&quot;);        Bone bone = new Bone(&quot;棒骨&quot;);        Tom.feed(...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/11/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（继承，重写）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -828,89 +903,6 @@ Java中的数据类型分为基本数值类型和引用数据类型
     <a class="right-panel  non-pic  "
       
       href="/2025/03/02/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%98%E9%87%8F%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%8C%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（重要特点，注释，编程规范）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%A6%81%E7%89%B9%E7%82%B9%EF%BC%8C%E6%B3%A8%E9%87%8A%EF%BC%8C%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%EF%BC%89/">Java课堂笔记（重要特点，注释，编程规范）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-01T07:08:00.000Z" itemprop="datePublished">2025-03-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              听课笔记目前在听韩顺平老师的java课程，准备以此来巩固自己的java基础，以下是一些我听课程时候所记录的笔记
-Java技术体系平台1.java SE标准版
-2.java EE企业版
-3.java ME小型版
-Java的重要特点1.面向对象
-2.java的健壮性，java强类型机制，异常处理，垃圾自动收集保证了java的健壮性
-3.java的跨平台性质的
-可以通过.java文件生成.class文件
-class可以在Windows又可以在Linux上运行，并不需要再重新编译.java文件(利用了JVM虚拟机可以在三大操作系统上执行）
-4.java语言是解释性语言，解释性语言在编译之后需要解释器来进行执行，编译性语言（二进制）可以被机器直接执行。
-Win+s可以直接打开windows的搜索栏，ctrl + l 可以快速清除命令行中的内容,再命令行中用Tab键补全
-java虚拟机 JVM包含于jdk全称java virtual machine
-是一个虚拟的计算机，具有指令集并使用不同的存储区域，负责的执行指令管理数据内存寄存器都包含在jdk中
-Test.java -编译javac（需要...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/01/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E9%87%8D%E8%A6%81%E7%89%B9%E7%82%B9%EF%BC%8C%E6%B3%A8%E9%87%8A%EF%BC%8C%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

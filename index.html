@@ -162,7 +162,7 @@
    
 
 
-<article id="post-JavaWeb笔记（Servlet）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-JavaWeb笔记（Servlet（ServletRequest，ServletResponse，重定向））" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -173,7 +173,85 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%89/">JavaWeb笔记(Servlet)</a>
+        <a class="p-name article-title" href="/2025/05/07/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%88ServletRequest%EF%BC%8CServletResponse%EF%BC%8C%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%89%EF%BC%89/">JavaWeb笔记(Servlet（ServletRequest，ServletResponse，重定向）)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-05-07T09:00:00.000Z" itemprop="datePublished">2025-05-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            7.4k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaWeb笔记今天完成Servlet剩余部分的学习，JavaWeb部分的实战项目我就不练了，我打算这一个部分的练手等到学习完开发框架之后做成一整个项目
+今天发现自己的Servlet程序没有办法打印出中文字符，去网络上搜索了以下，回答的都是处理请求头的编码处理，但想想直接打印也是乱码，应该是Tomcat的配置出了问题，以下是解决方式：在Tomcat运行设置里的虚拟机选项填入以下内容（修改运行配置）
+1-Dfile.encoding=UTF-8
+
+
+
+HttpServletRequest作用：每次只要有请求进入Tomcat服务器，Tomcat服务器就会把请求过来的HTTP协议信息解析好封装到Request对象中，然后传递到service方法，在doGet和doPost方法中给我们使用，我们可以通过HttpServletRequest对象，获取到所有的请求信息
+http://localhost:8080/ServletTest/test?username=2022302546&amp;password=123455&amp;hobby=cpp&amp;hobby=java
+常用方法...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/05/07/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%88ServletRequest%EF%BC%8CServletResponse%EF%BC%8C%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%89%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-JavaWeb笔记（Servlet（Servlet，HTTP协议））" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%88Servlet%EF%BC%8CHTTP%E5%8D%8F%E8%AE%AE%EF%BC%89%EF%BC%89/">JavaWeb笔记(Servlet（Servlet，HTTP协议）)</a>
       </h1>
     
   
@@ -192,7 +270,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            5.2k words 
+            8k words 
           </div>
         </div>
         
@@ -218,7 +296,7 @@ Servlet入门使用我使用的是Maven构建的Servlet程序，不需要web.xml
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%89/" 
+      href="/2025/05/06/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88Servlet%EF%BC%88Servlet%EF%BC%8CHTTP%E5%8D%8F%E8%AE%AE%EF%BC%89%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -853,102 +931,6 @@ Lambda表达式Lambda是一个匿名函数，我们可以把Lambda表达式理�
     <a class="right-panel  non-pic  "
       
       href="/2025/04/20/Java8%E7%AC%94%E8%AE%B0%EF%BC%88Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8CStream%20API%EF%BC%8COptional%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-JDBC笔记（批处理，连接池，DBUtils，BasicDao）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/18/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E6%89%B9%E5%A4%84%E7%90%86%EF%BC%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8CDBUtils%EF%BC%8CBasicDao%EF%BC%89/">JDBC笔记(批处理，连接池，DBUtils，BasicDao)</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-18T06:00:00.000Z" itemprop="datePublished">2025-04-18</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              JDBC笔记批处理基本介绍1.当需要成批插入或者更新记录的时候，可以使用Java批处理，这一机制允许多条语句一次性提交给数据库批量处理，通常情况下比单独提交更有效率
-2.JDBC的批量处理语句包括了以下的方法
-
-
-
-方法名称
-说明
-
-
-
-addBatch
-添加需要批量处理的SQL语句或者参数
-
-
-executeBatch
-执行批量处理语句
-
-
-clearBatch
-清空批处理包的语句
-
-
-3.JDBC连接MySQL时，如果要使用批处理，需要在url中添加参数
-1?rewriteBatchedStatements=true
-
-4.批处理往往与PreparedStatement一起搭配使用，可以及减少编译次数又减少运行次数，效率大大提升
-传统的添加方式12345678910111213141516public class Test &#123;    @SuppressWarnings (&#123;&quot;all&quot;&#125;)    public static void main(String[] args) throws Exception&#123;      ...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/18/JDBC%E7%AC%94%E8%AE%B0%EF%BC%88%E6%89%B9%E5%A4%84%E7%90%86%EF%BC%8C%E8%BF%9E%E6%8E%A5%E6%B1%A0%EF%BC%8CDBUtils%EF%BC%8CBasicDao%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

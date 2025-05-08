@@ -162,6 +162,89 @@
    
 
 
+<article id="post-Java课堂笔记（多线程）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/">Java课堂笔记（多线程）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-04T07:15:00.000Z" itemprop="datePublished">2025-04-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            20k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记在韩顺平老师的Java课程中会结合一个坦克大战的实战项目，我急功近利，就不写坦克大战的编写了，只学Java中最核心的几个知识点
+java绘图坐标体系
+基本概念
+在Java中坐标原点位于左上角，以像素为单位，x坐标代表距离竖坐标向右x个像素，而y代表位于横坐标的下y个像素
+Java事件处理机制
+java事件处理采取的是”委派事件模型”，当事件发生的时候，产生事件的对象，会把此信息传递给事件的监听者进行处理，事件在代码中体现为一个事件对象。
+事件源：是一个产生事件的对象，比如按钮，窗口等
+事件：事件就是承载事件源状态改变时的对象，比如说键盘事件，鼠标事件，窗口事件等等，会生成一个事件对象，保存当前事件的很多信息。
+多线程基础单线程：同一个时刻只允许执行一个线程
+多线程：同一个时刻可以执行多个线程，例如QQ打开多个聊天窗口
+并发：同一个时刻，多个任务交替执行，给人以同时进行的错觉（单线程多任务）
+并行：同一个时刻，多个任务同时进行（多核CPU可以支持并行）
+可通过Java写一个返回可用CPU数量的代码
+1234567public class CupNum &#123;   ...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/04/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（泛型，JUnit）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -832,80 +915,6 @@ Boolean 与 Character 二者是实现了比较和可序列化的接口的Object�
     <a class="right-panel  non-pic  "
       
       href="/2025/03/24/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%9E%9A%E4%B8%BE%E7%B1%BB%EF%BC%8C%E6%B3%A8%E8%A7%A3%EF%BC%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java课堂笔记（抽象类，接口，内部类）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/23/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/">Java课堂笔记（抽象类，接口，内部类）</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-23T07:18:30.000Z" itemprop="datePublished">2025-03-23</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            16k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java笔记抽象类使用场景当父类方法不确定的时候，需要声明但是不知道该如何实现的时候，可以将其声明为抽象方法，这个类就是抽象类
-1234567891011class Animal &#123;    private String name;        public Animal(String name) &#123;        this.name = name;    &#125;        public void eat() &#123;        System.out.println(&quot;吃一个...&quot;);    &#125;&#125;
-
-这个时候可以将该方法设计为抽象方法，所谓抽象方法就是没有实现的方法（没有方法体）
-123456789abstract class Animal &#123;    private String name;    public Animal(String name) &#123;        this.name = name;    &#125;    public abstract void eat()...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/23/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
