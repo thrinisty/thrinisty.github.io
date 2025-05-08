@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/images/149.png">
 <meta property="og:image" content="http://example.com/images/150.png">
 <meta property="article:published_time" content="2025-05-07T09:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-08T05:54:17.435Z">
+<meta property="article:modified_time" content="2025-05-08T12:56:08.717Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/149.png">
@@ -302,7 +302,7 @@
 
 
 
-<h2 id="请求重定向"><a href="#请求重定向" class="headerlink" title="请求重定向"></a>请求重定向</h2><p>请求重定向：是指客户端给服务器发送请求，然后服务器告诉客户端说，给与新地址以访问（之前的地址可能被废弃）</p>
+<h3 id="请求重定向"><a href="#请求重定向" class="headerlink" title="请求重定向"></a>请求重定向</h3><p>请求重定向：是指客户端给服务器发送请求，然后服务器告诉客户端说，给与新地址以访问（之前的地址可能被废弃）</p>
 <p><img src="/../images/150.png" alt="150"></p>
 <p>第一个访问的Servlet程序，访问第二个Servlet程序</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.servlet;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/index.html&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Servlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        resp.setStatus(<span class="number">302</span>);</span><br><span class="line">        resp.setHeader(<span class="string">&quot;Location&quot;</span>, <span class="string">&quot;http://localhost:8080/ServletTest/another&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -330,10 +330,15 @@
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2025/05/08/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88JSP%EF%BC%89/"
+      title="JavaWeb笔记(JSP)"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        JavaWeb笔记(JSP)
         
     </p>
   </a>

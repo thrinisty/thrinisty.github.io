@@ -162,6 +162,79 @@
    
 
 
+<article id="post-JavaWeb笔记（JSP）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/05/08/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88JSP%EF%BC%89/">JavaWeb笔记(JSP)</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-05-08T06:00:00.000Z" itemprop="datePublished">2025-05-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            9.8k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              JavaWeb笔记JSP初步介绍JSP全称为Java Server Pages，java的服务器页面，主要作用为替Servlet程序回传html页面的数据，因为Servlet程序回传html页面数据是一件非常繁琐的事情，开发成本和维护成本都很高
+我们在使用Servlet程序回传html需要通过回传流需要一行一行地将html页面的数据传回，要会传完整一个html页面需要大量的代码使用write写入返回到客户端地浏览器
+以下是一个代码示例，可见非常的繁琐
+123456789101112131415161718192021222324252627282930313233@WebServlet(&quot;/test&quot;)public class TestServlet extends HttpServlet &#123;    @Override    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/05/08/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88JSP%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-JavaWeb笔记（Servlet（ServletRequest，ServletResponse，重定向））" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -851,86 +924,6 @@ Redis基本介绍Remote Dictionary Server 远程词典服务器，是一个基�
     <a class="right-panel  non-pic  "
       
       href="/2025/04/22/Redis%E7%AC%94%E8%AE%B0%EF%BC%88NoSQL%EF%BC%8CRedis%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-Java8笔记（Lambda表达式，Stream API，Optional）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/20/Java8%E7%AC%94%E8%AE%B0%EF%BC%88Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8CStream%20API%EF%BC%8COptional%EF%BC%89/">Java8笔记(Lambda表达式，函数式接口，Stream API，Optional)</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-04-20T11:37:00.000Z" itemprop="datePublished">2025-04-20</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            14k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              Java8笔记拖了一天，本来打算从昨天就开始Java8特性的学习。但是有门事多题难分少的编译原理实验课把自己搞得心烦，晚上就没有精力学习了。
-第二天还要体测，38度的高温，就隔这室外干站着，等半天跑1000米，跑前本来想着4分30以内及格就好，压着脚步跑，结果才4分37，还贼累，险些没给自己跑死。
-到了期中以后了，感觉时间也是慢慢的变得紧张了起来，还是尽量多学一会把，刚回宿舍躺了一小会，算是复活了，总而言之开始今天的学习吧
-Java8为什么要学习Java8？
-Java8是当今企业中开发最主流的稳定版本，这个版本中出现了很多的新特性，虽然考点不多，但是可以提升Java后端开发程序员的编程效率，值得学习
-相关知识有Lambda表达式、Stream API、Optional
-计划加上今天晚上，明天，后天，一共三天完成相关知识的学习
-Lambda表达式Lambda是一个匿名函数，我们可以把Lambda表达式理解为是一段可以传递的代码，使用它可以写出更为简洁灵活的代码，代码风格更加紧凑
-代码示例我们用一串代码举例子
-多线程接口Runnable，实现一个类，重写run方法，start调用
-1...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/20/Java8%E7%AC%94%E8%AE%B0%EF%BC%88Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8CStream%20API%EF%BC%8COptional%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
