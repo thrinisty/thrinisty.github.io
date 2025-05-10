@@ -162,6 +162,86 @@
    
 
 
+<article id="post-Java课堂笔记（反射）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/">Java课堂笔记（反射）</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-08T07:29:00.000Z" itemprop="datePublished">2025-04-08</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            15k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              Java笔记反射reflection
+引出反射我们需要怎样才可以读出配置文件的内容，并调用配置文件的方法
+配置文件
+12classPath = com.reflection.Catmethod = hi
+
+目标类文件
+12345678package com.reflection;public class Cat &#123;    public void hi() &#123;        System.out.println(&quot;hi&quot;);    &#125;&#125;
+
+问题实现
+第一点很容易，我们通过创建properties在进行加载，就可以很容易的得到配置中的内容
+12345678910public class ReflectionQuestion &#123;    public static void main(String[] args) throws IOException &#123;        String filePath = &quot;src\\re.properties&quot;;        Properties pro...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/04/08/Java%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E5%8F%8D%E5%B0%84%EF%BC%89/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-Java课堂笔记（IO流）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -614,76 +694,6 @@ Map接口下有三个重要的类Hashtable ，HashMap ， TreeMap
     <a class="right-panel  non-pic  "
       
       href="/2025/04/01/%E8%87%AA%E5%AD%A6%E7%AC%AC%E4%B8%80%E6%9C%88%E4%BB%BD%E6%80%BB%E7%BB%93/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-JavaWeb笔记（）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/04/01/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/">JavaWeb笔记()</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-31T16:00:00.000Z" itemprop="datePublished">2025-04-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            9 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              JavaWeb笔记
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/04/01/JavaWeb%E7%AC%94%E8%AE%B0%EF%BC%88%EF%BC%89/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
